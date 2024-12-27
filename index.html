@@ -1,18 +1,22 @@
 <html lang="en">
-<head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>TruthWeb - Reimagine Truth</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
-    <style>
-        :root {
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   TruthWeb - Reimagine Truth
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   :root {
             --primary-color: #2f0139; /* Dark Violet */
             --secondary-color: #2a0132; /* Deep Black */
-            --highlight-color: #24012c; /* Bright Violet */
+            --highlight-color: #ff00ff; /* Enhanced Bright Violet */
             --text-color: #fff; /* White */
-            --hover-effect: radial-gradient(circle, #24012c, transparent);
+            --button-color: #692119; /* Button Color */
+            --hover-effect: radial-gradient(circle, #ff00ff, transparent);
         }
         body {
             background: #1a0120;
@@ -76,7 +80,7 @@
         }
         .card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 0 25px var (--highlight-color);
+            box-shadow: 0 0 25px var(--highlight-color);
         }
         @keyframes fadeInUp {
             0% {
@@ -89,7 +93,7 @@
             }
         }
         .btn {
-            background: var(--highlight-color);
+            background: var(--button-color);
             color: var(--text-color);
             padding: 0.75rem 1.5rem;
             border: none;
@@ -140,121 +144,327 @@
         .logo-text.scrolled {
             font-size: 1.25rem;
         }
+        .nav-item {
+            transition: transform 0.3s;
+        }
+        .nav-item:hover {
+            transform: scale(1.1);
+        }
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        .slide-in {
+            transform: translateX(-100%);
+            animation: slideIn 1s forwards;
+        }
+        @keyframes slideIn {
+            to {
+                transform: translateX(0);
+            }
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+  </style>
+ </head>
+ <body>
+  <!-- Header Section -->
+  <header class="sticky-header flex justify-between items-center h-16 px-4">
+   <div class="flex items-center">
+    <a class="text-[var(--text-color)] mr-4 flex items-center" href="home.html">
+     <span class="logo-text ml-2">
+      TruthWeb
+     </span>
+    </a>
+   </div>
+   <div class="flex items-center">
+    <a class="text-[var(--text-color)] mr-4 icon" href="notifications.html">
+     <i class="fas fa-bell text-xl sm:text-2xl">
+     </i>
+    </a>
+    <a class="text-[var(--text-color)] mr-4 icon" href="messages.html">
+     <i class="fas fa-comments text-xl sm:text-2xl">
+     </i>
+    </a>
+    <a class="text-[var(--text-color)] icon" href="profile.html">
+     <i class="fas fa-user text-xl sm:text-2xl">
+     </i>
+    </a>
+   </div>
+  </header>
+  <!-- Navigation Section -->
+  <nav class="bg-[var(--primary-color)] py-4">
+   <ul class="flex justify-center space-x-4">
+    <li class="nav-item">
+     <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)]" href="#home">
+      Home
+     </a>
+    </li>
+    <li class="nav-item">
+     <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)]" href="#about">
+      About
+     </a>
+    </li>
+    <li class="nav-item">
+     <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)]" href="#services">
+      Services
+     </a>
+    </li>
+    <li class="nav-item">
+     <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)]" href="#contact">
+      Contact
+     </a>
+    </li>
+    <li class="nav-item">
+     <button class="text-[var(--text-color)] hover:text-[var(--highlight-color)]" id="openModalButton">
+      More
+     </button>
+    </li>
+   </ul>
+  </nav>
+  <!-- Hero Section -->
+  <div class="hero">
+   <h1 class="glow-text fade-in">
+    TruthWeb
+   </h1>
+   <p class="text-xl mt-4 text-center fade-in" style="animation-delay: 0.5s;">
+    Step into the realm of Reimagine Truth
+   </p>
+   <a class="btn mt-6 fade-in" href="#explore" style="animation-delay: 1s;">
+    Explore the Mystery
+   </a>
+  </div>
+  <!-- Modal -->
+  <div class="modal" id="infoModal">
+   <div class="modal-content">
+    <span class="close" id="closeModalButton">
+     ×
+    </span>
+    <h2>
+     More Options
+    </h2>
+    <ul class="mt-4">
+     <li class="mb-2">
+      <a class="text-[var(--primary-color)] hover:text-[var(--highlight-color)]" href="#faq">
+       FAQ
+      </a>
+     </li>
+     <li class="mb-2">
+      <a class="text-[var(--primary-color)] hover:text-[var(--highlight-color)]" href="#support">
+       Support
+      </a>
+     </li>
+     <li class="mb-2">
+      <a class="text-[var(--primary-color)] hover:text-[var(--highlight-color)]" href="#blog">
+       Blog
+      </a>
+     </li>
+     <li class="mb-2">
+      <a class="text-[var(--primary-color)] hover:text-[var(--highlight-color)]" href="#careers">
+       Careers
+      </a>
+     </li>
+    </ul>
+   </div>
+  </div>
+  <!-- Main Content -->
+  <main class="py-16 px-4">
+   <!-- Featured NFTs -->
+   <section class="text-center" id="explore">
+    <h2 class="text-3xl font-bold mb-8 fade-in">
+     Discover the Hidden Realms
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+     <!-- Cards -->
+     <div class="card fade-in" style="animation-delay: 0.2s;">
+      <img alt="A vibrant artwork NFT with abstract colorful patterns" class="w-full h-64 object-cover rounded mb-4" height="400" src="" width="600"/>
+      <h3 class="text-xl font-semibold mb-2">
+       Vibrant NFT
+      </h3>
+      <p class="mb-4">
+       Experience a splash of color and creativity.
+      </p>
+      <button class="btn">
+       View NFT
+      </button>
+     </div>
+     <div class="card fade-in" style="animation-delay: 0.4s;">
+      <img alt="A futuristic digital artwork NFT with neon lights and cyberpunk elements" class="w-full h-64 object-cover rounded mb-4" height="400" src="" width="600"/>
+      <h3 class="text-xl font-semibold mb-2">
+       Futuristic NFT
+      </h3>
+      <p class="mb-4">
+       Step into the future with this cyberpunk masterpiece.
+      </p>
+      <button class="btn">
+       View NFT
+      </button>
+     </div>
+     <div class="card fade-in" style="animation-delay: 0.6s;">
+      <img alt="A serene landscape NFT with mountains, rivers, and a sunset" class="w-full h-64 object-cover rounded mb-4" height="400" src="">
+       Serene Landscape NFT
+      </h3>
+      <p class="mb-4">
+       Find peace and tranquility in this beautiful landscape.
+      </p>
+      <button class="btn">
+       View NFT
+      </button>
+     </div>
+    </div>
+   </section>
+   <!-- Video Section -->
+   <section class="text-center mt-16" id="videos">
+    <h2 class="text-3xl font-bold mb-8 fade-in">
+     Explore Our Videos
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+     <!-- Video Cards -->
+     <div class="card fade-in" style="animation-delay: 0.2s;">
+      <div class="relative w-full h-64 mb-4">
+       <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="absolute top-0 left-0 w-full h-full rounded" frameborder="0" src="">
+       </iframe>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">
+       Mystery Unveiled
+      </h3>
+      <p class="mb-4">
+       Dive deep into the mysteries of the universe.
+      </p>
+     </div>
+     <div class="card fade-in" style="animation-delay: 0.4s;">
+      <div class="relative w-full h-64 mb-4">
+       <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="absolute top-0 left-0 w-full h-full rounded" frameborder="0" src="">
+       </iframe>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">
+       Future Visions
+      </h3>
+      <p class="mb-4">
+       Explore futuristic concepts and ideas.
+      </p>
+     </div>
+     <div class="card fade-in" style="animation-delay: 0.6s;">
+      <div class="relative w-full h-64 mb-4">
+       <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="absolute top-0 left-0 w-full h-full rounded" frameborder="0" src="">
+       </iframe>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">
+       Nature's Beauty
+      </h3>
+      <p class="mb-4">
+       Witness the serene beauty of nature.
+      </p>
+     </div>
+    </div>
+   </section>
+   <!-- Soundtrack Section -->
+   <section class="text-center mt-16" id="soundtrack">
+    <h2 class="text-3xl font-bold mb-8 fade-in">
+     Listen to Our Soundtrack
+    </h2>
+    <div class="card fade-in" style="animation-delay: 0.2s;">
+     <h3 class="text-xl font-semibold mb-2">
+      Abstract Vibes
+     </h3>
+     <p class="mb-4">
+      Immerse yourself in the abstract soundscapes.
+     </p>
+     <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1994150683&amp;color=%23692119&amp;auto_play=true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true">
+     </iframe>
+     <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
+      <a href="https://soundcloud.com/reimagine-truth" style="color: #cccccc; text-decoration: none;" target="_blank" title="Reimagine Truth">
+       Reimagine Truth
+      </a>
+      ·
+      <a href="https://soundcloud.com/reimagine-truth/reimagined-truth-soundtrack-official" style="color: #cccccc; text-decoration: none;" target="_blank" title="Reimagined Truth Soundtrack - Official">
+       Reimagined Truth Soundtrack - Official
+      </a>
+     </div>
+    </div>
+   </section>
+  </main>
+  <!-- Footer Section -->
+  <html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>TruthWeb - Reimagine Truth</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* Custom Styles */
+        :root {
+            --primary-color: #2f0139; /* Dark Violet */
+            --secondary-color: #2a0132; /* Deep Black */
+            --highlight-color: #ff00ff; /* Enhanced Bright Violet */
+            --text-color: #fff; /* White */
+            --button-color: #692119; /* Button Color */
+            --hover-effect: radial-gradient(circle, #ff00ff, transparent);
+        }
+        body {
+            background: #1a0120;
+            color: var(--text-color);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+        footer {
+            background: var(--primary-color);
+            color: var(--text-color);
+            text-align: center;
+            padding: 1rem;
+        }
     </style>
 </head>
 <body>
-    <!-- Header Section -->
-    <header class="sticky-header flex justify-between items-center h-16 px-4">
-        <div class="flex items-center">
-            <a class="text-[var(--text-color)] mr-4 flex items-center" href="home.html">
-                <span class="logo-text ml-2">TruthWeb</span>
-            </a>
-        </div>
-        <div class="flex items-center">
-            <a class="text-[var(--text-color)] mr-4 icon" href="notifications.html">
-                <i class="fas fa-bell text-xl sm:text-2xl"></i>
-            </a>
-            <a class="text-[var(--text-color)] mr-4 icon" href="messages.html">
-                <i class="fas fa-comments text-xl sm:text-2xl"></i>
-            </a>
-            <a class="text-[var(--text-color)] icon" href="profile.html">
-                <i class="fas fa-user text-xl sm:text-2xl"></i>
-            </a>
-        </div>
-    </header>
-    <!-- Hero Section -->
-    <div class="hero">
-        <nav class="absolute top-0 left-0 right-0 flex justify-center py-4">
-            <ul class="flex space-x-4">
-                <li><a href="#home" class="text-[var(--text-color)] hover:text-[var(--highlight-color)]">Home</a></li>
-                <li><a href="#about" class="text-[var(--text-color)] hover:text-[var(--highlight-color)]">About</a></li>
-                <li><a href="#services" class="text-[var(--text-color)] hover:text-[var(--highlight-color)]">Services</a></li>
-                <li><a href="#contact" class="text-[var(--text-color)] hover:text-[var(--highlight-color)]">Contact</a></li>
-            </ul>
-        </nav>
-        <h1 class="glow-text">TruthWeb</h1>
-        <p class="text-xl mt-4 text-center">Step into the realm of Reimagine Truth</p>
-        <a class="btn mt-6" href="#explore">Explore the Mystery</a>
-    </div>
-    <!-- Main Content -->
-    <main class="py-16 px-4">
-        <!-- Featured NFTs -->
-        <section class="text-center" id="explore">
-            <h2 class="text-3xl font-bold mb-8">Discover the Hidden Realms</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Cards -->
-                <div class="card">
-                    <img alt="A vibrant artwork NFT with abstract colorful patterns" class="w-full h-64 object-cover rounded mb-4" height="400" src="https://storage.googleapis.com/a1aa/image/OGu7jrRkFvILJp1heF0oUwSgfEg1do43AVmZNG3UsGwU9BfnA.jpg" width="600"/>
-                    <h3 class="text-xl font-semibold mb-2">Vibrant NFT</h3>
-                    <p class="mb-4">Experience a splash of color and creativity.</p>
-                    <button class="btn">View NFT</button>
-                </div>
-                <div class="card">
-                    <img alt="A futuristic NFT with neon lights and cyberpunk elements" class="w-full h-64 object-cover rounded mb-4" height="400" src="https://storage.googleapis.com/a1aa/image/ypVRaBPEyNYAK9uXt5zsBKDbLNpZC7FhuLdnNADYeyhqeBfnA.jpg" width="600"/>
-                    <h3 class="text-xl font-semibold mb-2">Futuristic NFT</h3>
-                    <p class="mb-4">Dive into the world of neon lights and cyberpunk.</p>
-                    <button class="btn">View NFT</button>
-                </div>
-                <div class="card">
-                    <img alt="A serene NFT depicting a calm and peaceful landscape" class="w-full h-64 object-cover rounded mb-4" height="400" src="https://storage.googleapis.com/a1aa/image/rP867u2ZLsLfAyAQEhzr3u2T0AhtucO0bN4n0Op3hSuveBfnA.jpg" width="600"/>
-                    <h3 class="text-xl font-semibold mb-2">Serene NFT</h3>
-                    <p class="mb-4">Find peace and tranquility in this serene landscape.</p>
-                    <button class="btn">View NFT</button>
-                </div>
-                <div class="card">
-                    <img alt="A mystical NFT with magical and fantasy elements" class="w-full h-64 object-cover rounded mb-4" height="400" src="https://storage.googleapis.com/a1aa/image/QOAi3SPdndqfaihVB3RWHfvqcDnjClI9rKbKcmp6bTPh9BfnA.jpg" width="600"/>
-                    <h3 class="text-xl font-semibold mb-2">Mystical NFT</h3>
-                    <p class="mb-4">Explore the magical and fantasy realms.</p>
-                    <button class="btn">View NFT</button>
-                </div>
-                <div class="card">
-                    <img alt="A digital NFT with intricate geometric patterns" class="w-full h-64 object-cover rounded mb-4" height="400" src="https://storage.googleapis.com/a1aa/image/m2acJcWG0Z4jOV58RLXsuik0WHAXGpvfzesxBUvmFp4d9BfnA.jpg" width="600"/>
-                    <h3 class="text-xl font-semibold mb-2">Geometric NFT</h3>
-                    <p class="mb-4">Admire the beauty of intricate geometric patterns.</p>
-                    <button class="btn">View NFT</button>
-                </div>
-                <div class="card">
-                    <img alt="A surreal NFT with dreamlike and abstract elements" class="w-full h-64 object-cover rounded mb-4" height="400" src="https://storage.googleapis.com/a1aa/image/Vo0ZNX2Iipo0DVYd87MAWiR5GkxoEUTykmTl8qvtCdnYfgfTA.jpg" width="600"/>
-                    <h3 class="text-xl font-semibold mb-2">Surreal NFT</h3>
-                    <p class="mb-4">Step into a dreamlike and abstract world.</p>
-                    <button class="btn">View NFT</button>
-                </div>
-                <div class="card">
-                    <img alt="A cosmic NFT with stars, galaxies, and outer space elements" class="w-full h-64 object-cover rounded mb-4" height="400" src="https://storage.googleapis.com/a1aa/image/2ykspC9NcCbLA5b9vtP3oWQfVbT3rXfKmd5OK8TX4C1X9BfnA.jpg" width="600"/>
-                    <h3 class="text-xl font-semibold mb-2">Cosmic NFT</h3>
-                    <p class="mb-4">Journey through the stars and galaxies.</p>
-                    <button class="btn">View NFT</button>
-                </div>
-                <div class="card">
-                    <img alt="A vintage NFT with retro and nostalgic elements" class="w-full h-64 object-cover rounded mb-4" height="400" src="https://storage.googleapis.com/a1aa/image/64bhMYAByKqCJ5Czpalf7l9uMOcf5QQlFQgdH2PdhWAb9BfnA.jpg" width="600"/>
-                    <h3 class="text-xl font-semibold mb-2">Vintage NFT</h3>
-                    <p class="mb-4">Relive the charm of retro and nostalgic times.</p>
-                    <button class="btn">View NFT</button>
-                </div>
-                <div class="card">
-                    <img alt="A nature NFT with lush greenery and wildlife elements" class="w-full h-64 object-cover rounded mb-4" height="400" src="https://storage.googleapis.com/a1aa/image/gwYzYuWGyYKqDhsL65k7FrfnruB7hqPvz5TOyLsv0SmseBfnA.jpg" width="600"/>
-                    <h3 class="text-xl font-semibold mb-2">Nature NFT</h3>
-                    <p class="mb-4">Immerse yourself in lush greenery and wildlife.</p>
-                    <button class="btn">View NFT</button>
-                </div>
+<!-- Footer Section -->
+    <footer class="bg-[var(--primary-color)] py-8">
+        <div class="container mx-auto text-center">
+            <div class="mb-4">
+                <a href="https://www.facebook.com" target="_blank" class="text-[var(--text-color)] mx-2"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.twitter.com" target="_blank" class="text-[var(--text-color)] mx-2"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com" target="_blank" class="text-[var(--text-color)] mx-2"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com" target="_blank" class="text-[var(--text-color)] mx-2"><i class="fab fa-linkedin-in"></i></a>
             </div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2023 TruthWeb. All rights reserved.</p>
+            <p class="text-[var(--text-color)] mb-4">&copy; 2024 TruthWeb. All rights reserved.</p>
+            <p class="text-[var(--text-color)]">Designed by Reimagine Truth Organization</p>
+        </div>
     </footer>
-    <script>
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('.sticky-header');
-            const logoText = document.querySelector('.logo-text');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-                logoText.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-                logoText.classList.remove('scrolled');
-            }
-        });
-    </script>
 </body>
 </html>
