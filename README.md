@@ -46,7 +46,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Join Us
 
-- Visit our website at (https://www.truthweb.io)
+- Visit our website at (https://www.truthweb.xyz)
 - Follow us on Twitter: (https://x.com/reimagine_truth)
 - Join the conversation on Telegram: (https://t.me/TruthWebOfficial)
 
