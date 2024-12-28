@@ -1,0 +1,503 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>TruthWeb - Reimagine Truth</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <style>
+      :root {
+        --primary-color: #2f0139; /* Dark Violet */
+        --secondary-color: #2a0132; /* Deep Black */
+        --highlight-color: #ff00ff; /* Enhanced Bright Violet */
+        --text-color: #fff; /* White */
+        --button-color: #692119; /* Button Color */
+        --hover-effect: radial-gradient(circle, #ff00ff, transparent);
+      }
+      body {
+        background: #1a0120;
+        color: var(--text-color);
+        font-family: 'Poppins', sans-serif;
+        overflow-x: hidden;
+      }
+      .hero {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        border: 2px solid var(--highlight-color);
+        padding: 1rem;
+      }
+      .hero::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--hover-effect);
+        opacity: 0.2;
+        animation: float 6s infinite ease-in-out;
+      }
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+      .glow-text {
+        font-size: 2rem;
+        font-weight: bold;
+        text-shadow: 0 0 10px var(--highlight-color), 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color);
+        animation: glow 2s infinite alternate;
+      }
+      @keyframes glow {
+        0% {
+          text-shadow: 0 0 10px var(--highlight-color), 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color);
+        }
+        100% {
+          text-shadow: 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color), 0 0 40px var(--highlight-color);
+        }
+      }
+      .card {
+        background: var(--primary-color);
+        border: 2px solid var(--highlight-color);
+        border-radius: 10px;
+        padding: 1rem;
+        box-shadow: 0 0 15px var(--highlight-color);
+        transition: transform 0.3s, box-shadow 0.3s;
+        animation: fadeInUp 1s ease-in-out;
+      }
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 0 25px var(--highlight-color);
+      }
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .btn {
+        background: var(--button-color);
+        color: var(--text-color);
+        padding: 0.75rem 1.5rem;
+        border: 2px solid var(--highlight-color);
+        border-radius: 20px;
+        cursor: pointer;
+        transition: background 0.3s, color 0.3s;
+        animation: pulse 2s infinite;
+      }
+      .btn:hover {
+        background: var(--highlight-color);
+        color: var(--primary-color);
+      }
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      footer {
+        background: var(--primary-color);
+        color: var(--text-color);
+        text-align: center;
+        padding: 1rem;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      .sticky-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: var(--primary-color);
+        transition: background 0.3s, box-shadow 0.3s;
+      }
+      .sticky-header.scrolled {
+        background: var(--secondary-color);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      }
+      .logo-text {
+        font-size: 1.5rem;
+        font-weight: 700;
+        transition: font-size 0.3s;
+      }
+      .logo-text.scrolled {
+        font-size: 1.25rem;
+      }
+      .nav-item {
+        transition: transform 0.3s;
+      }
+      .nav-item:hover {
+        transform: scale(1.1);
+      }
+      .fade-in {
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+      }
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+      .slide-in {
+        transform: translateX(-100%);
+        animation: slideIn 1s forwards;
+      }
+      @keyframes slideIn {
+        to {
+          transform: translateX(0);
+        }
+      }
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 500px;
+        border-radius: 10px;
+        animation: slideInFromTop 0.5s ease-out, fadeIn 0.5s ease-out;
+      }
+      @keyframes slideInFromTop {
+        0% {
+          transform: translateY(-100%);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        transition: transform 0.3s;
+      }
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+        transform: rotate(90deg);
+      }
+      .floating-effect {
+        display: inline-block;
+        transition: transform 0.3s;
+      }
+      .floating-effect:hover {
+        transform: translateY(-10px);
+      }
+      .nav-item {
+        opacity: 0;
+        animation: fadeInUp 0.5s forwards;
+      }
+      .nav-item:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .nav-item:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .nav-item:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .nav-item:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .nav-item:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+      .nav-item:nth-child(6) {
+        animation-delay: 0.6s;
+      }
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="sticky-header flex justify-between items-center h-16 px-4">
+      <div class="flex items-center">
+        <a class="text-[var(--text-color)] mr-4 flex items-center" href="home.html">
+          <span class="logo-text ml-2">
+            TruthWeb
+          </span>
+        </a>
+      </div>
+      <div class="flex items-center">
+        <a class="text-[var(--text-color)] mr-4 icon floating-effect" href="notifications.html">
+          <i class="fas fa-bell text-xl sm:text-2xl"></i>
+        </a>
+        <a class="text-[var(--text-color)] mr-4 icon floating-effect" href="messages.html">
+          <i class="fas fa-comments text-xl sm:text-2xl"></i>
+        </a>
+        <a class="text-[var(--text-color)] icon floating-effect" href="profile.html">
+          <i class="fas fa-user text-xl sm:text-2xl"></i>
+        </a>
+      </div>
+    </header>
+    <!-- Navigation Section -->
+    <nav class="bg-[var(--primary-color)] py-4">
+      <ul class="flex flex-wrap justify-center space-x-4">
+        <li class="nav-item">
+          <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="discover.html" id="openModalButton">Discover</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="about.html">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="contact.html">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="policy.html">Policy</a>
+        </li>
+      </ul>
+    </nav>
+   <!-- RTO Section -->
+ <section class="bg-[var(--primary-color)] text-[var(--text-color)] py-16 px-8" id="rto">
+    <!-- Reimagine Truth Organization Section -->
+<section id="rto">
+    <h2 class="text-4xl font-bold text-center">🌐 Reimagine Truth Organization (RTO)</h2>
+    <hr class="my-6">
+
+    <h3 class="text-2xl font-semibold">📖 Overview</h3>
+    <p class="mt-4 text-lg">
+        <strong>Reimagine Truth Organization (RTO)</strong> is a decentralized blockchain project built on the <strong>Optimism Layer 2 chain</strong>. Our mission is to promote <strong>transparency, creativity, and community engagement</strong> through the power of <strong>NFTs</strong>, <strong>tokenization</strong>, and <strong>decentralized governance</strong>. We aim to create a thriving ecosystem where <strong>truth, information, and value</strong> are celebrated, protected, and shared.
+    </p>
+    <hr class="my-6">
+
+    <h3 class="text-2xl font-semibold">🚀 Vision</h3>
+    <p class="mt-4 text-lg">
+        To create a <strong>decentralized ecosystem</strong> where <strong>truth and transparency</strong> drive creativity, innovation, and collective growth through blockchain technology and NFTs.
+    </p>
+    <hr class="my-6">
+
+    <h3 class="text-2xl font-semibold">🎯 Mission</h3>
+    <p class="mt-4 text-lg">
+        Our mission is to:
+        <ul class="list-disc pl-8 mt-2">
+            <li>Empower creators and collectors with tools for <strong>transparent digital expression</strong>.</li>
+            <li>Foster a community dedicated to <strong>truth, wisdom, and innovation</strong>.</li>
+            <li>Utilize blockchain to redefine how <strong>trust, value, and participation</strong> are perceived.</li>
+        </ul>
+    </p>
+    <hr class="my-6">
+
+    <h3 class="text-2xl font-semibold">🛠️ Core Components</h3>
+    <div class="mt-4">
+        <h4 class="text-xl font-semibold">🃏 1. Truth Seekers Deck (NFT Collection)</h4>
+        <p>
+            A unique NFT collection that celebrates <strong>truth, wisdom</strong>, and <strong>community values</strong>.
+        </p>
+        <ul class="list-disc pl-8 mt-2">
+            <li><strong>Card Types</strong>: Normal, Effect, Ritual, Fusion, Synchro, Xyz, Link, Token, Spell, Trap, Skill, Dark Synchro, Unity, Rainbow.</li>
+            <li><strong>Rarity Categories</strong>: 🟩 Common, 🟦 Rare, 🟪 Ultra Rare, 🟥 Secret Rare, 🟫 Mosaic Rare, 🟨 Shatterfoil Rare, 🌈 Rainbow Rare.</li>
+            <li><strong>Utilities</strong>:
+                <ul class="list-inside">
+                    <li>Staking Rewards: Earn $RTO tokens.</li>
+                    <li>Governance: Influence project decisions.</li>
+                    <li>Exclusive Events: Access to special community and VR events.</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="mt-8">
+        <h4 class="text-xl font-semibold">💎 2. $RTO Token</h4>
+        <p>The native utility token of the Reimagine Truth ecosystem.</p>
+        <ul class="list-disc pl-8 mt-2">
+            <li><strong>Uses</strong>:
+                <ul class="list-inside">
+                    <li>Staking for rewards.</li>
+                    <li>Governance rights.</li>
+                    <li>Transaction Fees for NFT purchases and interactions.</li>
+                </ul>
+            </li>
+            <li><strong>Distribution</strong>:
+                <ul class="list-inside">
+                    <li>Airdrops for early supporters.</li>
+                    <li>Rewards for community engagement.</li>
+                    <li>Development and ecosystem growth.</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="mt-8">
+        <h4 class="text-xl font-semibold">🏛️ 3. Virtual NFT Museum</h4>
+        <p>An immersive <strong>VR-enabled space</strong> where users can:</p>
+        <ul class="list-disc pl-8 mt-2">
+            <li>Showcase and auction NFTs.</li>
+            <li>Host interactive events, exhibitions, and educational sessions.</li>
+            <li>Earn from display fees and commissions.</li>
+        </ul>
+    </div>
+
+    <div class="mt-8">
+        <h4 class="text-xl font-semibold">🔗 4. Pi Network Integration</h4>
+        <p>Integrating with <strong>Pi Network</strong> to increase accessibility and community growth, bridging blockchain technology with a global audience.</p>
+    </div>
+    <hr class="my-6">
+
+    <h3 class="text-2xl font-semibold">💼 Revenue Streams</h3>
+    <ul class="list-disc pl-8 mt-2">
+        <li><strong>NFT Sales and Auctions</strong>: Fees for displaying and auctioning NFTs.</li>
+        <li><strong>Token Economy</strong>: Staking $RTO for rewards and governance.</li>
+        <li><strong>VR Museum Operations</strong>: Fees for display slots and premium events.</li>
+    </ul>
+    <hr class="my-6">
+
+    <h3 class="text-2xl font-semibold">🛠️ Technology Stack</h3>
+    <ul class="list-disc pl-8 mt-2">
+        <li><strong>Blockchain</strong>: Optimism (Layer 2 Ethereum)</li>
+        <li><strong>Standards</strong>: ERC-721 and ERC-1155 for NFTs</li>
+        <li><strong>Smart Contracts</strong>: Solidity-based</li>
+        <li><strong>VR Integration</strong>: Unity or Unreal Engine</li>
+        <li><strong>Storage</strong>: IPFS or Arweave for decentralized metadata</li>
+    </ul>
+    <hr class="my-6">
+
+    <h3 class="text-2xl font-semibold">🗺️ Roadmap</h3>
+    <h4 class="text-xl font-semibold">📍 Phase 1: Foundation (2024 Q4)</h4>
+    <ul class="list-disc pl-8 mt-2">
+        <li>Finalize NFT collection designs.</li>
+        <li>Deploy $RTO smart contract.</li>
+        <li>Build community on Twitter, Telegram, and Discord.</li>
+    </ul>
+
+    <h4 class="text-xl font-semibold">🚀 Phase 2: Launch (2025 Q1)</h4>
+    <ul class="list-disc pl-8 mt-2">
+        <li>Mint and release the <strong>Truth Seekers Deck</strong>.</li>
+        <li>Airdrop $RTO tokens to early adopters.</li>
+        <li>Launch the VR Museum.</li>
+    </ul>
+
+    <h4 class="text-xl font-semibold">📈 Phase 3: Growth (2025 Q2-Q4)</h4>
+    <ul class="list-disc pl-8 mt-2">
+        <li>Integrate with <strong>Pi Network</strong>.</li>
+        <li>Expand VR Museum with new galleries.</li>
+        <li>Onboard more artists and collectors.</li>
+    </ul>
+    <hr class="my-6">
+
+    <h3 class="text-2xl font-semibold">🌟 Get Involved</h3>
+    <ul class="list-disc pl-8 mt-2">
+        <li><strong>Follow Us</strong> on <a href="#" class="text-blue-500">Twitter</a> and <a href="#" class="text-blue-500">Telegram</a>.</li>
+        <li><strong>Join the Community</strong>: Share ideas and feedback.</li>
+        <li><strong>Become a Creator</strong>: Showcase your NFTs and engage with a global audience.</li>
+    </ul>
+    <hr class="my-6">
+
+    <h3 class="text-2xl font-semibold">⚖️ Legal Disclaimer</h3>
+    <p class="mt-4 text-lg">
+        <strong>Reimagine Truth</strong> operates in accordance with blockchain regulations. Participants should consult financial or legal experts before engaging in $RTO or NFT investments. All investments carry risks.
+    </p>
+    <hr class="my-6">
+
+    <h3 class="text-2xl font-semibold">🌌 Conclusion</h3>
+    <p class="mt-4 text-lg">
+        <strong>Reimagine Truth</strong> combines the power of blockchain, NFTs, and decentralized governance to create a platform where <strong>truth, transparency, and creativity</strong> thrive. Join us in shaping a future where digital art, community, and innovation go hand-in-hand.
+    </p>
+
+    <p class="mt-6 text-center text-2xl">
+        🎴 <strong>Let's Reimagine Truth Together!</strong> 🌐
+    </p>
+</section>
+    <!-- Footer Section -->
+    <footer class="bg-[var(--primary-color)] py-8">
+      <div class="container mx-auto text-center">
+        <div class="mb-4">
+          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.x.com" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.telegram.com" target="_blank"><i class="fab fa-telegram"></i></a>
+          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p class="text-[var(--text-color)] mb-4">© 2024 TruthWeb. All rights reserved.</p>
+        <p class="text-[var(--text-color)]">Designed by Reimagine Truth Organization</p>
+      </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
+      <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl font-semibold text-black">More Options</h2>
+          <button id="closeModal" class="text-gray-700 hover:text-red-500 transition-transform duration-300">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <ul class="space-y-4">
+          <li><a href="wiki.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-book mr-2"></i>Wiki</a></li>
+          <li><a href="whitepaper.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-file-alt mr-2"></i>Whitepaper</a></li>
+          <li><a href="airdrop.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-gift mr-2"></i>Airdrop</a></li>
+          <li><a href="listing.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-list mr-2"></i>Listing</a></li>
+          <li><a href="rto-token.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-coins mr-2"></i>RTO Token</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById('openModalButton').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('modal').classList.remove('hidden');
+      });
+
+      document.getElementById('closeModal').addEventListener('click', function() {
+        document.getElementById('modal').classList.add('hidden');
+      });
+
+      window.addEventListener('click', function(event) {
+        if (event.target == document.getElementById('modal')) {
+          document.getElementById('modal').classList.add('hidden');
+        }
+      });
+    </script>
+  </body>
+</html>
