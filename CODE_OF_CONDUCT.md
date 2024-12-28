@@ -62,7 +62,7 @@ If you see violations of this Code of Conduct, please report them as soon as pos
 
 - Email: reimaginetruth@gmail.com
 - Telegram: https://t.me/TruthWebOfficial
-- GitHub: (https://github.com/ReimagineTruth/truthweb.io)
+- GitHub: (https://github.com/ReimagineTruth/truthweb.xyz)
 
 We will review all reports and take appropriate actions swiftly to maintain a positive and respectful environment for everyone.
 
