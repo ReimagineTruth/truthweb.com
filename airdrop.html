@@ -1,0 +1,459 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>TruthWeb - Reimagine Truth</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <style>
+      :root {
+        --primary-color: #2f0139; /* Dark Violet */
+        --secondary-color: #2a0132; /* Deep Black */
+        --highlight-color: #ff00ff; /* Enhanced Bright Violet */
+        --text-color: #fff; /* White */
+        --button-color: #692119; /* Button Color */
+        --hover-effect: radial-gradient(circle, #ff00ff, transparent);
+      }
+      body {
+        background: #1a0120;
+        color: var(--text-color);
+        font-family: 'Poppins', sans-serif;
+        overflow-x: hidden;
+      }
+      .hero {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        border: 2px solid var(--highlight-color);
+        padding: 1rem;
+      }
+      .hero::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--hover-effect);
+        opacity: 0.2;
+        animation: float 6s infinite ease-in-out;
+      }
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+      .glow-text {
+        font-size: 2rem;
+        font-weight: bold;
+        text-shadow: 0 0 10px var(--highlight-color), 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color);
+        animation: glow 2s infinite alternate;
+      }
+      @keyframes glow {
+        0% {
+          text-shadow: 0 0 10px var(--highlight-color), 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color);
+        }
+        100% {
+          text-shadow: 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color), 0 0 40px var(--highlight-color);
+        }
+      }
+      .card {
+        background: var(--primary-color);
+        border: 2px solid var(--highlight-color);
+        border-radius: 10px;
+        padding: 1rem;
+        box-shadow: 0 0 15px var(--highlight-color);
+        transition: transform 0.3s, box-shadow 0.3s;
+        animation: fadeInUp 1s ease-in-out;
+      }
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 0 25px var(--highlight-color);
+      }
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .btn {
+        background: var(--button-color);
+        color: var(--text-color);
+        padding: 0.75rem 1.5rem;
+        border: 2px solid var(--highlight-color);
+        border-radius: 20px;
+        cursor: pointer;
+        transition: background 0.3s, color 0.3s;
+        animation: pulse 2s infinite;
+      }
+      .btn:hover {
+        background: var(--highlight-color);
+        color: var(--primary-color);
+      }
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      footer {
+        background: var(--primary-color);
+        color: var(--text-color);
+        text-align: center;
+        padding: 1rem;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      .sticky-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: var(--primary-color);
+        transition: background 0.3s, box-shadow 0.3s;
+      }
+      .sticky-header.scrolled {
+        background: var(--secondary-color);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      }
+      .logo-text {
+        font-size: 1.5rem;
+        font-weight: 700;
+        transition: font-size 0.3s;
+      }
+      .logo-text.scrolled {
+        font-size: 1.25rem;
+      }
+      .nav-item {
+        transition: transform 0.3s;
+      }
+      .nav-item:hover {
+        transform: scale(1.1);
+      }
+      .fade-in {
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+      }
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+      .slide-in {
+        transform: translateX(-100%);
+        animation: slideIn 1s forwards;
+      }
+      @keyframes slideIn {
+        to {
+          transform: translateX(0);
+        }
+      }
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 500px;
+        border-radius: 10px;
+        animation: slideInFromTop 0.5s ease-out, fadeIn 0.5s ease-out;
+      }
+      @keyframes slideInFromTop {
+        0% {
+          transform: translateY(-100%);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        transition: transform 0.3s;
+      }
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+        transform: rotate(90deg);
+      }
+      .floating-effect {
+        display: inline-block;
+        transition: transform 0.3s;
+      }
+      .floating-effect:hover {
+        transform: translateY(-10px);
+      }
+      .nav-item {
+        opacity: 0;
+        animation: fadeInUp 0.5s forwards;
+      }
+      .nav-item:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .nav-item:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .nav-item:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .nav-item:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .nav-item:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+      .nav-item:nth-child(6) {
+        animation-delay: 0.6s;
+      }
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="sticky-header flex justify-between items-center h-16 px-4">
+      <div class="flex items-center">
+        <a class="text-[var(--text-color)] mr-4 flex items-center" href="home.html">
+          <span class="logo-text ml-2">
+            TruthWeb
+          </span>
+        </a>
+      </div>
+      <div class="flex items-center">
+        <a class="text-[var(--text-color)] mr-4 icon floating-effect" href="notifications.html">
+          <i class="fas fa-bell text-xl sm:text-2xl"></i>
+        </a>
+        <a class="text-[var(--text-color)] mr-4 icon floating-effect" href="messages.html">
+          <i class="fas fa-comments text-xl sm:text-2xl"></i>
+        </a>
+        <a class="text-[var(--text-color)] icon floating-effect" href="profile.html">
+          <i class="fas fa-user text-xl sm:text-2xl"></i>
+        </a>
+      </div>
+    </header>
+    <!-- Navigation Section -->
+    <nav class="bg-[var(--primary-color)] py-4">
+      <ul class="flex flex-wrap justify-center space-x-4">
+        <li class="nav-item">
+          <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="discover.html" id="openModalButton">Discover</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="about.html">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="contact.html">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="policy.html">Policy</a>
+        </li>
+      </ul>
+    </nav>
+    <!-- Airdrop Section -->
+    <section class="bg-[var(--primary-color)] text-[var(--text-color)] py-16 px-8" id="airdrop">
+      <h2 class="text-3xl font-bold mb-4">Reimagine Truth Airdrop</h2>
+      <p class="mb-4">The Reimagine Truth Airdrop Repository is the core system for managing the $RTO token airdrop. It features smart contracts, automated scripts, frontend and backend tools, and detailed documentation. Designed to reward early supporters, boost engagement, and ensure transparent distribution, it powers the Reimagine Truth community growth.</p>
+      <p class="mb-4">The Reimagine Truth airdrop is designed to reward early supporters, NFT buyers, and community members while driving engagement and participation in the project. The plan ensures a fair distribution of the $RTO tokens and incentivizes the growth of the Reimagine Truth ecosystem.</p>
+      <h3 class="text-2xl font-semibold mb-2">🏆 Airdrop Goals</h3>
+      <ul class="list-disc list-inside mb-4">
+        <li><strong>Reward Early Supporters:</strong> Offer incentives to the first adopters of the Truth Seekers Deck NFTs.</li>
+        <li><strong>Build Community Engagement:</strong> Attract new members to join our Telegram group, follow on Twitter, and interact with our ecosystem.</li>
+        <li><strong>Drive Awareness:</strong> Use the airdrop to generate buzz about the project ahead of the official token launch.</li>
+        <li><strong>Encourage Marketplace Activity:</strong> Incentivize activity such as NFT purchases and auctions.</li>
+      </ul>
+      <h3 class="text-2xl font-semibold mb-2">🚀 Airdrop Phases</h3>
+      <ol class="list-decimal list-inside mb-4">
+        <li class="mb-2"><strong>Early NFT Buyers</strong>
+          <ul class="list-disc list-inside ml-4">
+            <li><strong>Eligibility:</strong> Purchase Truth Seekers Deck NFTs before the $RTO token launch.</li>
+            <li><strong>Reward:</strong> 10% of the airdrop pool.</li>
+            <li><strong>Snapshot Date:</strong> December 24, 2024.</li>
+          </ul>
+        </li>
+        <li class="mb-2"><strong>Community Engagement</strong>
+          <ul class="list-disc list-inside ml-4">
+            <li><strong>Eligibility:</strong> Complete tasks like joining Telegram, following on Twitter, and signing up for the newsletter.</li>
+            <li><strong>Reward:</strong> 15% of the airdrop pool.</li>
+          </ul>
+        </li>
+        <li class="mb-2"><strong>Referrals</strong>
+          <ul class="list-disc list-inside ml-4">
+            <li><strong>Eligibility:</strong> Earn rewards by referring new community members.</li>
+            <li><strong>Reward:</strong> 5% of the airdrop pool.</li>
+          </ul>
+        </li>
+        <li class="mb-2"><strong>General Airdrop for Wallet Holders</strong>
+          <ul class="list-disc list-inside ml-4">
+            <li><strong>Eligibility:</strong> Open to all Optimism chain wallet holders.</li>
+            <li><strong>Reward:</strong> 70% of the airdrop pool.</li>
+          </ul>
+        </li>
+      </ol>
+      <h3 class="text-2xl font-semibold mb-2">📊 Airdrop Token Allocation</h3>
+      <table class="table-auto w-full mb-4">
+        <thead>
+          <tr>
+            <th class="py-2 px-4 text-left">Category</th>
+            <th class="py-2 px-4 text-left">Percentage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="py-2 px-4">Early NFT Buyers</td>
+            <td class="py-2 px-4">10%</td>
+          </tr>
+          <tr>
+            <td class="py-2 px-4">Community Engagement</td>
+            <td class="py-2 px-4">15%</td>
+          </tr>
+          <tr>
+            <td class="py-2 px-4">Referrals</td>
+            <td class="py-2 px-4">5%</td>
+          </tr>
+          <tr>
+            <td class="py-2 px-4">General Airdrop</td>
+            <td class="py-2 px-4">70%</td>
+          </tr>
+          <tr>
+            <td class="py-2 px-4 font-bold">Total</td>
+            <td class="py-2 px-4 font-bold">100%</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3 class="text-2xl font-semibold mb-2">🗓️ Timeline</h3>
+      <ul class="list-disc list-inside mb-4">
+        <li><strong>Announcement:</strong> December 15, 2024</li>
+        <li><strong>Snapshot for NFT Holders:</strong> December 24, 2024</li>
+        <li><strong>Airdrop Distribution:</strong> Q1</li>
+      </ul>
+      <h3 class="text-2xl font-semibold mb-2">🛠️ Reimagine-Truth-Airdrop-Repository-Structure</h3>
+      <pre class="bg-gray-800 text-white p-4 rounded mb-4"><code>
+Reimagine-Truth-Airdrop/
+├── contracts/                 # Smart contracts for token distribution
+│   ├── AirdropDistributor.sol # Contract to manage $RTO token airdrops
+│   └── Token.sol              # ERC-20 contract for $RTO tokens
+│
+├── scripts/                   # Scripts for automation
+│   ├── generateSnapshot.js    # Script to create a snapshot of eligible wallets
+│   ├── distributeTokens.js    # Script to execute token airdrop
+│   ├── verifyTasks.js         # Script to verify community engagement tasks
+│   └── referralTracker.js     # Script for referral tracking and rewards
+│
+├── data/                      # Data storage and management
+│   ├── snapshot.json          # JSON file containing wallet snapshot data
+│   ├── referrals.json         # JSON file storing referral details
+│   ├── engagement.csv         # CSV file for community engagement tasks
+│   └── README.md              # Notes on data structure
+│
+├── frontend/                  # Frontend for airdrop management and user interface
+│   ├── public/                # Static assets (e.g., images, icons)
+│   ├── src/                   # Source files for the frontend app
+│   │   ├── components/        # React components for the UI
+│   │   ├── pages/             # Pages for the airdrop website
+│   │   └── App.js             # Main frontend entry point
+│   └── package.json           # Dependencies for the frontend
+│
+├── backend/                   # Backend logic for managing airdrop data
+│   ├── controllers/           # API endpoint handlers
+│   ├── models/                # Database models for wallet tracking
+│   ├── routes/                # API routes for airdrop tasks
+│   ├── services/              # Core logic (e.g., task validation, token distribution)
+│   ├── server.js              # Main backend server entry point
+│   └── package.json           # Dependencies for the backend
+│
+├── docs/                      # Documentation for the airdrop process
+│   ├── overview.md            # Airdrop overview and goals
+│   ├── eligibility.md         # Criteria for airdrop participation
+│   ├── tokenomics.md          # Tokenomics of $RTO and airdrop distribution
+│   └── setup-guide.md         # Setup instructions for running the repository
+│
+├── tests/                     # Unit tests for contracts and scripts
+│   ├── contracts/             # Tests for smart contracts
+│   ├── scripts/               # Tests for distribution scripts
+│   └── README.md              # Instructions for running tests
+│
+├── .env                       # Environment variables (e.g., private keys, API keys)
+├── .gitignore                 # Git ignore rules
+├── README.md                  # Overview and introduction to the airdrop repository
+└── LICENSE                    # License for the repository
+  </code></pre>
+ <h3 class="text-2xl font-semibold mb-2">🔑 Key Highlights of the Repository</h3>
+    <h3 class="section-title"></h3>
+    <ul>
+         <h3 class="text-2xl font-semibold mb-2">Smart Contracts</h3>
+      <ul class="list-disc list-inside mb-4">
+        <li><strong>AirdropDistributor.sol</strong>  Handles the distribution logic for $RTO tokens.</li>
+        <li><strong>Token.sol</strong> ERC-20 token contract for $RTO.</li>
+         </ul>
+        </li>
+        <li>
+            <strong>Scripts:</strong> Automates wallet snapshots, token distribution, task validation, and referral tracking.</li>
+
+        <li>
+        <li><strong>Data:</strong>JSON and CSV files to manage snapshots, referrals, and engagement data.</li>
+         </ul>
+        </li>
+        <li
+        <li><strong>Frontend:</strong> User-friendly interface for checking eligibility, claiming tokens, and tracking airdrop status.</li>
+        <li><strong>Backend:</strong> API endpoints, database models, and services for secure and efficient token distribution.</li>
+        <li>
+            <strong>Documentation:</strong> Guides for airdrop participation, setup, and repository contribution.
+   <ul>
+    <h3 class="text-2xl font-semibold mb-2">🔑🤝 Get Involved</h3>
+       <ul>
+        <li><strong>Your contributions can help shape the future of Reimagine Truth! Whether you're a developer, designer, or community member, there are many ways to get involved.</li>
+        <li><strong>License</strong> This repository is licensed under the.</li><a href="LICENSE">MIT License</a>.</p>
+    <p><strong>Visit Us:</strong> <a href="https://reimaginethetruth.io" target="_blank">ReimagineTruth.io</a></p>
+    <p><strong>Join the Movement!</strong></p>
+</section>
