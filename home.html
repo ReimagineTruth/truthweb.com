@@ -72,12 +72,13 @@
         border-radius: 10px;
         padding: 1rem;
         box-shadow: 0 0 15px var(--highlight-color);
-        transition: transform 0.3s, box-shadow 0.3s;
+        transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
         animation: fadeInUp 1s ease-in-out;
       }
       .card:hover {
         transform: translateY(-10px);
         box-shadow: 0 0 25px var(--highlight-color);
+        background: var(--secondary-color);
       }
       @keyframes fadeInUp {
         0% {
@@ -300,82 +301,75 @@
         </li>
       </ul>
     </nav>
-    <!-- Hero Section -->
-    <div class="hero">
-      <h1 class="glow-text fade-in">
-        TruthWeb
-      </h1>
-      <p class="text-xl mt-4 text-center fade-in" style="animation-delay: 0.5s;">
-        Step into the realm of Reimagine Truth
-       </p>
-      <a href="explore.html" class="btn mt-6">Explore</a>
-    </section>
-      </a>
-    </div>
-    <!-- Modal -->
-    <div class="modal" id="infoModal">
-      <div class="modal-content">
-        <span class="close" id="closeModalButton">
-          ×
-        </span>
-        <h2>
-          More Options
-        </h2>
-        <ul class="space-y-4">
-          <li><a href="wiki.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-book mr-2"></i>Wiki</a></li>
-          <li><a href="whitepaper.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-file-alt mr-2"></i>Whitepaper</a></li>
-          <li><a href="airdrop.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-gift mr-2"></i>Airdrop</a></li>
-          <li><a href="listing.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-list mr-2"></i>Listing</a></li>
-          <li><a href="rto-token.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-coins mr-2"></i>RTO Token</a></li>
-        </ul>
-      </div>
-    </div>
-    <!-- Soundtrack Section -->
-    <section class="text-center mt-16" id="soundtrack">
-      <h2 class="text-3xl font-bold mb-8 fade-in">
-        Listen to Our Soundtrack
-      </h2>
-      <div class="card fade-in" style="animation-delay: 0.2s;">
-        <h3 class="text-xl font-semibold mb-2">
-          Reimagined Truth Soundtrack
-        </h3>
+    <!-- Contact Section --> 
+  <section class="bg-[var(--primary-color)] text-[var(--text-color)] py-16 px-8" id="contact">
+  <div class="container mx-auto px-6 lg:px-20 text-center">
+    <h1 class="text-4xl lg:text-6xl font-bold mb-6">Reimagine Truth Overview 🌐</h1>
+    <p class="text-lg lg:text-xl leading-relaxed mb-10">
+      Reimagine Truth is a groundbreaking decentralized project that merges the power of blockchain technology with a vision to reshape how truth, information, and value are perceived in the digital world. At its core, Reimagine Truth aims to leverage NFTs, community-driven governance, and the $RTO token to foster transparency, trust, and participation in a decentralized ecosystem. 🔗
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+      <!-- Core Concept -->
+      <div class="bg-purple-800 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+        <h2 class="text-2xl font-bold mb-4">Core Concept 💡</h2>
         <p class="mb-4">
-          <iframe allow="autoplay" frameborder="no" height="166" scrolling="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1994150683&amp;color=%23692119&amp;auto_play=true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true" width="100%">
-          </iframe>
-          <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
-            <a href="https://soundcloud.com/reimagine-truth" style="color: #cccccc; text-decoration: none;" target="_blank" title="Reimagine Truth">
-              Reimagine Truth
-            </a>
-            ·
-            <a href="https://soundcloud.com/reimagine-truth/reimagined-truth-soundtrack-official" style="color: #cccccc; text-decoration: none;" target="_blank" title="Reimagined Truth Soundtrack - Official">
-              Reimagined Truth Soundtrack - Official
-            </a>
-          </div>
+          In a world filled with misinformation, Reimagine Truth provides a platform where truth is valued, celebrated, and represented in unique digital assets. Through the Truth Seekers Deck, the project invites individuals to engage in a journey of truth, discovery, and empowerment. 🃏
         </p>
       </div>
-      <div class="card fade-in" style="animation-delay: 0.4s;">
-        <h3 class="text-xl font-semibold mb-2">
-          Pure Imagination Soundtrack
-        </h3>
+      <!-- Truth Seekers Deck -->
+      <div class="bg-purple-800 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+        <h2 class="text-2xl font-bold mb-4">Truth Seekers Deck 🎴</h2>
         <p class="mb-4">
-          <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/861132934&amp;color=%235c8450&amp;auto_play=true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true"></iframe>
-          <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
-            <a href="https://soundcloud.com/user-498119508" title=͘Reimagine Trutha̵̠͂l̸͇̅l̷͕̓e̴̗͋d̷̮̈́" target="_blank" style="color:#cccccc; text-decoration: none;" target="_blank" title="Reimagine Truth">
-            ·
-            <a href="https://soundcloud.com/user-498119508/superhuman-feat-quigley-pure" title="Reimagined Truth Soundtrack - Official">
-              Reimagined Truth Soundtrack - Official</a>
-          </div>
+          A unique NFT collection offering exclusive and rare digital assets. The deck features categories like Common, Rare, Ultra Rare, Secret Rare, and more. These cards represent aspects of truth and are tied to governance and rewards. 🏆
         </p>
       </div>
+      <!-- $RTO Token -->
+      <div class="bg-purple-800 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+        <h2 class="text-2xl font-bold mb-4">$RTO Token 💰</h2>
+        <p class="mb-4">
+          The native token, $RTO, is distributed via airdrops, staking rewards, and engagement. Token holders can stake for rewards, governance, and access to features like the VR NFT Museum. 🎟️
+        </p>
+      </div>
+      <!-- Blockchain Platform -->
+      <div class="bg-purple-800 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+        <h2 class="text-2xl font-bold mb-4">Blockchain Platform: Optimism 🚀</h2>
+        <p class="mb-4">
+          Built on Optimism, a Layer 2 Ethereum scaling solution offering lower fees and faster transactions, ensuring accessibility and scalability. 💡
+        </p>
+      </div>
+      <!-- Community Engagement -->
+      <div class="bg-purple-800 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+        <h2 class="text-2xl font-bold mb-4">Community Engagement 🤝</h2>
+        <p class="mb-4">
+          Community members are the backbone of Reimagine Truth. Participation in governance, whitelist events, and reward systems ensures collaboration and growth. 🗳️
+        </p>
+      </div>
+      <!-- VR NFT Museum -->
+      <div class="bg-purple-800 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+        <h2 class="text-2xl font-bold mb-4">VR NFT Museum 🏛️</h2>
+        <p class="mb-4">
+          Future plans include a VR NFT museum showcasing Legendary and Ultra Rare NFTs, offering an immersive experience that merges art and technology. 🎮
+        </p>
+      </div>
+    </div>
+    <div class="mt-10">
+      <h2 class="text-3xl font-bold mb-4">Goals and Vision 🎯</h2>
+      <p class="text-lg leading-relaxed">
+        Reimagine Truth promotes truth, builds a strong community, and establishes a self-sustaining ecosystem. With innovations in NFTs, $RTO tokens, and decentralized governance, the project aims to thrive and evolve. 🌱
+      </p>
+    </div>
+  </div>
+</section>
+
     </section>
     <!-- Footer Section -->
     <footer class="bg-[var(--primary-color)] py-8">
       <div class="container mx-auto text-center">
         <div class="mb-4">
           <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://x.com/reimagine_truth" target="_blank"><i class="fab fa-twitter"></i></a>
-          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://t.me/TruthWebOfficial" target="_blank"><i class="fab fa-telegram"></i></a>
-          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://linktr.ee/reimagine_truth" target="_blank"><i class="fab fa-linktree"></i></a>
+          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.x.com" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.telegram.com" target="_blank"><i class="fab fa-telegram"></i></a>
+          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
         </div>
         <p class="text-[var(--text-color)] mb-4">© 2024 TruthWeb. All rights reserved.</p>
         <p class="text-[var(--text-color)]">Designed by Reimagine Truth Organization</p>
@@ -411,11 +405,4 @@
         document.getElementById('modal').classList.add('hidden');
       });
 
-      window.addEventListener('click', function(event) {
-        if (event.target == document.getElementById('modal')) {
-          document.getElementById('modal').classList.add('hidden');
-        }
-      });
-    </script>
-  </body>
-</html>
+      window.addEventListener('click', function(event)
