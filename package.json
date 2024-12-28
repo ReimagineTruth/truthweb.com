@@ -1,0 +1,14 @@
+{
+  "name": "truthweb-reimagine-truth",
+  "version": "1.0.0",
+  "description": "A website for Reimagine Truth project",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server"
+  },
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "live-server": "^1.2.1"
+  }
+}
