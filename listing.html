@@ -1,408 +1,390 @@
 <html lang="en">
- <head>
+<head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   TruthWeb - Reimagine Truth
-  </title>
-  <script src="https://cdn.tailwindcss.com">
-  </script>
+  <title>TruthWeb - Reimagine Truth</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
   <style>
-   :root {
-        --primary-color: #2f0139; /* Dark Violet */
-        --secondary-color: #2a0132; /* Deep Black */
-        --highlight-color: #ff00ff; /* Enhanced Bright Violet */
-        --text-color: #fff; /* White */
-        --button-color: #692119; /* Button Color */
-        --hover-effect: radial-gradient(circle, #ff00ff, transparent);
-      }
-      body {
-        background: #1a0120;
-        color: var(--text-color);
-        font-family: 'Poppins', sans-serif;
-        overflow-x: hidden;
-      }
-      .glow-text {
-        font-size: 2rem;
-        font-weight: bold;
+    :root {
+      --primary-color: #2f0139; /* Dark Violet */
+      --secondary-color: #2a0132; /* Deep Black */
+      --highlight-color: #ff00ff; /* Enhanced Bright Violet */
+      --text-color: #fff; /* White */
+      --button-color: #692119; /* Button Color */
+      --hover-effect: radial-gradient(circle, #ff00ff, transparent);
+    }
+    body {
+      background: #1a0120;
+      color: var(--text-color);
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+    .glow-text {
+      font-size: 2rem;
+      font-weight: bold;
+      text-shadow: 0 0 10px var(--highlight-color), 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color);
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+      0% {
         text-shadow: 0 0 10px var(--highlight-color), 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color);
-        animation: glow 2s infinite alternate;
       }
-      @keyframes glow {
-        0% {
-          text-shadow: 0 0 10px var(--highlight-color), 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color);
-        }
-        100% {
-          text-shadow: 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color), 0 0 40px var(--highlight-color);
-        }
+      100% {
+        text-shadow: 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color), 0 0 40px var(--highlight-color);
       }
-      .card {
-        background: var(--primary-color);
-        border: 2px solid var(--highlight-color);
-        border-radius: 10px;
-        padding: 1rem;
-        box-shadow: 0 0 15px var(--highlight-color);
-        transition: transform 0.3s, box-shadow 0.3s;
-        animation: fadeInUp 1s ease-in-out;
-      }
-      .card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 0 25px var(--highlight-color);
-      }
-      @keyframes fadeInUp {
-        0% {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      .btn {
-        background: var(--button-color);
-        color: var(--text-color);
-        padding: 0.75rem 1.5rem;
-        border: 2px solid var(--highlight-color);
-        border-radius: 20px;
-        cursor: pointer;
-        transition: background 0.3s, color 0.3s;
-        animation: pulse 2s infinite;
-      }
-      .btn:hover {
-        background: var(--highlight-color);
-        color: var(--primary-color);
-      }
-      @keyframes pulse {
-        0% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.05);
-        }
-        100% {
-          transform: scale(1);
-        }
-      }
-      footer {
-        background: var(--primary-color);
-        color: var(--text-color);
-        text-align: center;
-        padding: 1rem;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
-      .sticky-header {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        background: var(--primary-color);
-        transition: background 0.3s, box-shadow 0.3s;
-      }
-      .sticky-header.scrolled {
-        background: var(--secondary-color);
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-      }
-      .logo-text {
-        font-size: 1.5rem;
-        font-weight: 700;
-        transition: font-size 0.3s;
-      }
-      .logo-text.scrolled {
-        font-size: 1.25rem;
-      }
-      .nav-item {
-        transition: transform 0.3s;
-      }
-      .nav-item:hover {
-        transform: scale(1.1);
-      }
-      .fade-in {
+    }
+    .card {
+      background: var(--primary-color);
+      border: 2px solid var(--highlight-color);
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 0 15px var(--highlight-color);
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: fadeInUp 1s ease-in-out;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 25px var(--highlight-color);
+    }
+    @keyframes fadeInUp {
+      0% {
         opacity: 0;
-        animation: fadeIn 1s forwards;
+        transform: translateY(20px);
       }
-      @keyframes fadeIn {
-        to {
-          opacity: 1;
-        }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
       }
-      .slide-in {
-        transform: translateX(-100%);
-        animation: slideIn 1s forwards;
+    }
+    .btn {
+      background: var(--button-color);
+      color: var(--text-color);
+      padding: 0.75rem 1.5rem;
+      border: 2px solid var(--highlight-color);
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+      animation: pulse 2s infinite;
+    }
+    .btn:hover {
+      background: var(--highlight-color);
+      color: var(--primary-color);
+    }
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
       }
-      @keyframes slideIn {
-        to {
-          transform: translateX(0);
-        }
+      50% {
+        transform: scale(1.05);
       }
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.5);
+      100% {
+        transform: scale(1);
       }
-      .modal-content {
-        background-color: #fefefe;
-        margin: 15% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-        max-width: 500px;
-        border-radius: 10px;
-        animation: slideInFromTop 0.5s ease-out, fadeIn 0.5s ease-out;
+    }
+    footer {
+      background: var(--primary-color);
+      color: var(--text-color);
+      text-align: center;
+      padding: 1rem;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--primary-color);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .sticky-header.scrolled {
+      background: var(--secondary-color);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      transition: font-size 0.3s;
+    }
+    .logo-text.scrolled {
+      font-size: 1.25rem;
+    }
+    .nav-item {
+      transition: transform 0.3s;
+    }
+    .nav-item:hover {
+      transform: scale(1.1);
+    }
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
       }
-      @keyframes slideInFromTop {
-        0% {
-          transform: translateY(-100%);
-        }
-        100% {
-          transform: translateY(0);
-        }
+    }
+    .slide-in {
+      transform: translateX(-100%);
+      animation: slideIn 1s forwards;
+    }
+    @keyframes slideIn {
+      to {
+        transform: translateX(0);
       }
-      @keyframes fadeIn {
-        0% {
-          opacity: 0;
-        }
-        100% {
-          opacity: 1;
-        }
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 500px;
+      border-radius: 10px;
+      animation: slideInFromTop 0.5s ease-out, fadeIn 0.5s ease-out;
+    }
+    @keyframes slideInFromTop {
+      0% {
+        transform: translateY(-100%);
       }
-      .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-        transition: transform 0.3s;
+      100% {
+        transform: translateY(0);
       }
-      .close:hover,
-      .close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-        transform: rotate(90deg);
-      }
-      .floating-effect {
-        display: inline-block;
-        transition: transform 0.3s;
-      }
-      .floating-effect:hover {
-        transform: translateY(-10px);
-      }
-      .nav-item {
+    }
+    @keyframes fadeIn {
+      0% {
         opacity: 0;
-        animation: fadeInUp 0.5s forwards;
       }
-      .nav-item:nth-child(1) {
-        animation-delay: 0.1s;
+      100% {
+        opacity: 1;
       }
-      .nav-item:nth-child(2) {
-        animation-delay: 0.2s;
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      transition: transform 0.3s;
+    }
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+      transform: rotate(90deg);
+    }
+    .floating-effect {
+      display: inline-block;
+      transition: transform 0.3s;
+    }
+    .floating-effect:hover {
+      transform: translateY(-10px);
+    }
+    .nav-item {
+      opacity: 0;
+      animation: fadeInUp 0.5s forwards;
+    }
+    .nav-item:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+    .nav-item:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    .nav-item:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+    .nav-item:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+    .nav-item:nth-child(5) {
+      animation-delay: 0.5s;
+    }
+    .nav-item:nth-child(6) {
+      animation-delay: 0.6s;
+    }
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
       }
-      .nav-item:nth-child(3) {
-        animation-delay: 0.3s;
+      100% {
+        opacity: 1;
+        transform: translateY(0);
       }
-      .nav-item:nth-child(4) {
-        animation-delay: 0.4s;
-      }
-      .nav-item:nth-child(5) {
-        animation-delay: 0.5s;
-      }
-      .nav-item:nth-child(6) {
-        animation-delay: 0.6s;
-      }
-      @keyframes fadeInUp {
-        0% {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
+    }
   </style>
- </head>
- <body>
+</head>
+<body>
   <!-- Header Section -->
   <header class="sticky-header flex justify-between items-center h-16 px-4">
-   <div class="flex items-center">
-    <a class="text-[var(--text-color)] mr-4 flex items-center" href="home.html">
-     <span class="logo-text ml-2">
-      TruthWeb
-     </span>
-    </a>
-   </div>
-   <div class="flex items-center">
-    <a class="text-[var(--text-color)] mr-4 icon floating-effect" href="notifications.html">
-     <i class="fas fa-bell text-xl sm:text-2xl">
-     </i>
-    </a>
-    <a class="text-[var(--text-color)] mr-4 icon floating-effect" href="messages.html">
-     <i class="fas fa-comments text-xl sm:text-2xl">
-     </i>
-    </a>
-    <a class="text-[var(--text-color)] icon floating-effect" href="profile.html">
-     <i class="fas fa-user text-xl sm:text-2xl">
-     </i>
-    </a>
-   </div>
+    <div class="flex items-center">
+      <a class="text-[var(--text-color)] mr-4 flex items-center" href="home.html">
+        <span class="logo-text ml-2">TruthWeb</span>
+      </a>
+    </div>
+    <div class="flex items-center">
+      <a class="text-[var(--text-color)] mr-4 icon floating-effect" href="notifications.html">
+        <i class="fas fa-bell text-xl sm:text-2xl"></i>
+      </a>
+      <a class="text-[var(--text-color)] mr-4 icon floating-effect" href="messages.html">
+        <i class="fas fa-comments text-xl sm:text-2xl"></i>
+      </a>
+      <a class="text-[var(--text-color)] icon floating-effect" href="profile.html">
+        <i class="fas fa-user text-xl sm:text-2xl"></i>
+      </a>
+    </div>
   </header>
   <!-- Navigation Section -->
   <nav class="bg-[var(--primary-color)] py-4">
-   <ul class="flex flex-wrap justify-center space-x-4">
-    <li class="nav-item">
-     <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="index.html">
-      Home
-     </a>
-    </li>
-    <li class="nav-item">
-     <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="discover.html" id="openModalButton">
-      Discover
-     </a>
-    </li>
-    <li class="nav-item">
-     <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="about.html">
-      About
-     </a>
-    </li>
-    <li class="nav-item">
-     <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="contact.html">
-      Contact
-     </a>
-    </li>
-    <li class="nav-item">
-     <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="policy.html">
-      Policy
-     </a>
-    </li>
-   </ul>
+    <ul class="flex flex-wrap justify-center space-x-4">
+      <li class="nav-item">
+        <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="discover.html" id="openModalButton">Discover</a>
+      </li>
+      <li class="nav-item">
+        <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="about.html">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="contact.html">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="policy.html">Policy</a>
+      </li>
+    </ul>
   </nav>
   <!-- Listing Section -->
-<section class="bg-[var(--primary-color)] text-[var(--text-color)] py-16 px-8 min-h-screen flex items-center justify<section class="bg-[var(--primary-color)] text-[var(--text-color)] py-16 px-8 min-h-screen flex items-center justify-center" id="listing">
-  <div class="max-w-4xl">
-    <h1 class="text-4xl font-bold mb-6">🚀 Listing Plan for <span class="text-[var(--highlight-color)]">$RTO Token</span> on Major Exchanges</h1>
-    <p class="mb-8">This comprehensive plan outlines the strategy for listing the <strong>$RTO token</strong> on major cryptocurrency exchanges to ensure <em>broad accessibility</em>, <em>liquidity</em>, and <em>legitimacy</em> for the <strong>Reimagine Truth</strong> ecosystem.</p>
+  <section class="bg-[var(--primary-color)] text-[var(--text-color)] py-16 px-8 min-h-screen flex items-center justify-center" id="listing">
+    <div class="max-w-4xl">
+      <h1 class="text-4xl font-bold mb-6">🚀 Listing Plan for <span class="text-[var(--highlight-color)]">$RTO Token</span> on Major Exchanges</h1>
+      <p class="mb-8">This comprehensive plan outlines the strategy for listing the <strong>$RTO token</strong> on major cryptocurrency exchanges to ensure <em>broad accessibility</em>, <em>liquidity</em>, and <em>legitimacy</em> for the <strong>Reimagine Truth</strong> ecosystem.</p>
 
-    <hr class="my-6 border-t border-[var(--highlight-color)]">
+      <hr class="my-6 border-t border-[var(--highlight-color)]">
 
-    <h2 class="text-2xl font-semibold mb-4">📋 Overview</h2>
-    <ul class="list-disc pl-6 mb-6">
-      <li><strong>Token Compliance</strong> and documentation preparation.</li>
-      <li><strong>Application strategies</strong> for Tier 1, Tier 2, regional exchanges, and decentralized platforms (DEXs).</li>
-      <li><strong>Community engagement</strong> to support the listing.</li>
-      <li><strong>Post-listing activities</strong> such as market-making, liquidity management, and promotional campaigns.</li>
-    </ul>
+      <h2 class="text-2xl font-semibold mb-4">📋 Overview</h2>
+      <ul class="list-disc pl-6 mb-6">
+        <li><strong>Token Compliance</strong> and documentation preparation.</li>
+        <li><strong>Application strategies</strong> for Tier 1, Tier 2, regional exchanges, and decentralized platforms (DEXs).</li>
+        <li><strong>Community engagement</strong> to support the listing.</li>
+        <li><strong>Post-listing activities</strong> such as market-making, liquidity management, and promotional campaigns.</li>
+      </ul>
 
-    <hr class="my-6 border-t border-[var(--highlight-color)]">
+      <hr class="my-6 border-t border-[var(--highlight-color)]">
 
-    <h2 class="text-2xl font-semibold mb-4">🔧 Step 1: Preparation Phase</h2>
-    <h3 class="text-xl font-medium mb-2">1. Token Standards and Compliance</h3>
-    <ul class="list-disc pl-6 mb-4">
-      <li>Ensure <strong>$RTO</strong> adheres to <em>ERC-20 standards</em>.</li>
-      <li>Conduct a thorough <strong>security audit</strong> by a reputable firm.</li>
-      <li>Confirm compliance with regulatory frameworks of target exchanges and jurisdictions.</li>
-    </ul>
+      <h2 class="text-2xl font-semibold mb-4">🔧 Step 1: Preparation Phase</h2>
+      <h3 class="text-xl font-medium mb-2">1. Token Standards and Compliance</h3>
+      <ul class="list-disc pl-6 mb-4">
+        <li>Ensure <strong>$RTO</strong> adheres to <em>ERC-20 standards</em>.</li>
+        <li>Conduct a thorough <strong>security audit</strong> by a reputable firm.</li>
+        <li>Confirm compliance with regulatory frameworks of target exchanges and jurisdictions.</li>
+      </ul>
 
-    <h3 class="text-xl font-medium mb-2">2. Documentation</h3>
-    <p class="mb-4">Prepare a detailed <strong>Token Listing Application</strong> document, including:</p>
-    <ul class="list-disc pl-6 mb-4">
-      <li><em>Tokenomics breakdown</em></li>
-      <li><em>Smart contract details</em></li>
-      <li><em>Whitepaper</em> and <em>project roadmap</em></li>
-      <li><em>Community engagement metrics</em></li>
-      <li><em>Use cases</em> and <em>utility</em> of $RTO</li>
-    </ul>
+      <h3 class="text-xl font-medium mb-2">2. Documentation</h3>
+      <p class="mb-4">Prepare a detailed <strong>Token Listing Application</strong> document, including:</p>
+      <ul class="list-disc pl-6 mb-4">
+        <li><em>Tokenomics breakdown</em></li>
+        <li><em>Smart contract details</em></li>
+        <li><em>Whitepaper</em> and <em>project roadmap</em></li>
+        <li><em>Community engagement metrics</em></li>
+        <li><em>Use cases</em> and <em>utility</em> of $RTO</li>
+      </ul>
 
-    <h3 class="text-xl font-medium mb-2">3. Liquidity Pool Preparation</h3>
-    <ul class="list-disc pl-6 mb-4">
-      <li>Allocate a percentage of <strong>$RTO</strong> for liquidity provisioning on DEXs (e.g., <strong>Uniswap</strong>, <strong>SushiSwap</strong>).</li>
-      <li>Secure partnerships with <em>liquidity providers</em> or <em>market makers</em> for CEX listings.</li>
-    </ul>
+      <h3 class="text-xl font-medium mb-2">3. Liquidity Pool Preparation</h3>
+      <ul class="list-disc pl-6 mb-4">
+        <li>Allocate a percentage of <strong>$RTO</strong> for liquidity provisioning on DEXs (e.g., <strong>Uniswap</strong>, <strong>SushiSwap</strong>).</li>
+        <li>Secure partnerships with <em>liquidity providers</em> or <em>market makers</em> for CEX listings.</li>
+      </ul>
 
-    <h3 class="text-xl font-medium mb-2">4. Community Engagement</h3>
-    <ul class="list-disc pl-6 mb-6">
-      <li>Build a strong presence on social platforms like <strong>Twitter</strong>, <strong>Telegram</strong>, and <strong>Discord</strong>.</li>
-      <li>Encourage community participation to demonstrate active engagement to exchanges.</li>
-    </ul>
+      <h3 class="text-xl font-medium mb-2">4. Community Engagement</h3>
+      <ul class="list-disc pl-6 mb-6">
+        <li>Build a strong presence on social platforms like <strong>Twitter</strong>, <strong>Telegram</strong>, and <strong>Discord</strong>.</li>
+        <li>Encourage community participation to demonstrate active engagement to exchanges.</li>
+      </ul>
 
-    <hr class="my-6 border-t border-[var(--highlight-color)]">
+      <hr class="my-6 border-t border-[var(--highlight-color)]">
 
-    <h2 class="text-2xl font-semibold mb-4">🎯 Step 2: Targeted Exchange Approach</h2>
-    <h3 class="text-xl font-medium mb-2">1. Tier 1 Exchanges (High Volume, High Trust)</h3>
-    <p class="mb-4">Examples: <strong>Binance</strong>, <strong>Coinbase</strong>, <strong>Kraken</strong>.</p>
-    <p class="mb-4"><strong>Strategy:</strong></p>
-    <ul class="list-disc pl-6 mb-4">
-      <li>Apply via official listing request forms (e.g., <strong>Binance Launchpad</strong>).</li>
-      <li>Leverage community petitions and voting mechanisms (e.g., <em>Binance Community Coin Vote</em>).</li>
-    </ul>
+      <h2 class="text-2xl font-semibold mb-4">🎯 Step 2: Targeted Exchange Approach</h2>
+      <h3 class="text-xl font-medium mb-2">1. Tier 1 Exchanges (High Volume, High Trust)</h3>
+      <p class="mb-4">Examples: <strong>Binance</strong>, <strong>Coinbase</strong>, <strong>Kraken</strong>.</p>
+      <p class="mb-4"><strong>Strategy:</strong></p>
+      <ul class="list-disc pl-6 mb-4">
+        <li>Apply via official listing request forms (e.g., <strong>Binance Launchpad</strong>).</li>
+        <li>Leverage community petitions and voting mechanisms (e.g., <em>Binance Community Coin Vote</em>).</li>
+      </ul>
 
-    <h3 class="text-xl font-medium mb-2">2. Tier 2 Exchanges (Strong Reach, Lower Barriers)</h3>
-    <p class="mb-4">Examples: <strong>KuCoin</strong>, <strong>Huobi</strong>, <strong>Gate.io</strong>, <strong>OKX</strong>.</p>
-    <p class="mb-4"><strong>Strategy:</strong></p>
-    <ul class="list-disc pl-6 mb-4">
-      <li>Submit detailed listing applications focusing on <em>community size</em> and <em>token utility</em>.</li>
-      <li>Propose trading pairs (e.g., <strong>RTO/USDT</strong>, <strong>RTO/ETH</strong>).</li>
-    </ul>
+      <h3 class="text-xl font-medium mb-2">2. Tier 2 Exchanges (Strong Reach, Lower Barriers)</h3>
+      <p class="mb-4">Examples: <strong>KuCoin</strong>, <strong>Huobi</strong>, <strong>Gate.io</strong>, <strong>OKX</strong>.</p>
+      <p class="mb-4"><strong>Strategy:</strong></p>
+      <ul class="list-disc pl-6 mb-4">
+        <li>Submit detailed listing applications focusing on <em>community size</em> and <em>token utility</em>.</li>
+        <li>Propose trading pairs (e.g., <strong>RTO/USDT</strong>, <strong>RTO/ETH</strong>).</li>
+      </ul>
 
-    <h3 class="text-xl font-medium mb-2">3. Regional and Niche Exchanges</h3>
-    <p class="mb-4">Examples: <strong>Bitfinex</strong> (Europe), <strong>WazirX</strong> (India), <strong>Upbit</strong> (Korea).</p>
-    <p class="mb-4"><strong>Strategy:</strong></p>
-    <ul class="list-disc pl-6 mb-6">
-      <li>Target exchanges to tap into <em>regional markets</em>.</li>
-      <li>Highlight project alignment with regional trends and demands.</li>
-    </ul>
+      <h3 class="text-xl font-medium mb-2">3. Regional and Niche Exchanges</h3>
+      <p class="mb-4">Examples: <strong>Bitfinex</strong> (Europe), <strong>WazirX</strong> (India), <strong>Upbit</strong> (Korea).</p>
+      <p class="mb-4"><strong>Strategy:</strong></p>
+      <ul class="list-disc pl-6 mb-6">
+        <li>Target exchanges to tap into <em>regional markets</em>.</li>
+        <li>Highlight project alignment with regional trends and demands.</li>
+      </ul>
 
-    <hr class="my-6 border-t border-[var(--highlight-color)]">
+      <hr class="my-6 border-t border-[var(--highlight-color)]">
 
-    <h2 class="text-2xl font-semibold mb-4">📅 Tentative Timeline</h2>
-    <table class="table-auto border-collapse border border-[var(--text-color)] w-full mb-6">
-      <thead>
-        <tr>
-          <th class="border px-4 py-2">Activity</th>
-          <th class="border px-4 py-2">Timeline</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="border px-4 py-2">Token Audit Completion</td>
-          <td class="border px-4 py-2">Month 1</td>
-        </tr>
-        <tr>
-          <td class="border px-4 py-2">Initial DEX Listings</td>
-          <td class="border px-4 py-2">Month 2</td>
-        </tr>
-        <tr>
-          <td class="border px-4 py-2">Apply to Tier 2 Exchanges</td>
-          <td class="border px-4 py-2">Month 3</td>
-        </tr>
-        <tr>
-          <td class="border px-4 py-2">First Tier 2 Listings</td>
-          <td class="border px-4 py-2">Month 4</td>
-        </tr>
-        <tr>
-          <td class="border px-4 py-2">Apply to Tier 1 Exchanges</td>
-          <td class="border px-4 py-2">Months 5-6</td>
-        </tr>
-        <tr>
-          <td class="border px-4 py-2">Tier 1 Listings</td>
-          <td class="border px-4 py-2">Months 7-8</td>
-        </tr>
-      </tbody>
-    </table>
+      <h2 class="text-2xl font-semibold mb-4">📅 Tentative Timeline</h2>
+      <table class="table-auto border-collapse border border-[var(--text-color)] w-full mb-6">
+        <thead>
+          <tr>
+            <th class="border px-4 py-2">Activity</th>
+            <th class="border px-4 py-2">Timeline</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border px-4 py-2">Token Audit Completion</td>
+            <td class="border px-4 py-2">Month 1</td>
+          </tr>
+          <tr>
+            <td class="border px-4 py-2">Initial DEX Listings</td>
+            <td class="border px-4 py-2">Month 2</td>
+          </tr>
+          <tr>
+            <td class="border px-4 py-2">Apply to Tier 2 Exchanges</td>
+            <td class="border px-4 py-2">Month 3</td>
+          </tr>
+          <tr>
+            <td class="border px-4 py-2">First Tier 2 Listings</td>
+            <td class="border px-4 py-2">Month 4</td>
+          </tr>
+          <tr>
+            <td class="border px-4 py-2">Apply to Tier 1 Exchanges</td>
+            <td class="border px-4 py-2">Months 5-6</td>
+          </tr>
+          <tr>
+            <td class="border px-4 py-2">Tier 1 Listings</td>
+            <td class="border px-4 py-2">Months 7-8</td>
+          </tr>
+        </tbody>
+      </table>
 
-    <p class="text-center font-bold mt-8">🔮 <em>Reimagine the future. Reimagine truth.</em></p>
-  </div>
-</section>
+      <p class="text-center font-bold mt-8">🔮 <em>Reimagine the future. Reimagine truth.</em></p>
+    </div>
+  </section>
 
-    <!-- Footer Section -->
+     <!-- Footer Section -->
     <footer class="bg-[var(--primary-color)] py-8">
       <div class="container mx-auto text-center">
         <div class="mb-4">
