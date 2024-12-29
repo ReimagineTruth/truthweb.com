@@ -1,13 +1,16 @@
 <html lang="en">
-  <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>TruthWeb - Reimagine Truth</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
-    <style>
-      :root {
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   TruthWeb - Reimagine Truth
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   :root {
         --primary-color: #2f0139; /* Dark Violet */
         --secondary-color: #2a0132; /* Deep Black */
         --highlight-color: #ff00ff; /* Enhanced Bright Violet */
@@ -20,37 +23,6 @@
         color: var(--text-color);
         font-family: 'Poppins', sans-serif;
         overflow-x: hidden;
-      }
-      .hero {
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        overflow: hidden;
-        border: 2px solid var(--highlight-color);
-        padding: 1rem;
-      }
-      .hero::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: var(--hover-effect);
-        opacity: 0.2;
-        animation: float 6s infinite ease-in-out;
-      }
-      @keyframes float {
-        0%, 100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-20px);
-        }
       }
       .glow-text {
         font-size: 2rem;
@@ -256,50 +228,63 @@
           transform: translateY(0);
         }
       }
-    </style>
-  </head>
-  <body>
-    <!-- Header Section -->
-    <header class="sticky-header flex justify-between items-center h-16 px-4">
-      <div class="flex items-center">
-        <a class="text-[var(--text-color)] mr-4 flex items-center" href="home.html">
-          <span class="logo-text ml-2">
-            TruthWeb
-          </span>
-        </a>
-      </div>
-      <div class="flex items-center">
-        <a class="text-[var(--text-color)] mr-4 icon floating-effect" href="notifications.html">
-          <i class="fas fa-bell text-xl sm:text-2xl"></i>
-        </a>
-        <a class="text-[var(--text-color)] mr-4 icon floating-effect" href="messages.html">
-          <i class="fas fa-comments text-xl sm:text-2xl"></i>
-        </a>
-        <a class="text-[var(--text-color)] icon floating-effect" href="profile.html">
-          <i class="fas fa-user text-xl sm:text-2xl"></i>
-        </a>
-      </div>
-    </header>
-    <!-- Navigation Section -->
-    <nav class="bg-[var(--primary-color)] py-4">
-      <ul class="flex flex-wrap justify-center space-x-4">
-        <li class="nav-item">
-          <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="discover.html" id="openModalButton">Discover</a>
-        </li>
-        <li class="nav-item">
-          <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="about.html">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="contact.html">Contact</a>
-        </li>
-        <li class="nav-item">
-          <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="policy.html">Policy</a>
-        </li>
-      </ul>
-    </nav>
+  </style>
+ </head>
+ <body>
+  <!-- Header Section -->
+  <header class="sticky-header flex justify-between items-center h-16 px-4">
+   <div class="flex items-center">
+    <a class="text-[var(--text-color)] mr-4 flex items-center" href="home.html">
+     <span class="logo-text ml-2">
+      TruthWeb
+     </span>
+    </a>
+   </div>
+   <div class="flex items-center">
+    <a class="text-[var(--text-color)] mr-4 icon floating-effect" href="notifications.html">
+     <i class="fas fa-bell text-xl sm:text-2xl">
+     </i>
+    </a>
+    <a class="text-[var(--text-color)] mr-4 icon floating-effect" href="messages.html">
+     <i class="fas fa-comments text-xl sm:text-2xl">
+     </i>
+    </a>
+    <a class="text-[var(--text-color)] icon floating-effect" href="profile.html">
+     <i class="fas fa-user text-xl sm:text-2xl">
+     </i>
+    </a>
+   </div>
+  </header>
+  <!-- Navigation Section -->
+  <nav class="bg-[var(--primary-color)] py-4">
+   <ul class="flex flex-wrap justify-center space-x-4">
+    <li class="nav-item">
+     <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="index.html">
+      Home
+     </a>
+    </li>
+    <li class="nav-item">
+     <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="discover.html" id="openModalButton">
+      Discover
+     </a>
+    </li>
+    <li class="nav-item">
+     <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="about.html">
+      About
+     </a>
+    </li>
+    <li class="nav-item">
+     <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="contact.html">
+      Contact
+     </a>
+    </li>
+    <li class="nav-item">
+     <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="policy.html">
+      Policy
+     </a>
+    </li>
+   </ul>
+  </nav>
   <!-- 404 Section -->
 <section class="bg-[var(--primary-color)] text-[var(--text-color)] py-16 px-8 min-h-screen flex items-center justify-center" id="404">
   <div class="text-center max-w-2xl fade-in p-4">
@@ -317,7 +302,6 @@
     </div>
   </div>
 </section>
-
     <!-- Footer Section -->
     <footer class="bg-[var(--primary-color)] py-8">
       <div class="container mx-auto text-center">
