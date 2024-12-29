@@ -1,1 +1,466 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>TruthWeb - Reimagine Truth</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <style>
+      :root {
+        --primary-color: #2f0139; /* Dark Violet */
+        --secondary-color: #2a0132; /* Deep Black */
+        --highlight-color: #ff00ff; /* Enhanced Bright Violet */
+        --text-color: #fff; /* White */
+        --button-color: #692119; /* Button Color */
+        --hover-effect: radial-gradient(circle, #ff00ff, transparent);
+      }
+      body {
+        background: #1a0120;
+        color: var(--text-color);
+        font-family: 'Poppins', sans-serif;
+        overflow-x: hidden;
+      }
+      .hero {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        border: 2px solid var(--highlight-color);
+        padding: 1rem;
+      }
+      .hero::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--hover-effect);
+        opacity: 0.2;
+        animation: float 6s infinite ease-in-out;
+      }
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+      .glow-text {
+        font-size: 2rem;
+        font-weight: bold;
+        text-shadow: 0 0 10px var(--highlight-color), 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color);
+        animation: glow 2s infinite alternate;
+      }
+      @keyframes glow {
+        0% {
+          text-shadow: 0 0 10px var(--highlight-color), 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color);
+        }
+        100% {
+          text-shadow: 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color), 0 0 40px var(--highlight-color);
+        }
+      }
+      .card {
+        background: var(--primary-color);
+        border: 2px solid var(--highlight-color);
+        border-radius: 10px;
+        padding: 1rem;
+        box-shadow: 0 0 15px var(--highlight-color);
+        transition: transform 0.3s, box-shadow 0.3s;
+        animation: fadeInUp 1s ease-in-out;
+      }
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 0 25px var(--highlight-color);
+      }
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .btn {
+        background: var(--button-color);
+        color: var(--text-color);
+        padding: 0.75rem 1.5rem;
+        border: 2px solid var(--highlight-color);
+        border-radius: 20px;
+        cursor: pointer;
+        transition: background 0.3s, color 0.3s;
+        animation: pulse 2s infinite;
+      }
+      .btn:hover {
+        background: var(--highlight-color);
+        color: var(--primary-color);
+      }
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      footer {
+        background: var(--primary-color);
+        color: var(--text-color);
+        text-align: center;
+        padding: 1rem;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      .sticky-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: var(--primary-color);
+        transition: background 0.3s, box-shadow 0.3s;
+      }
+      .sticky-header.scrolled {
+        background: var(--secondary-color);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      }
+      .logo-text {
+        font-size: 1.5rem;
+        font-weight: 700;
+        transition: font-size 0.3s;
+      }
+      .logo-text.scrolled {
+        font-size: 1.25rem;
+      }
+      .nav-item {
+        transition: transform 0.3s;
+      }
+      .nav-item:hover {
+        transform: scale(1.1);
+      }
+      .fade-in {
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+      }
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+      .slide-in {
+        transform: translateX(-100%);
+        animation: slideIn 1s forwards;
+      }
+      @keyframes slideIn {
+        to {
+          transform: translateX(0);
+        }
+      }
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 500px;
+        border-radius: 10px;
+        animation: slideInFromTop 0.5s ease-out, fadeIn 0.5s ease-out;
+      }
+      @keyframes slideInFromTop {
+        0% {
+          transform: translateY(-100%);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        transition: transform 0.3s;
+      }
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+        transform: rotate(90deg);
+      }
+      .floating-effect {
+        display: inline-block;
+        transition: transform 0.3s;
+      }
+      .floating-effect:hover {
+        transform: translateY(-10px);
+      }
+      .nav-item {
+        opacity: 0;
+        animation: fadeInUp 0.5s forwards;
+      }
+      .nav-item:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .nav-item:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .nav-item:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .nav-item:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .nav-item:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+      .nav-item:nth-child(6) {
+        animation-delay: 0.6s;
+      }
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="sticky-header flex justify-between items-center h-16 px-4">
+      <div class="flex items-center">
+        <a class="text-[var(--text-color)] mr-4 flex items-center" href="home.html">
+          <span class="logo-text ml-2">
+            TruthWeb
+          </span>
+        </a>
+      </div>
+      <div class="flex items-center">
+        <a class="text-[var(--text-color)] mr-4 icon floating-effect" href="notifications.html">
+          <i class="fas fa-bell text-xl sm:text-2xl"></i>
+        </a>
+        <a class="text-[var(--text-color)] mr-4 icon floating-effect" href="messages.html">
+          <i class="fas fa-comments text-xl sm:text-2xl"></i>
+        </a>
+        <a class="text-[var(--text-color)] icon floating-effect" href="profile.html">
+          <i class="fas fa-user text-xl sm:text-2xl"></i>
+        </a>
+      </div>
+    </header>
+    <!-- Navigation Section -->
+    <nav class="bg-[var(--primary-color)] py-4">
+      <ul class="flex flex-wrap justify-center space-x-4">
+        <li class="nav-item">
+          <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="discover.html" id="openModalButton">Discover</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="about.html">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="contact.html">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="policy.html">Policy</a>
+        </li>
+      </ul>
+    </nav>
+<!-- Wiki Section -->
+<section class="bg-[var(--primary-color)] text-[var(--text-color)] py-16 px-8 min-h-screen flex items-center justify-center" id="wiki">
+  <div class="container mx-auto text-center">
+    <h2 class="text-4xl font-bold mb-8">Reimagine Truth Wiki 🌐</h2>
 
+    <p class="text-lg mb-6">Reimagine Truth is a decentralized, community-driven platform committed to reshaping the future of NFTs, blockchain technology, and virtual reality. By bringing transparency, creativity, and innovation together, we aim to create a new era for digital assets and decentralized interactions. Join us on our mission! 🚀</p>
+
+    <div class="mb-8">
+      <h3 class="text-2xl font-semibold mb-4">Connect with Us:</h3>
+      <ul class="space-y-2">
+        <li><a href="https://twitter.com/Reimagine_Truth" class="text-blue-500" target="_blank">Twitter: @Reimagine_Truth 🐦</a></li>
+        <li><a href="https://t.me/Reimagine_Truth" class="text-blue-500" target="_blank">Telegram: Reimagine Truth Community 💬</a></li>
+        <li><a href="https://www.instagram.com/Reimagine_Truth" class="text-blue-500" target="_blank">Instagram: @Reimagine_Truth 📸</a></li>
+        <li><a href="https://github.com/ReimagineTruth/Reimagine-Truth-Project-Overview/wiki/_new?wiki%5Bname%5D=_Footer#" class="text-blue-500" target="_blank">YouTube: Reimagine Truth Channel 🎥</a></li>
+        <li><a href="https://github.com/ReimagineTruth/Reimagine-Truth-Project-Overview/wiki/_new?wiki%5Bname%5D=_Footer#" class="text-blue-500" target="_blank">LinkedIn: Reimagine Truth 💼</a></li>
+        <li><a href="https://github.com/Reimagine-Truth" class="text-blue-500" target="_blank">GitHub: Reimagine Truth Repository 🔧</a></li>
+      </ul>
+    </div>
+
+    <div class="mb-8">
+      <h3 class="text-2xl font-semibold mb-4">Useful Links:</h3>
+      <ul class="space-y-2">
+        <li><a href="https://github.com/ReimagineTruth/Reimagine-Truth-Project-Overview/wiki/_new?wiki%5Bname%5D=_Footer#" class="text-blue-500" target="_blank">Whitepaper: Read our Whitepaper 📄</a></li>
+        <li><a href="https://github.com/ReimagineTruth/Reimagine-Truth-Project-Overview/wiki/_new?wiki%5Bname%5D=_Footer#" class="text-blue-500" target="_blank">NFT Marketplace: Browse NFTs 🖼️</a></li>
+        <li><a href="https://github.com/ReimagineTruth/Reimagine-Truth-Project-Overview/wiki/_new?wiki%5Bname%5D=_Footer#" class="text-blue-500" target="_blank">Roadmap: View our Roadmap 📅</a></li>
+        <li><a href="https://github.com/ReimagineTruth/Reimagine-Truth-Project-Overview/wiki/_new?wiki%5Bname%5D=_Footer#" class="text-blue-500" target="_blank">Governance: Participate in Governance 🗳️</a></li>
+      </ul>
+    </div>
+
+    <div class="mb-8">
+      <h3 class="text-2xl font-semibold mb-4">Legal and Disclaimer:</h3>
+      <ul class="space-y-2">
+        <li><a href="https://github.com/ReimagineTruth/Reimagine-Truth-Project-Overview/wiki/_new?wiki%5Bname%5D=_Footer#" class="text-blue-500" target="_blank">Privacy Policy: Privacy Policy Link 🔒</a></li>
+        <li><a href="https://github.com/ReimagineTruth/Reimagine-Truth-Project-Overview/wiki/_new?wiki%5Bname%5D=_Footer#" class="text-blue-500" target="_blank">Terms of Service: Terms of Service Link 📜</a></li>
+        <li><span class="text-red-500">Disclaimer: The Reimagine Truth platform is decentralized and not responsible for any losses, risks, or damages related to interactions with NFTs or tokens. Always do your research before making investments. ⚠️</span></li>
+      </ul>
+    </div>
+
+    <div class="mb-8">
+      <h3 class="text-2xl font-semibold mb-4">Vision 🌍</h3>
+      <p class="text-lg mb-6">To create a decentralized ecosystem where truth and transparency inspire creativity, innovation, and collaboration. 💡</p>
+      <p class="text-lg mb-6">We aim to redefine the way communities and individuals interact with art, blockchain, and technology by fostering an environment built on honesty, accessibility, and inclusivity. Reimagine Truth is more than a project—it’s a movement to bridge the gap between creative expression and blockchain technology, empowering individuals across the globe. 🌐</p>
+    </div>
+
+    <div class="mb-8">
+      <h3 class="text-2xl font-semibold mb-4">Mission 🎯</h3>
+      <ul class="space-y-4 text-lg">
+        <li><strong>Empower Creators 🎨</strong>: Provide tools and platforms for artists to showcase and monetize their creations through NFTs and virtual experiences. 💰</li>
+        <li><strong>Build a Transparent Community 🔍</strong>: Use blockchain technology to promote trust, transparency, and decentralization. 🔗</li>
+        <li><strong>Innovate with Technology 💻</strong>: Leverage cutting-edge innovations such as VR (Virtual Reality) and blockchain to create immersive and engaging experiences. 🕶️</li>
+        <li><strong>Create Lasting Value 💎</strong>: Develop sustainable revenue streams through NFT sales, auctions, VR museum fees, and ecosystem growth. 📈</li>
+      </ul>
+    </div>
+
+    <div class="mb-8">
+      <h3 class="text-2xl font-semibold mb-4">Core Values 💖</h3>
+      <ul class="space-y-4 text-lg">
+        <li><strong>Truth and Transparency</strong>: Everything we do is driven by the principles of honesty and openness. 🌟</li>
+        <li><strong>Creativity and Innovation</strong>: We encourage new ideas and cutting-edge solutions to evolve the blockchain space. ⚙️</li>
+        <li><strong>Community First</strong>: Our project thrives on collaboration and the shared success of our supporters. 🤝</li>
+        <li><strong>Sustainability</strong>: Building an ecosystem designed for long-term impact and growth. 🌳</li>
+      </ul>
+    </div>
+
+    <div class="mb-8">
+      <h3 class="text-2xl font-semibold mb-4">Community Engagement 💬</h3>
+      <p class="text-lg mb-6">We believe that the future of NFTs, blockchain, and decentralized technology is built by a strong, passionate community. By joining the Reimagine Truth community, you'll be able to engage directly with the project, share ideas, collaborate with like-minded individuals, and stay informed about the latest updates and opportunities. 🌍</p>
+    </div>
+
+    <div class="mb-8">
+      <h3 class="text-2xl font-semibold mb-4">Technology Stack 🛠️</h3>
+      <h4 class="text-xl font-semibold mb-4">1. Blockchain Technology ⛓️</h4>
+      <p class="text-lg mb-4"><strong>Optimism Blockchain</strong>: Reimagine Truth will be built on the Optimism Layer 2 solution, offering high scalability and low transaction fees while ensuring fast and secure operations.</p>
+      <h4 class="text-xl font-semibold mb-4">2. Smart Contracts 💻</h4>
+      <p class="text-lg mb-4"><strong>Solidity</strong>: Smart contracts on the Reimagine Truth platform will be developed using Solidity, the most widely used programming language for Ethereum-based applications.</p>
+      <h4 class="text-xl font-semibold mb-4">3. Virtual Reality (VR) & Immersive Experience 🎮</h4>
+      <p class="text-lg mb-4"><strong>Unity or Unreal Engine</strong>: The VR Museum will be built using Unity or Unreal Engine, allowing users to explore interactive galleries and participate in live auctions and events.</p>
+      <h4 class="text-xl font-semibold mb-4">4. Web3 Integration 🌐</h4>
+      <p class="text-lg mb-4"><strong>Web3.js / Ethers.js</strong>: JavaScript libraries to interact with the blockchain from the frontend.</p>
+      <h4 class="text-xl font-semibold mb-4">5. Frontend Development 🔧</h4>
+      <p class="text-lg mb-4"><strong>React.js</strong>: For building the user interface of the Reimagine Truth website and dashboard.</p>
+      <h4 class="text-xl font-semibold mb-4">6. Backend Development 🔙</h4>
+      <p class="text-lg mb-4"><strong>Node.js</strong>: Used for server-side logic, database interaction, and real-time updates.</p>
+      <h4 class="text-xl font-semibold mb-4">7. Database 💾</h4>
+      <p class="text-lg mb-4"><strong>IPFS</strong>: Used for decentralized storage of NFT assets, metadata, and user data.</p>
+      <h4 class="text-xl font-semibold mb-4">8. Pi Network Integration 🔗</h4>
+      <p class="text-lg mb-4"><strong>Pi Network SDK/API</strong>: For integrating Pi Network to enhance accessibility and expand the user base.</p>
+    </div>
+
+    <div class="mb-8">
+      <h3 class="text-2xl font-semibold mb-4">Contributing to the Project 🤝</h3>
+      <p class="text-lg mb-4">Reimagine Truth is an open-source project, and we welcome contributions from developers, artists, and innovators. You can access the project’s codebase and collaborate through the official GitHub repository.</p>
+      <ul class="space-y-2">
+        <li><a href="https://github.com/Reimagine-Truth" class="text-blue-500" target="_blank">GitHub Repository 🖥️</a></li>
+        <li><strong>How to Contribute:</strong></li>
+        <li>Fork the Repository 🍴</li>
+        <li>Submit Pull Requests (PRs) 🔄</li>
+        <li>Raise Issues 📝</li>
+        <li>Discussions 💬</li>
+      </ul>
+    </div>
+
+    <div class="mb-8">
+      <h3 class="text-2xl font-semibold mb-4">License 📜</h3>
+      <p class="text-lg mb-4">The project is licensed under the <strong>MIT License</strong>, meaning you can freely use, modify, and distribute the code while providing proper attribution. ✨</p>
+    </div>
+
+    <p class="text-lg font-semibold">We are excited to have you as part of the Reimagine Truth community! Your contributions help shape the future of this innovative project. 🌟</p>
+  </div>
+</section>
+
+
+
+    <!-- Footer Section -->
+    <footer class="bg-[var(--primary-color)] py-8">
+      <div class="container mx-auto text-center">
+        <div class="mb-4">
+          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.x.com" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.telegram.com" target="_blank"><i class="fab fa-telegram"></i></a>
+          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p class="text-[var(--text-color)] mb-4">© 2024 TruthWeb. All rights reserved.</p>
+        <p class="text-[var(--text-color)]">Designed by Reimagine Truth Organization</p>
+      </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
+      <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl font-semibold text-black">More Options</h2>
+          <button id="closeModal" class="text-gray-700 hover:text-red-500 transition-transform duration-300">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <ul class="space-y-4">
+          <li><a href="wiki.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-book mr-2"></i>Wiki</a></li>
+          <li><a href="whitepaper.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-file-alt mr-2"></i>Whitepaper</a></li>
+          <li><a href="airdrop.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-gift mr-2"></i>Airdrop</a></li>
+          <li><a href="listing.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-list mr-2"></i>Listing</a></li>
+          <li><a href="rto-token.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-coins mr-2"></i>RTO Token</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById('openModalButton').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('modal').classList.remove('hidden');
+      });
+
+      document.getElementById('closeModal').addEventListener('click', function() {
+        document.getElementById('modal').classList.add('hidden');
+      });
+
+      window.addEventListener('click', function(event) {
+        if (event.target == document.getElementById('modal')) {
+          document.getElementById('modal').classList.add('hidden');
+        }
+      });
+    </script>
+  </body>
+</html>
