@@ -1,5 +1,5 @@
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>TruthWeb - Reimagine Truth</title>
@@ -22,7 +22,6 @@
         overflow-x: hidden;
       }
       .hero {
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
         height: 100vh;
         display: flex;
         flex-direction: column;
@@ -55,7 +54,7 @@
       .glow-text {
         font-size: 2rem;
         font-weight: bold;
-        text-shadow: 0 0 10px var(--highlight-color), 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color);
+        text-shadow: 0 0 10px var(--highlight-color), 0 0 20px var(--highlight-color), 0 0 30px var (--highlight-color);
         animation: glow 2s infinite alternate;
       }
       @keyframes glow {
@@ -98,6 +97,8 @@
         cursor: pointer;
         transition: background 0.3s, color 0.3s;
         animation: pulse 2s infinite;
+        display: inline-block;
+        text-align: center;
       }
       .btn:hover {
         background: var(--highlight-color);
@@ -257,169 +258,146 @@
         }
       }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <!-- Header Section -->
     <header class="sticky-header flex justify-between items-center h-16 px-4">
-      <div class="flex items-center">
-        <a class="text-[var(--text-color)] mr-4 flex items-center" href="home.html">
-          <span class="logo-text ml-2">
-            TruthWeb
-          </span>
-        </a>
-      </div>
-      <div class="flex items-center">
-         <a class="text-[var(--text-color)] mr-4 icon floating-effect" href="notifications.html">
-          <i class="fas fa-bell text-xl sm:text-2xl"></i>
-        </a>
-        <a class="text-[var(--text-color)] mr-4 icon floating-effect" href="messages.html">
-          <i class="fas fa-comments text-xl sm:text-2xl"></i>
-        </a>
-        <a class="text-[var(--text-color)] icon floating-effect" href="profile.html">
-          <i class="fas fa-user text-xl sm:text-2xl"></i>
-        </a>
-      </div>
+        <div class="flex items-center">
+            <a class="text-[var(--text-color)] mr-4 flex items-center" href="home.html">
+                <span class="logo-text ml-2">TruthWeb</span>
+            </a>
+        </div>
+        <div class="flex items-center">
+            <a class="text-[var(--text-color)] mr-4 icon floating-effect" href="notifications.html">
+                <i class="fas fa-bell text-xl sm:text-2xl"></i>
+            </a>
+            <a class="text-[var(--text-color)] mr-4 icon floating-effect" href="messages.html">
+                <i class="fas fa-comments text-xl sm:text-2xl"></i>
+            </a>
+            <a class="text-[var(--text-color)] icon floating-effect" href="profile.html">
+                <i class="fas fa-user text-xl sm:text-2xl"></i>
+            </a>
+        </div>
     </header>
     <!-- Navigation Section -->
     <nav class="bg-[var(--primary-color)] py-4">
-      <ul class="flex flex-wrap justify-center space-x-4">
-        <li class="nav-item">
-          <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="discover.html" id="openModalButton">Discover</a>
-        </li>
-        <li class="nav-item">
-          <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="about.html">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="contact.html">Contact</a>
-        </li>
-        <li class="nav-item">
-          <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="policy.html">Policy</a>
-        </li>
-      </ul>
+        <ul class="flex flex-wrap justify-center space-x-4">
+            <li class="nav-item">
+                <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="discover.html" id="openModalButton">Discover</a>
+            </li>
+            <li class="nav-item">
+                <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="contact.html">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="policy.html">Policy</a>
+            </li>
+        </ul>
     </nav>
     <!-- Hero Section -->
-    <div class="hero">
-      <h1 class="glow-text fade-in">
-        TruthWeb
-      </h1>
-      <p class="text-xl mt-4 text-center fade-in" style="animation-delay: 0.5s;">
-        Step into the realm of Reimagine Truth
-       </p>
-      <a href="explore.html" class="btn mt-6">Explore</a>
-    </section>
-      </a>
+    <div class="hero flex flex-col items-center justify-center min-h-screen">
+        <h1 class="glow-text fade-in text-5xl md:text-7xl font-bold">
+            TruthWeb
+        </h1>
+        <p class="text-xl mt-4 text-center fade-in" style="animation-delay: 0.5s;">
+            Step into the realm of Reimagine Truth
+        </p>
     </div>
     <!-- Modal -->
     <div class="modal" id="infoModal">
-      <div class="modal-content">
-        <span class="close" id="closeModalButton">
-          ×
-        </span>
-        <h2>
-          More Options
-        </h2>
-        <ul class="space-y-4">
-          <li><a href="wiki.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-book mr-2"></i>Wiki</a></li>
-          <li><a href="whitepaper.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-file-alt mr-2"></i>Whitepaper</a></li>
-          <li><a href="airdrop.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-gift mr-2"></i>Airdrop</a></li>
-          <li><a href="listing.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-list mr-2"></i>Listing</a></li>
-          <li><a href="rto-token.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-coins mr-2"></i>RTO Token</a></li>
-        </ul>
-      </div>
+        <div class="modal-content">
+            <span class="close" id="closeModalButton">×</span>
+            <h2>More Options</h2>
+            <ul class="space-y-4">
+                <li><a href="wiki.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-book mr-2"></i>Wiki</a></li>
+                <li><a href="whitepaper.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-file-alt mr-2"></i>Whitepaper</a></li>
+                <li><a href="airdrop.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-gift mr-2"></i>Airdrop</a></li>
+                <li><a href="listing.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-list mr-2"></i>Listing</a></li>
+                <li><a href="rto-token.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-coins mr-2"></i>RTO Token</a></li>
+                <li><a href="news.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-newspaper mr-2"></i>News</a></li>
+            </ul>
+        </div>
     </div>
     <!-- Soundtrack Section -->
     <section class="text-center mt-16" id="soundtrack">
-      <h2 class="text-3xl font-bold mb-8 fade-in">
-        Listen to Our Soundtrack
-      </h2>
-      <div class="card fade-in" style="animation-delay: 0.2s;">
-        <h3 class="text-xl font-semibold mb-2">
-          Reimagined Truth Soundtrack
-        </h3>
-        <p class="mb-4">
-          <iframe allow="autoplay" frameborder="no" height="166" scrolling="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1994150683&amp;color=%23692119&amp;auto_play=true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true" width="100%">
-          </iframe>
-          <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
-            <a href="https://soundcloud.com/reimagine-truth" style="color: #cccccc; text-decoration: none;" target="_blank" title="Reimagine Truth">
-              Reimagine Truth
-            </a>
-            ·
-            <a href="https://soundcloud.com/reimagine-truth/reimagined-truth-soundtrack-official" style="color: #cccccc; text-decoration: none;" target="_blank" title="Reimagined Truth Soundtrack - Official">
-              Reimagined Truth Soundtrack - Official
-            </a>
-          </div>
-        </p>
-      </div>
-      <div class="card fade-in" style="animation-delay: 0.4s;">
-        <h3 class="text-xl font-semibold mb-2">
-          Pure Imagination Soundtrack
-        </h3>
-        <p class="mb-4">
-          <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/861132934&amp;color=%235c8450&amp;auto_play=true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true"></iframe>
-          <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
-            <a href="https://soundcloud.com/user-498119508" title=͘Reimagine Trutha̵̠͂l̸͇̅l̷͕̓e̴̗͋d̷̮̈́" target="_blank" style="color:#cccccc; text-decoration: none;" target="_blank" title="Reimagine Truth">
-            ·
-            <a href="https://soundcloud.com/user-498119508/superhuman-feat-quigley-pure" title="Reimagined Truth Soundtrack - Official">
-              Reimagined Truth Soundtrack - Official</a>
-          </div>
-        </p>
-      </div>
+        <h2 class="text-3xl font-bold mb-8 fade-in">
+            Listen to Our Soundtrack
+        </h2>
+        <div class="card fade-in" style="animation-delay: 0.2s;">
+            <h3 class="text-xl font-semibold mb-2">
+                Reimagined Truth Soundtrack
+            </h3>
+            <p class="mb-4">
+                <iframe allow="autoplay" frameborder="no" height="166" scrolling="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1994150683&amp;color=%23692119&amp;auto_play=true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true" width="100%"></iframe>
+                <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
+                    <a href="https://soundcloud.com/reimagine-truth" style="color: #cccccc; text-decoration: none;" target="_blank" title="Reimagine Truth">Reimagine Truth</a>
+                    ·
+                    <a href="https://soundcloud.com/reimagine-truth/reimagined-truth-soundtrack-official" style="color: #cccccc; text-decoration: none;" target="_blank" title="Reimagined Truth Soundtrack - Official">Reimagined Truth Soundtrack - Official</a>
+                </div>
+            </p>
+        </div>
+        <div class="card fade-in" style="animation-delay: 0.4s;">
+            <h3 class="text-xl font-semibold mb-2">
+                Pure Imagination Soundtrack
+            </h3>
+            <p class="mb-4">
+                <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/861132934&amp;color=%235c8450&amp;auto_play=true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true"></iframe>
+                <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
+                    <a href="https://soundcloud.com/user-498119508" title="Reimagine Truth" target="_blank" style="color:#cccccc; text-decoration: none;">Reimagine Truth</a>
+                    ·
+                    <a href="https://soundcloud.com/user-498119508/superhuman-feat-quigley-pure" title="Reimagined Truth Soundtrack - Official" style="color:#cccccc; text-decoration: none;">Reimagined Truth Soundtrack - Official</a>
+                </div>
+            </p>
+        </div>
     </section>
     <!-- Footer Section -->
     <footer class="bg-[var(--primary-color)] py-8">
-      <div class="container mx-auto text-center">
-        <div class="mb-4">
-          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://x.com/reimagine_truth" target="_blank"><i class="fab fa-twitter"></i></a>
-          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://t.me/TruthWebOfficial" target="_blank"><i class="fab fa-telegram"></i></a>
-          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://linktr.ee/reimagine_truth" target="_blank"><i class="fab fa-linktree"></i></a>
+        <div class="container mx-auto text-center">
+            <div class="mb-4">
+                <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://x.com/reimagine_truth" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://t.me/TruthWebOfficial" target="_blank"><i class="fab fa-telegram"></i></a>
+                <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://linktr.ee/reimagine_truth" target="_blank"><i class="fab fa-linktree"></i></a>
+            </div>
+            <p class="text-[var(--text-color)] mb-4">© 2024 TruthWeb. All rights reserved.</p>
+            <p class="text-[var(--text-color)]">Designed by Reimagine Truth Organization</p>
         </div>
-        <p class="text-[var(--text-color)] mb-4">© 2024 TruthWeb. All rights reserved.</p>
-        <p class="text-[var(--text-color)]">Designed by Reimagine Truth Organization</p>
-      </div>
     </footer>
 
-    <!-- Modal -->
-    <div id="modal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
-      <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
-        <div class="flex justify-between items-center mb-4">
-          <h2 class="text-xl font-semibold text-black">More Options</h2>
-          <button id="closeModal" class="text-gray-700 hover:text-red-500 transition-transform duration-300">
-            <i class="fas fa-times"></i>
-          </button>
-        </div>
-        <ul class="space-y-4">
-          <li><a href="wiki.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-book mr-2"></i>Wiki</a></li>
-          <li><a href="whitepaper.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-file-alt mr-2"></i>Whitepaper</a></li>
-          <li><a href="airdrop.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-gift mr-2"></i>Airdrop</a></li>
-          <li><a href="listing.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-list mr-2"></i>Listing</a></li>
-          <li><a href="rto-token.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-coins mr-2"></i>RTO Token</a></li>
-          <li><a href="news.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-coins mr-2"></i>News</a></li>
-        </ul>
-      </div>
-    </div>
-
     <script>
-      document.getElementById('openModalButton').addEventListener('click', function(event) {
-        event.preventDefault();
-        document.getElementById('modal').classList.remove('hidden');
-      });
+        document.getElementById('openModalButton').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('infoModal').style.display = 'block';
+        });
 
-      document.getElementById('closeModal').addEventListener('click', function() {
-        document.getElementById('modal').classList.add('hidden');
-      });
+        document.getElementById('closeModalButton').addEventListener('click', function() {
+            document.getElementById('infoModal').style.display = 'none';
+        });
 
-      window.addEventListener('click', function(event) {
-        if (event.target == document.getElementById('modal')) {
-          document.getElementById('modal').classList.add('hidden');
-        }
-      });
+        window.addEventListener('click', function(event) {
+            if (event.target == document.getElementById('infoModal')) {
+                document.getElementById('infoModal').style.display = 'none';
+            }
+        });
+
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.sticky-header');
+            const logoText = document.querySelector('.logo-text');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+                logoText.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+                logoText.classList.remove('scrolled');
+            }
+        });
     </script>
-  </body>
-<!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -444,4 +422,3 @@
   <!-- More content here -->
 </body>
 </html>
-
