@@ -1,261 +1,266 @@
 <html lang="en">
-  <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>TruthWeb - Reimagine Truth</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
-    <style>
-      :root {
-        --primary-color: #2f0139; /* Dark Violet */
-        --secondary-color: #2a0132; /* Deep Black */
-        --highlight-color: #ff00ff; /* Enhanced Bright Violet */
-        --text-color: #fff; /* White */
-        --button-color: #692119; /* Button Color */
-        --hover-effect: radial-gradient(circle, #ff00ff, transparent);
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Reimagine Truth</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary-color: #2f0139;
+      --secondary-color: #2a0132;
+      --highlight-color: #ff00ff;
+      --text-color: #fff;
+      --button-color: #692119;
+      --hover-effect: radial-gradient(circle, #ff00ff, transparent);
+      --button-bg-color: #000;
+      --button-text-color: #fff;
+      --button-hover-bg-color: #ffd700;
+      --button-hover-text-color: #000;
+    }
+    body {
+      background: #1a0120;
+      color: var(--text-color);
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid var(--highlight-color);
+      padding: 1rem;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--hover-effect);
+      opacity: 0.2;
+      animation: float 6s infinite ease-in-out;
+    }
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
       }
-      body {
-        background: #1a0120;
-        color: var(--text-color);
-        font-family: 'Poppins', sans-serif;
-        overflow-x: hidden;
+      50% {
+        transform: translateY(-20px);
       }
-      .hero {
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        overflow: hidden;
-        border: 2px solid var(--highlight-color);
-        padding: 1rem;
-      }
-      .hero::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: var(--hover-effect);
-        opacity: 0.2;
-        animation: float 6s infinite ease-in-out;
-      }
-      @keyframes float {
-        0%, 100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-20px);
-        }
-      }
-      .glow-text {
-        font-size: 2rem;
-        font-weight: bold;
+    }
+    .glow-text {
+      font-size: 2rem;
+      font-weight: bold;
+      text-shadow: 0 0 10px var(--highlight-color), 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color);
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+      0% {
         text-shadow: 0 0 10px var(--highlight-color), 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color);
-        animation: glow 2s infinite alternate;
       }
-      @keyframes glow {
-        0% {
-          text-shadow: 0 0 10px var(--highlight-color), 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color);
-        }
-        100% {
-          text-shadow: 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color), 0 0 40px var(--highlight-color);
-        }
+      100% {
+        text-shadow: 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color), 0 0 40px var(--highlight-color);
       }
-      .card {
-        background: var(--primary-color);
-        border: 2px solid var(--highlight-color);
-        border-radius: 10px;
-        padding: 1rem;
-        box-shadow: 0 0 15px var(--highlight-color);
-        transition: transform 0.3s, box-shadow 0.3s;
-        animation: fadeInUp 1s ease-in-out;
-      }
-      .card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 0 25px var(--highlight-color);
-      }
-      @keyframes fadeInUp {
-        0% {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      .btn {
-        background: var(--button-color);
-        color: var(--text-color);
-        padding: 0.75rem 1.5rem;
-        border: 2px solid var(--highlight-color);
-        border-radius: 20px;
-        cursor: pointer;
-        transition: background 0.3s, color 0.3s;
-        animation: pulse 2s infinite;
-      }
-      .btn:hover {
-        background: var(--highlight-color);
-        color: var(--primary-color);
-      }
-      @keyframes pulse {
-        0% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.05);
-        }
-        100% {
-          transform: scale(1);
-        }
-      }
-      footer {
-        background: var(--primary-color);
-        color: var(--text-color);
-        text-align: center;
-        padding: 1rem;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
-      .sticky-header {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        background: var(--primary-color);
-        transition: background 0.3s, box-shadow 0.3s;
-      }
-      .sticky-header.scrolled {
-        background: var(--secondary-color);
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-      }
-      .logo-text {
-        font-size: 1.5rem;
-        font-weight: 700;
-        transition: font-size 0.3s;
-      }
-      .logo-text.scrolled {
-        font-size: 1.25rem;
-      }
-      .nav-item {
-        transition: transform 0.3s;
-      }
-      .nav-item:hover {
-        transform: scale(1.1);
-      }
-      .fade-in {
+    }
+    .card {
+      background: var(--primary-color);
+      border: 2px solid var(--highlight-color);
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 0 15px var(--highlight-color);
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: fadeInUp 1s ease-in-out;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 25px var(--highlight-color);
+    }
+    @keyframes fadeInUp {
+      0% {
         opacity: 0;
-        animation: fadeIn 1s forwards;
+        transform: translateY(20px);
       }
-      @keyframes fadeIn {
-        to {
-          opacity: 1;
-        }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
       }
-      .slide-in {
-        transform: translateX(-100%);
-        animation: slideIn 1s forwards;
+    }
+    .btn {
+      background: var(--button-bg-color);
+      color: var(--button-text-color);
+      padding: 0.75rem 1.5rem;
+      border: 2px solid var(--highlight-color);
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+      animation: pulse 2s infinite;
+      display: inline-block;
+      text-align: center;
+    }
+    .btn:hover {
+      background: var(--button-hover-bg-color);
+      color: var(--button-hover-text-color);
+    }
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
       }
-      @keyframes slideIn {
-        to {
-          transform: translateX(0);
-        }
+      50% {
+        transform: scale(1.05);
       }
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.5);
+      100% {
+        transform: scale(1);
       }
-      .modal-content {
-        background-color: #fefefe;
-        margin: 15% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-        max-width: 500px;
-        border-radius: 10px;
-        animation: slideInFromTop 0.5s ease-out, fadeIn 0.5s ease-out;
+    }
+    footer {
+      background: var(--primary-color);
+      color: var(--text-color);
+      text-align: center;
+      padding: 1rem;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--primary-color);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .sticky-header.scrolled {
+      background: var(--secondary-color);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      transition: font-size 0.3s;
+    }
+    .logo-text.scrolled {
+      font-size: 1.25rem;
+    }
+    .nav-item {
+      transition: transform 0.3s;
+    }
+    .nav-item:hover {
+      transform: scale(1.1);
+    }
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
       }
-      @keyframes slideInFromTop {
-        0% {
-          transform: translateY(-100%);
-        }
-        100% {
-          transform: translateY(0);
-        }
+    }
+    .slide-in {
+      transform: translateX(-100%);
+      animation: slideIn 1s forwards;
+    }
+    @keyframes slideIn {
+      to {
+        transform: translateX(0);
       }
-      @keyframes fadeIn {
-        0% {
-          opacity: 0;
-        }
-        100% {
-          opacity: 1;
-        }
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 500px;
+      border-radius: 10px;
+      animation: slideInFromTop 0.5s ease-out, fadeIn 0.5s ease-out;
+    }
+    @keyframes slideInFromTop {
+      0% {
+        transform: translateY(-100%);
       }
-      .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-        transition: transform 0.3s;
+      100% {
+        transform: translateY(0);
       }
-      .close:hover,
-      .close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-        transform: rotate(90deg);
-      }
-      .floating-effect {
-        display: inline-block;
-        transition: transform 0.3s;
-      }
-      .floating-effect:hover {
-        transform: translateY(-10px);
-      }
-      .nav-item {
+    }
+    @keyframes fadeIn {
+      0% {
         opacity: 0;
-        animation: fadeInUp 0.5s forwards;
       }
-      .nav-item:nth-child(1) {
-        animation-delay: 0.1s;
+      100% {
+        opacity: 1;
       }
-      .nav-item:nth-child(2) {
-        animation-delay: 0.2s;
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      transition: transform 0.3s;
+    }
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+      transform: rotate(90deg);
+    }
+    .floating-effect {
+      display: inline-block;
+      transition: transform 0.3s;
+    }
+    .floating-effect:hover {
+      transform: translateY(-10px);
+    }
+    .nav-item {
+      opacity: 0;
+      animation: fadeInUp 0.5s forwards;
+    }
+    .nav-item:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+    .nav-item:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    .nav-item:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+    .nav-item:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+    .nav-item:nth-child(5) {
+      animation-delay: 0.5s;
+    }
+    .nav-item:nth-child(6) {
+      animation-delay: 0.6s;
+    }
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
       }
-      .nav-item:nth-child(3) {
-        animation-delay: 0.3s;
+      100% {
+        opacity: 1;
+        transform: translateY(0);
       }
-      .nav-item:nth-child(4) {
-        animation-delay: 0.4s;
-      }
-      .nav-item:nth-child(5) {
-        animation-delay: 0.5s;
-      }
-      .nav-item:nth-child(6) {
-        animation-delay: 0.6s;
-      }
-      @keyframes fadeInUp {
-        0% {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
+    }
     </style>
   </head>
   <body>
@@ -298,7 +303,7 @@
             </li>
         </ul>
     </nav>
-    <!-- News Content Section -->
+ <!-- News Content Section -->
     <section class="py-12">
         <div class="container mx-auto px-4">
             <div class="card">
@@ -308,42 +313,45 @@
                 <p class="text-lg mb-4">This realm is one of creation and balance, with golden cities that float in the heavens and gardens that bloom with eternal life. Divine Ascendants are the architects of this realm, shaping it with their will and maintaining its harmony.</p>
                 <p class="text-lg mb-4">Their existence is one of profound responsibility, as they oversee the balance of life, time, and cosmic energy. They are creators and protectors, ensuring that the realms below flourish in harmony.</p>
                 <p class="text-lg mb-4">The greatest challenge of the Immortal Realm is the weight of eternity. Divine Ascendants must navigate the tension between their immense power and the humility required to wield it wisely.</p>
-                <p class="text-lg mb-4">For those who embrace their divine purpose, the realm becomes a sanctuary of infinite creation and enlightenment.</p>
-            </div>
+                <p class="text-lg mb-4">For those who embrace their divine purpose, the realm becomes a sanctuary of infinite creation and enlightenment.</p><div class="flex justify-center">
+                    <a href="index.html" class="btn mt-4">Back to Realms</a>
+          </div>
         </div>
     </section>
     <!-- Footer Section -->
     <footer class="bg-[var(--primary-color)] py-8">
-        <div class="container mx-auto text-center">
-            <div class="mb-4">
-                <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.x.com" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.telegram.com" target="_blank"><i class="fab fa-telegram"></i></a>
-                <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
-            </div>
-            <p class="text-[var(--text-color)] mb-4">© 2024 TruthWeb. All rights reserved.</p>
-            <p class="text-[var(--text-color)]">Designed by Reimagine Truth Organization</p>
+      <div class="container mx-auto text-center">
+        <div class="mb-4">
+          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.x.com" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.telegram.com" target="_blank"><i class="fab fa-telegram"></i></a>
+          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
         </div>
+        <p class="text-[var(--text-color)] mb-4">© 2024 TruthWeb. All rights reserved.</p>
+        <p class="text-[var(--text-color)]">Designed by Reimagine Truth Organization</p>
+      </div>
     </footer>
-    <!-- Modal -->
+
+ <!-- Modal -->
     <div id="modal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
-        <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-xl font-semibold text-black">More Options</h2>
-                <button id="closeModal" class="text-gray-700 hover:text-red-500 transition-transform duration-300">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <ul class="space-y-4">
-                <li><a href="wiki.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-book mr-2"></i>Wiki</a></li>
-                <li><a href="whitepaper.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-file-alt mr-2"></i>Whitepaper</a></li>
-                <li><a href="airdrop.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-gift mr-2"></i>Airdrop</a></li>
-                <li><a href="listing.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-list mr-2"></i>Listing</a></li>
-                <li><a href="rto-token.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-coins mr-2"></i>RTO Token</a></li>
-                <li><a href="news.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-newspaper mr-2"></i>News</a></li>
-            </ul>
+      <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl font-semibold text-black">More Options</h2>
+          <button id="closeModal" class="text-gray-700 hover:text-red-500 transition-transform duration-300">
+            <i class="fas fa-times"></i>
+          </button>
         </div>
+        <ul class="space-y-4">
+          <li><a href="wiki.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-book mr-2"></i>Wiki</a></li>
+          <li><a href="whitepaper.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-file-alt mr-2"></i>Whitepaper</a></li>
+          <li><a href="airdrop.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-gift mr-2"></i>Airdrop</a></li>
+          <li><a href="listing.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-list mr-2"></i>Listing</a></li>
+          <li><a href="rto-token.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-coins mr-2"></i>RTO Token</a></li>
+          <li><a href="news.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-newspaper mr-2"></i>News</a></li>
+        </ul>
+      </div>
     </div>
+
     <script>
       document.getElementById('openModalButton').addEventListener('click', function(event) {
         event.preventDefault();
