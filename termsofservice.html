@@ -1,0 +1,413 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>TruthWeb - Reimagine Truth</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <style>
+      :root {
+        --primary-color: #2f0139; /* Dark Violet */
+        --secondary-color: #2a0132; /* Deep Black */
+        --highlight-color: #ff00ff; /* Enhanced Bright Violet */
+        --text-color: #fff; /* White */
+        --button-color: #692119; /* Button Color */
+        --hover-effect: radial-gradient(circle, #ff00ff, transparent);
+      }
+      body {
+        background: #1a0120;
+        color: var(--text-color);
+        font-family: 'Poppins', sans-serif;
+        overflow-x: hidden;
+      }
+      .hero {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        border: 2px solid var(--highlight-color);
+        padding: 1rem;
+      }
+      .hero::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--hover-effect);
+        opacity: 0.2;
+        animation: float 6s infinite ease-in-out;
+      }
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+      .glow-text {
+        font-size: 2rem;
+        font-weight: bold;
+        text-shadow: 0 0 10px var(--highlight-color), 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color);
+        animation: glow 2s infinite alternate;
+      }
+      @keyframes glow {
+        0% {
+          text-shadow: 0 0 10px var(--highlight-color), 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color);
+        }
+        100% {
+          text-shadow: 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color), 0 0 40px var(--highlight-color);
+        }
+      }
+      .card {
+        background: var(--primary-color);
+        border: 2px solid var(--highlight-color);
+        border-radius: 10px;
+        padding: 1rem;
+        box-shadow: 0 0 15px var(--highlight-color);
+        transition: transform 0.3s, box-shadow 0.3s;
+        animation: fadeInUp 1s ease-in-out;
+      }
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 0 25px var(--highlight-color);
+      }
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .btn {
+        background: var(--button-color);
+        color: var(--text-color);
+        padding: 0.75rem 1.5rem;
+        border: 2px solid var(--highlight-color);
+        border-radius: 20px;
+        cursor: pointer;
+        transition: background 0.3s, color 0.3s;
+        animation: pulse 2s infinite;
+      }
+      .btn:hover {
+        background: var(--highlight-color);
+        color: var(--primary-color);
+      }
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      footer {
+        background: var(--primary-color);
+        color: var(--text-color);
+        text-align: center;
+        padding: 1rem;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      .sticky-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: var(--primary-color);
+        transition: background 0.3s, box-shadow 0.3s;
+      }
+      .sticky-header.scrolled {
+        background: var(--secondary-color);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      }
+      .logo-text {
+        font-size: 1.5rem;
+        font-weight: 700;
+        transition: font-size 0.3s;
+      }
+      .logo-text.scrolled {
+        font-size: 1.25rem;
+      }
+      .nav-item {
+        transition: transform 0.3s;
+      }
+      .nav-item:hover {
+        transform: scale(1.1);
+      }
+      .fade-in {
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+      }
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+      .slide-in {
+        transform: translateX(-100%);
+        animation: slideIn 1s forwards;
+      }
+      @keyframes slideIn {
+        to {
+          transform: translateX(0);
+        }
+      }
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 500px;
+        border-radius: 10px;
+        animation: slideInFromTop 0.5s ease-out, fadeIn 0.5s ease-out;
+      }
+      @keyframes slideInFromTop {
+        0% {
+          transform: translateY(-100%);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        transition: transform 0.3s;
+      }
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+        transform: rotate(90deg);
+      }
+      .floating-effect {
+        display: inline-block;
+        transition: transform 0.3s;
+      }
+      .floating-effect:hover {
+        transform: translateY(-10px);
+      }
+      .nav-item {
+        opacity: 0;
+        animation: fadeInUp 0.5s forwards;
+      }
+      .nav-item:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .nav-item:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .nav-item:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .nav-item:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .nav-item:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+      .nav-item:nth-child(6) {
+        animation-delay: 0.6s;
+      }
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="sticky-header flex justify-between items-center h-16 px-4">
+      <div class="flex items-center">
+        <a class="text-[var(--text-color)] mr-4 flex items-center" href="home.html">
+          <span class="logo-text ml-2">
+            TruthWeb
+          </span>
+        </a>
+      </div>
+      <div class="flex items-center">
+        <a class="text-[var(--text-color)] mr-4 icon floating-effect" href="notifications.html">
+          <i class="fas fa-bell text-xl sm:text-2xl"></i>
+        </a>
+        <a class="text-[var(--text-color)] mr-4 icon floating-effect" href="messages.html">
+          <i class="fas fa-comments text-xl sm:text-2xl"></i>
+        </a>
+        <a class="text-[var(--text-color)] icon floating-effect" href="profile.html">
+          <i class="fas fa-user text-xl sm:text-2xl"></i>
+        </a>
+      </div>
+    </header>
+    <!-- Navigation Section -->
+    <nav class="bg-[var(--primary-color)] py-4">
+      <ul class="flex flex-wrap justify-center space-x-4">
+        <li class="nav-item">
+          <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="discover.html" id="openModalButton">Discover</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="about.html">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="contact.html">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="policy.html">Policy</a>
+        </li>
+      </ul>
+    </nav>
+    <!-- Terms of Service Section -->
+    <section class="bg-[var(--primary-color)] text-[var(--text-color)] py-16 px-8" id="policy">
+      <h1 class="text-4xl font-bold mb-8">TruthWeb Terms of Service</h1>
+      <p class="text-lg mb-4"><strong>Effective Date:</strong> December 1, 2024</p>
+      <p class="text-lg mb-8">Welcome to <strong>TruthWeb</strong>, a next-gen social media platform for the cryptocurrency and Web3 community. These Terms of Service (“Terms”) govern your use of the TruthWeb app, website, and related services (collectively, “the Service”). By accessing or using TruthWeb, you agree to comply with these Terms.</p>
+      <p class="text-lg mb-8">Please read these Terms carefully before using our services. If you do not agree with any of the terms outlined below, you should not access or use the Service.</p>
+
+      <h2 class="text-2xl font-bold mb-6">1. Acceptance of Terms</h2>
+      <p class="text-lg mb-4">By using TruthWeb, you agree to be bound by these Terms and any future modifications made to them. We reserve the right to update or modify these Terms at any time. All changes will be effective upon posting to this page, and your continued use of the Service after such changes constitutes your acceptance of the new Terms.</p>
+
+      <h2 class="text-2xl font-bold mb-6">2. User Eligibility</h2>
+      <p class="text-lg mb-4">You must be at least 18 years old or the age of majority in your jurisdiction to use TruthWeb. By using the Service, you represent and warrant that you meet these eligibility requirements.</p>
+
+      <h2 class="text-2xl font-bold mb-6">3. Account Registration</h2>
+      <p class="text-lg mb-4">To access certain features of TruthWeb, you may be required to create an account. You agree to provide accurate, complete, and updated information during the registration process. You are responsible for maintaining the confidentiality of your account credentials and for all activities under your account.</p>
+
+      <h2 class="text-2xl font-bold mb-6">4. User Conduct</h2>
+      <p class="text-lg mb-4">You agree to use the Service in accordance with all applicable laws and regulations. You must not use the Service to:</p>
+      <ul class="list-disc list-inside mb-4">
+        <li>Engage in fraudulent, illegal, or deceptive activities</li>
+        <li>Violate the intellectual property rights of others</li>
+        <li>Harass, abuse, or harm other users</li>
+        <li>Post or share content that is offensive, harmful, or violates our community guidelines</li>
+      </ul>
+      <p class="text-lg mb-4">We reserve the right to suspend or terminate your account if you violate these rules.</p>
+
+      <h2 class="text-2xl font-bold mb-6">5. Content Ownership and License</h2>
+      <p class="text-lg mb-4">You retain ownership of the content you post on TruthWeb. However, by posting content, you grant TruthWeb a worldwide, royalty-free, and non-exclusive license to use, display, modify, and distribute your content in connection with the Service.</p>
+
+      <h2 class="text-2xl font-bold mb-6">6. Privacy and Data Collection</h2>
+      <p class="text-lg mb-4">Your privacy is important to us. Our Privacy Policy explains how we collect, use, and protect your personal information. By using the Service, you consent to the practices outlined in the Privacy Policy.</p>
+
+      <h2 class="text-2xl font-bold mb-6">7. Cryptocurrency and Blockchain Integration</h2>
+      <p class="text-lg mb-4">TruthWeb integrates with cryptocurrency and Web3 technologies. By using the Service, you acknowledge that you understand the risks associated with cryptocurrency, blockchain, and decentralized applications (DApps). TruthWeb is not responsible for any financial loss or damages arising from your use of cryptocurrency or blockchain-related features.</p>
+
+      <h2 class="text-2xl font-bold mb-6">8. Third-Party Links</h2>
+      <p class="text-lg mb-4">TruthWeb may contain links to third-party websites, applications, or services. These links are provided for your convenience and do not imply endorsement. We are not responsible for the content or practices of third-party services.</p>
+
+      <h2 class="text-2xl font-bold mb-6">9. Disclaimers and Limitation of Liability</h2>
+      <p class="text-lg mb-4">The Service is provided “as is” and “as available.” We make no representations or warranties regarding the accuracy, reliability, or availability of the Service. To the fullest extent permitted by law, TruthWeb is not liable for any direct, indirect, incidental, consequential, or punitive damages arising from your use of the Service.</p>
+
+      <h2 class="text-2xl font-bold mb-6">10. Termination</h2>
+      <p class="text-lg mb-4">We reserve the right to suspend or terminate your access to the Service at any time, without notice, for any reason, including violation of these Terms. Upon termination, your right to use the Service will immediately cease.</p>
+
+      <h2 class="text-2xl font-bold mb-6">11. Indemnification</h2>
+      <p class="text-lg mb-4">You agree to indemnify and hold harmless TruthWeb, its affiliates, and its employees from any claims, damages, liabilities, and expenses arising from your use of the Service or your violation of these Terms.</p>
+
+      <h2 class="text-2xl font-bold mb-6">12. Governing Law</h2>
+      <p class="text-lg mb-4">These Terms are governed by and construed in accordance with the laws of the jurisdiction where TruthWeb operates, without regard to its conflict of law principles.</p>
+
+      <h2 class="text-2xl font-bold mb-6">13. Dispute Resolution</h2>
+      <p class="text-lg mb-4">Any disputes arising from these Terms or your use of the Service will be resolved through binding arbitration in accordance with the rules of the jurisdiction where TruthWeb operates.</p>
+
+      <h2 class="text-2xl font-bold mb-6">14. Changes to Terms</h2>
+      <p class="text-lg mb-4">TruthWeb reserves the right to modify or revise these Terms at any time. Any changes will be effective upon posting to this page, and your continued use of the Service after such changes constitutes your acceptance of the new Terms.</p>
+
+      <h2 class="text-2xl font-bold mb-6">15. Contact Us</h2>
+      <p class="text-lg mb-4">If you have any questions or concerns about these Terms, please contact us at <a href="mailto:reimaginetruth@gmail.com" class="text-blue-500">reimaginetruth@gmail.com</a></p>
+
+      
+ </section>
+     <!-- Footer Section -->
+    <footer class="bg-[var(--primary-color)] py-8">
+      <div class="container mx-auto text-center">
+        <div class="mb-4">
+          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.facebook.com/reimaginetruthofficial/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://x.com/reimagine_truth" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a class="text-[var(--text-color)] mx-2 floating-effect" href="htps://t.me/TruthWebOfficial" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.youtube.com/@ReimagineTruth" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p class="text-[var(--text-color)] mb-4">© 2025 TruthWeb. All rights reserved.</p>
+        <p class="text-[var(--text-color)]">Designed by Reimagine Truth Organization</p>
+      </div>
+
+  <!-- Modal -->
+    <div id="modal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
+      <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl font-semibold text-black">More Options</h2>
+          <button id="closeModal" class="text-gray-700 hover:text-red-500 transition-transform duration-300">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <ul class="space-y-4">
+          <li><a href="wiki.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-book mr-2"></i>Wiki</a></li>
+          <li><a href="whitepaper.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-file-alt mr-2"></i>Whitepaper</a></li>
+          <li><a href="airdrop.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-gift mr-2"></i>Airdrop</a></li>
+          <li><a href="listing.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-list mr-2"></i>Listing</a></li>
+          <li><a href="rto-token.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-coins mr-2"></i>RTO Token</a></li>
+          <li><a href="news.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-newspaper mr-2"></i>News</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById('openModalButton').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('modal').classList.remove('hidden');
+      });
+
+      document.getElementById('closeModal').addEventListener('click', function() {
+        document.getElementById('modal').classList.add('hidden');
+      });
+
+      window.addEventListener('click', function(event) {
+        if (event.target == document.getElementById('modal')) {
+          document.getElementById('modal').classList.add('hidden');
+        }
+      });
+    </script>
+  </body>
