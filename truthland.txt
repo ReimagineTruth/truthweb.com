@@ -1,0 +1,94 @@
+reimagine-truth-web-quest/
+├── README.md
+├── CONTRIBUTING.md
+├── LICENSE
+├── .gitignore
+├── docs/
+│   ├── design/
+│   │   ├── wireframes/
+│   │   ├── UI-UX-guidelines.md
+│   │   └── flowcharts/
+│   ├── lore/
+│   │   ├── beginner-realm.md
+│   │   ├── initiate-realm.md
+│   │   ├── adept-realm.md
+│   │   └── all-realms-overview.md
+│   └── technical/
+│       ├── architecture-diagram.md
+│       ├── API-specifications.md
+│       └── database-schema.md
+├── frontend/
+│   ├── public/
+│   │   ├── index.html
+│   │   ├── favicon.ico
+│   │   └── assets/
+│   │       ├── images/
+│   │       └── fonts/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Card/
+│   │   │   ├── Lore/
+│   │   │   ├── Challenges/
+│   │   │   └── Community/
+│   │   ├── pages/
+│   │   │   ├── Home.js
+│   │   │   ├── Realm.js
+│   │   │   ├── Profile.js
+│   │   │   └── Repository.js
+│   │   ├── styles/
+│   │   │   ├── global.css
+│   │   │   └── theme.css
+│   │   ├── App.js
+│   │   └── index.js
+│   └── package.json
+├── backend/
+│   ├── src/
+│   │   ├── controllers/
+│   │   │   ├── cardController.js
+│   │   │   ├── loreController.js
+│   │   │   ├── userController.js
+│   │   │   └── challengeController.js
+│   │   ├── models/
+│   │   │   ├── Card.js
+│   │   │   ├── Lore.js
+│   │   │   ├── User.js
+│   │   │   └── Challenge.js
+│   │   ├── routes/
+│   │   │   ├── cardRoutes.js
+│   │   │   ├── loreRoutes.js
+│   │   │   ├── userRoutes.js
+│   │   │   └── challengeRoutes.js
+│   │   ├── utils/
+│   │   │   ├── authMiddleware.js
+│   │   │   └── errorHandler.js
+│   │   ├── app.js
+│   │   └── server.js
+│   ├── config/
+│   │   ├── db.js
+│   │   └── env/
+│   │       ├── dev.env
+│   │       └── prod.env
+│   └── package.json
+├── database/
+│   ├── migrations/
+│   │   ├── 20250101-create-users.sql
+│   │   ├── 20250101-create-cards.sql
+│   │   └── seed-data.sql
+│   └── schema.sql
+├── tests/
+│   ├── frontend/
+│   │   ├── components/
+│   │   └── pages/
+│   ├── backend/
+│   │   ├── controllers/
+│   │   └── routes/
+│   └── README.md
+├── scripts/
+│   ├── deploy.sh
+│   ├── start-dev.sh
+│   └── seed-database.js
+└── assets/
+    ├── cards/
+    ├── icons/
+    ├── scrolls/
+    └── realms/
