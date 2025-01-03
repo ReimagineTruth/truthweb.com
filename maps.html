@@ -1,0 +1,204 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Interactive Fantasy Map</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-800 text-gray-200">
+  <div class="relative w-full h-screen overflow-hidden">
+    <!-- Map Image -->
+    <img src="https://i.ibb.co/Z6Wt3HQ/Screenshot-2025-01-04-012545.png" alt="A detailed fantasy map with various terrains, landmarks, and regions" class="w-full h-full object-cover" border="0">
+    <!-- Labels -->
+    <div class="absolute bg-black bg-opacity-70 p-2 rounded text-white text-xs sm:text-sm md:text-base lg:text-lg transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 hover:bg-blue-600 hover:scale-110 cursor-pointer" style="top: 10%; left: 20%;" onclick="document.getElementById('beginnerModal').classList.remove('hidden')">
+      Beginner Realm
+    </div>
+    <div class="absolute bg-black bg-opacity-70 p-2 rounded text-white text-xs sm:text-sm md:text-base lg:text-lg transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 hover:bg-blue-600 hover:scale-110 cursor-pointer" style="top: 20%; left: 30%;" onclick="document.getElementById('initiateModal').classList.remove('hidden')">
+      Initiate Realm
+    </div>
+    <div class="absolute bg-black bg-opacity-70 p-2 rounded text-white text-xs sm:text-sm md:text-base lg:text-lg transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 hover:bg-blue-600 hover:scale-110 cursor-pointer" style="top: 30%; left: 40%;" onclick="document.getElementById('adeptModal').classList.remove('hidden')">
+      Adept Realm
+    </div>
+    <div class="absolute bg-black bg-opacity-70 p-2 rounded text-white text-xs sm:text-sm md:text-base lg:text-lg transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 hover:bg-blue-600 hover:scale-110 cursor-pointer" style="top: 40%; left: 50%;" onclick="document.getElementById('ascensionModal').classList.remove('hidden')">
+      Ascension Realm
+    </div>
+    <div class="absolute bg-black bg-opacity-70 p-2 rounded text-white text-xs sm:text-sm md:text-base lg:text-lg transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 hover:bg-blue-600 hover:scale-110 cursor-pointer" style="top: 50%; left: 60%;" onclick="document.getElementById('etherealModal').classList.remove('hidden')">
+      Ethereal Realm
+    </div>
+    <div class="absolute bg-black bg-opacity-70 p-2 rounded text-white text-xs sm:text-sm md:text-base lg:text-lg transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 hover:bg-blue-600 hover:scale-110 cursor-pointer" style="top: 60%; left: 70%;" onclick="document.getElementById('mythicModal').classList.remove('hidden')">
+      Mythic Realm
+    </div>
+    <div class="absolute bg-black bg-opacity-70 p-2 rounded text-white text-xs sm:text-sm md:text-base lg:text-lg transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 hover:bg-blue-600 hover:scale-110 cursor-pointer" style="top: 70%; left: 80%;" onclick="document.getElementById('celestialModal').classList.remove('hidden')">
+      Celestial Realm
+    </div>
+    <div class="absolute bg-black bg-opacity-70 p-2 rounded text-white text-xs sm:text-sm md:text-base lg:text-lg transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 hover:bg-blue-600 hover:scale-110 cursor-pointer" style="top: 80%; left: 90%;" onclick="document.getElementById('empyreanModal').classList.remove('hidden')">
+      Empyrean Realm
+    </div>
+    <div class="absolute bg-black bg-opacity-70 p-2 rounded text-white text-xs sm:text-sm md:text-base lg:text-lg transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 hover:bg-blue-600 hover:scale-110 cursor-pointer" style="top: 90%; left: 20%;" onclick="document.getElementById('immortalModal').classList.remove('hidden')">
+      Immortal Realm
+    </div>
+    <div class="absolute bg-black bg-opacity-70 p-2 rounded text-white text-xs sm:text-sm md:text-base lg:text-lg transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 hover:bg-blue-600 hover:scale-110 cursor-pointer" style="top: 10%; left: 80%;" onclick="document.getElementById('divineModal').classList.remove('hidden')">
+      Divine Realm
+    </div>
+    <!-- Legend Button -->
+    <button class="absolute bottom-5 right-5 bg-yellow-400 text-black p-2 rounded-lg shadow-lg hover:bg-yellow-500 transition duration-300" onclick="document.getElementById('legendModal').classList.remove('hidden')">
+      Show Legend
+    </button>
+  </div>
+
+  <!-- Modal Template -->
+  <div id="legendModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-gray-800 p-6 rounded-lg max-w-xs w-full shadow-2xl">
+      <button class="absolute top-2 right-2 text-white text-xl" onclick="document.getElementById('legendModal').classList.add('hidden')">&times;</button>
+      <h3 class="text-yellow-400 text-sm sm:text-base md:text-lg lg:text-xl mb-2">
+        Legend
+      </h3>
+      <p class="text-xs sm:text-sm md:text-base lg:text-lg mb-4">
+        This map represents various realms of existence, each with its own unique characteristics and mystical properties. Click on any realm to learn more about it.
+      </p>
+      <button class="mt-4 bg-yellow-400 text-black p-2 rounded-lg w-full shadow-lg hover:bg-yellow-500 transition duration-300" onclick="document.getElementById('legendModal').classList.add('hidden')">
+        Close
+      </button>
+    </div>
+  </div>
+
+  <!-- Individual Modals -->
+  <div id="beginnerModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-gray-800 p-6 rounded-lg max-w-xs w-full shadow-2xl">
+      <h3 class="text-yellow-400 text-sm sm:text-base md:text-lg lg:text-xl mb-2">Beginner Realm - The World of Mortals</h3>
+      <p class="text-xs sm:text-sm md:text-base lg:text-lg mb-4">A place of simplicity where ordinary humans live without knowledge of greater mystical truths. Their world is filled with exploration, growth, and potential.</p>
+      <button class="mt-4 bg-yellow-400 text-black p-2 rounded-lg w-full shadow-lg hover:bg-yellow-500 transition duration-300" onclick="document.getElementById('beginnerModal').classList.add('hidden')">
+        Close
+      </button>
+      <a href="beginner.html" class="mt-4 bg-black text-white p-2 rounded-lg w-full shadow-lg border-2 border-yellow-400 hover:bg-gray-800 transition duration-300 text-center block">
+        Enter Realm
+      </a>
+    </div>
+  </div>
+
+  <div id="initiateModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-gray-800 p-6 rounded-lg max-w-xs w-full shadow-2xl">
+      <h3 class="text-yellow-400 text-sm sm:text-base md:text-lg lg:text-xl mb-2">Initiate Realm - The Elemental Awakening</h3>
+      <p class="text-xs sm:text-sm md:text-base lg:text-lg mb-4">The first signs of mystical forces emerge, where humans begin to connect with the raw elements of nature—fire, water, earth, and air—shaping their destiny.</p>
+      <button class="mt-4 bg-yellow-400 text-black p-2 rounded-lg w-full shadow-lg hover:bg-yellow-500 transition duration-300" onclick="document.getElementById('initiateModal').classList.add('hidden')">
+        Close
+      </button>
+      <a href="initiate.html" class="mt-4 bg-black text-white p-2 rounded-lg w-full shadow-lg border-2 border-yellow-400 hover:bg-gray-800 transition duration-300 text-center block">
+        Enter Realm
+      </a>
+    </div>
+  </div>
+
+  <div id="adeptModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-gray-800 p-6 rounded-lg max-w-xs w-full shadow-2xl">
+      <h3 class="text-yellow-400 text-sm sm:text-base md:text-lg lg:text-xl mb-2">Adept Realm - The Flow of Energy</h3>
+      <p class="text-xs sm:text-sm md:text-base lg:text-lg mb-4">A realm where mastery over personal energy and spiritual growth is key. Those who enter become attuned to deeper forces within themselves, unlocking latent power.</p>
+      <button class="mt-4 bg-yellow-400 text-black p-2 rounded-lg w-full shadow-lg hover:bg-yellow-500 transition duration-300" onclick="document.getElementById('adeptModal').classList.add('hidden')">
+        Close
+      </button>
+      <a href="adept.html" class="mt-4 bg-black text-white p-2 rounded-lg w-full shadow-lg border-2 border-yellow-400 hover:bg-gray-800 transition duration-300 text-center block">
+        Enter Realm
+      </a>
+    </div>
+  </div>
+
+  <div id="ascensionModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-gray-800 p-6 rounded-lg max-w-xs w-full shadow-2xl">
+      <h3 class="text-yellow-400 text-sm sm:text-base md:text-lg lg:text-xl mb-2">Ascension Realm - The Skyward Path</h3>
+      <p class="text-xs sm:text-sm md:text-base lg:text-lg mb-4">A transcendent realm where beings are driven by lofty ambitions, soaring higher in pursuit of ideals and higher knowledge, their bodies and minds reaching new heights.</p>
+      <button class="mt-4 bg-yellow-400 text-black p-2 rounded-lg w-full shadow-lg hover:bg-yellow-500 transition duration-300" onclick="document.getElementById('ascensionModal').classList.add('hidden')">
+        Close
+      </button>
+      <a href="ascension.html" class="mt-4 bg-black text-white p-2 rounded-lg w-full shadow-lg border-2 border-yellow-400 hover:bg-gray-800 transition duration-300 text-center block">
+        Enter Realm
+      </a>
+    </div>
+  </div>
+
+  <div id="etherealModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-gray-800 p-6 rounded-lg max-w-xs w-full shadow-2xl">
+      <h3 class="text-yellow-400 text-sm sm:text-base md:text-lg lg:text-xl mb-2">Ethereal Realm - The Spirit’s Path</h3>
+      <p class="text-xs sm:text-sm md:text-base lg:text-lg mb-4">An otherworldly, misty realm where the veil between the physical and spiritual worlds is thin. Souls find peace, intuition thrives, and hidden truths are revealed.</p>
+      <button class="mt-4 bg-yellow-400 text-black p-2 rounded-lg w-full shadow-lg hover:bg-yellow-500 transition duration-300" onclick="document.getElementById('etherealModal').classList.add('hidden')">
+        Close
+      </button>
+      <a href="ethereal.html" class="mt-4 bg-black text-white p-2 rounded-lg w-full shadow-lg border-2 border-yellow-400 hover:bg-gray-800 transition duration-300 text-center block">
+        Enter Realm
+      </a>
+    </div>
+  </div>
+
+  <div id="mythicModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-gray-800 p-6 rounded-lg max-w-xs w-full shadow-2xl">
+      <h3 class="text-yellow-400 text-sm sm:text-base md:text-lg lg:text-xl mb-2">Mythic Realm - The Beast Within</h3>
+      <p class="text-xs sm:text-sm md:text-base lg:text-lg mb-4">A primal and untamed land where the power of ancient beasts and legends shapes the land. The inhabitants are embodiments of mythic strength and the raw force of nature.</p>
+      <button class="mt-4 bg-yellow-400 text-black p-2 rounded-lg w-full shadow-lg hover:bg-yellow-500 transition duration-300" onclick="document.getElementById('mythicModal').classList.add('hidden')">
+        Close
+      </button>
+      <a href="mythic.html" class="mt-4 bg-black text-white p-2 rounded-lg w-full shadow-lg border-2 border-yellow-400 hover:bg-gray-800 transition duration-300 text-center block">
+        Enter Realm
+      </a>
+    </div>
+  </div>
+
+  <div id="celestialModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-gray-800 p-6 rounded-lg max-w-xs w-full shadow-2xl">
+      <h3 class="text-yellow-400 text-sm sm:text-base md:text-lg lg:text-xl mb-2">Celestial Realm - The Dance of Stars</h3>
+      <p class="text-xs sm:text-sm md:text-base lg:text-lg mb-4">A cosmic domain where starlight and universal patterns guide the way. The Celestial Realm embodies the wisdom of the cosmos, where every star and constellation has meaning.</p>
+      <button class="mt-4 bg-yellow-400 text-black p-2 rounded-lg w-full shadow-lg hover:bg-yellow-500 transition duration-300" onclick="document.getElementById('celestialModal').classList.add('hidden')">
+        Close
+      </button>
+      <a href="celestial.html" class="mt-4 bg-black text-white p-2 rounded-lg w-full shadow-lg border-2 border-yellow-400 hover:bg-gray-800 transition duration-300 text-center block">
+        Enter Realm
+      </a>
+    </div>
+  </div>
+
+  <div id="empyreanModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-gray-800 p-6 rounded-lg max-w-xs w-full shadow-2xl">
+      <h3 class="text-yellow-400 text-sm sm:text-base md:text-lg lg:text-xl mb-2">Empyrean Realm - The Infinite Web</h3>
+      <p class="text-xs sm:text-sm md:text-base lg:text-lg mb-4">A realm of interconnectedness where everything, from the tiniest speck to the grandest entity, is linked by an invisible web of cosmic energy. Understanding this connection brings enlightenment.</p>
+      <button class="mt-4 bg-yellow-400 text-black p-2 rounded-lg w-full shadow-lg hover:bg-yellow-500 transition duration-300" onclick="document.getElementById('empyreanModal').classList.add('hidden')">
+        Close
+      </button>
+      <a href="empyrean.html" class="mt-4 bg-black text-white p-2 rounded-lg w-full shadow-lg border-2 border-yellow-400 hover:bg-gray-800 transition duration-300 text-center block">
+        Enter Realm
+      </a>
+    </div>
+  </div>
+
+  <div id="immortalModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-gray-800 p-6 rounded-lg max-w-xs w-full shadow-2xl">
+      <h3 class="text-yellow-400 text-sm sm:text-base md:text-lg lg:text-xl mb-2">Immortal Realm - The Eternal Flame</h3>
+      <p class="text-xs sm:text-sm md:text-base lg:text-lg mb-4">The realm of divine beings, where time flows differently, and immortality is the rule. The forces of creation and cosmic balance govern this realm, where eternal beings manifest their divine purpose.</p>
+      <button class="mt-4 bg-yellow-400 text-black p-2 rounded-lg w-full shadow-lg hover:bg-yellow-500 transition duration-300" onclick="document.getElementById('immortalModal').classList.add('hidden')">
+        Close
+      </button>
+      <a href="immortal.html" class="mt-4 bg-black text-white p-2 rounded-lg w-full shadow-lg border-2 border-yellow-400 hover:bg-gray-800 transition duration-300 text-center block">
+        Enter Realm
+      </a>
+    </div>
+  </div>
+
+  <div id="divineModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-gray-800 p-6 rounded-lg max-w-xs w-full shadow-2xl">
+      <h3 class="text-yellow-400 text-sm sm:text-base md:text-lg lg:text-xl mb-2">Divine Realm - The Origin of Creation</h3>
+      <p class="text-xs sm:text-sm md:text-base lg:text-lg mb-4">The birthplace of all that is, where the purest divine energies flow. This realm represents the origin of existence, where creation, destruction, and cosmic forces are born and return.</p>
+      <button class="mt-4 bg-yellow-400 text-black p-2 rounded-lg w-full shadow-lg hover:bg-yellow-500 transition duration-300" onclick="document.getElementById('divineModal').classList.add('hidden')">
+        Close
+</button>
+      <a href="divine.html" class="mt-4 bg-black text-white p-2 rounded-lg w-full shadow-lg border-2 border-yellow-400 hover:bg-gray-800 transition duration-300 text-center block">
+        Enter Realm
+      </a>
+    </div>
+  </div>
+  </div>
+</body>
+</html>
