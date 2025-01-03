@@ -315,7 +315,7 @@
   </div>
          </section>
   </main>
- <!-- Modal -->
+ < <!-- Modal -->
     <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50" id="infoModal">
         <div class="bg-white rounded-lg shadow-lg p-6 w-80">
             <span class="text-gray-500 hover:text-gray-700 cursor-pointer float-right" id="closeModalButton">&times;</span>
@@ -332,8 +332,14 @@
         </div>
     </div>
 
-     
-      </section>
+    <script>
+        document.getElementById('closeModalButton').addEventListener('click', function() {
+            document.getElementById('infoModal').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
+ </section>
     <!-- Video Section -->
     <section class="text-center mt-16" id="videos">
       <h2 class="text-3xl font-bold mb-8 fade-in">Explore Our Videos</h2>
