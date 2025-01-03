@@ -2,25 +2,25 @@
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>Reimagine Truth</title>
+  <title>Truth Web Quest</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --primary-color: #2f0139;
-      --secondary-color: #2a0132;
-      --highlight-color: #ff00ff;
+      --primary-color: #000;
+      --secondary-color: #1a1a1a;
+      --highlight-color: #1f2937;
       --text-color: #fff;
-      --button-color: #692119;
-      --hover-effect: radial-gradient(circle, #ff00ff, transparent);
+      --button-color: #000;
+      --hover-effect: radial-gradient(circle, #1f2937, transparent);
       --button-bg-color: #000;
       --button-text-color: #fff;
-      --button-hover-bg-color: #ffd700;
+      --button-hover-bg-color: #1f2937;
       --button-hover-text-color: #000;
     }
     body {
-      background: #1a0120;
+      background: var(--primary-color);
       color: var(--text-color);
       font-family: 'Poppins', sans-serif;
       overflow-x: hidden;
@@ -35,6 +35,7 @@
       overflow: hidden;
       border: 2px solid var(--highlight-color);
       padding: 1rem;
+      text-align: center;
     }
     .hero::after {
       content: '';
@@ -77,6 +78,7 @@
       box-shadow: 0 0 15px var(--highlight-color);
       transition: transform 0.3s, box-shadow 0.3s;
       animation: fadeInUp 1s ease-in-out;
+      text-align: center;
     }
     .card:hover {
       transform: translateY(-10px);
@@ -261,10 +263,45 @@
         transform: translateY(0);
       }
     }
+    .door {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .door img {
+      transition: transform 0.5s ease-in-out, filter 0.5s ease-in-out;
+    }
+    .door:hover img {
+      transform: scale(1.1);
+      filter: brightness(1.2);
+    }
+    .door::before, .door::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      transition: transform 0.5s ease-in-out;
+      z-index: 1;
+    }
+    .door::before {
+      left: 0;
+      transform-origin: left;
+    }
+    .door::after {
+      right: 0;
+      transform-origin: right;
+    }
+    .door:hover::before {
+      transform: rotateY(-90deg);
+    }
+    .door:hover::after {
+      transform: rotateY(90deg);
+    }
   </style>
 </head>
 <body>
-
   <!-- Header Section -->
   <header class="sticky-header flex justify-between items-center h-16 px-4">
     <div class="flex items-center">
@@ -305,199 +342,53 @@
     </ul>
   </nav>
   <!-- Hero Section -->
-  <div class="hero flex flex-col items-center justify-center min-h-screen">
+  <div class="hero flex flex-col items-center justify-center min-h-screen text-center">
     <h1 class="glow-text fade-in text-5xl md:text-7xl font-bold">
-      TruthWeb
+      TruthWeb Quest
     </h1>
     <p class="text-xl mt-4 text-center fade-in" style="animation-delay: 0.5s;">
-      Step into the realm of Reimagine Truth
+      Embark on an epic journey through interconnected realms
     </p>
+    <a href="quests.html" class="btn mt-8">Start Your Quest</a>
   </div>
-         </section>
+  <!-- Main Content Section -->
+  <main class="px-4 py-8" id="quests">
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <a href="beginner-realm.html" class="card door">
+        <img alt="A detailed image of a wooden dungeon door with intricate carvings." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/GeLpYABHBbxuIig376fMfspjCtktFKeN7vNuXKMveeb0avXAF.jpg" width="300"/>
+      </a>
+      <a href="initiate-realm.html" class="card door">
+        <img alt="A close-up image of a stone dungeon door with glowing elemental symbols." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/Lm4OZ8HiHQrfTapUs6u2eLCW6oJCwBGX6bhIbsNJIfNi79CoA.jpg" width="300"/>
+      </a>
+      <a href="adept-realm.html" class="card door">
+        <img alt="An image of a mystical dungeon door with glowing runes and spiritual symbols." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/aDfoOdCt2y18QiX6QmeB3630jBuZoQcUWa7sJOotwNfb79CoA.jpg" width="300"/>
+      </a>
+      <a href="ascension-realm.html" class="card door">
+        <img alt="A detailed image of a dungeon door with wings and sky-themed carvings." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/mnF6Wb65tIZKN56X6PlSiWKjFMRN0fHppRAqlBUpr093eeCoA.jpg" width="300"/>
+      </a>
+      <a href="ethereal-realm.html" class="card door">
+        <img alt="An image of a spectral dungeon door with ethereal lights and ghostly figures." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/vmEMjDwm79IxJ1sIPefSIYHPVF3PeuWOP1M6nea0MLcK27FQB.jpg" width="300"/>
+      </a>
+      <a href="mythic-realm.html" class="card door">
+        <img alt="A detailed image of a dungeon door with ancient runes and beastly carvings." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/t8AyKTPwFx7ZLVkeBqMRJo8c40ceZfYwx0100cM8oXJB79CoA.jpg" width="300"/>
+      </a>
+      <a href="celestial-realm.html" class="card door">
+        <img alt="A detailed image of a dungeon door with celestial symbols and starry patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/xehLRereK2B5DJd4Yfh7gICxtmMly0vO9kZeOrjhJNxss3LgC.jpg" width="300"/>
+      </a>
+      <a href="aquatic-realm.html" class="card door">
+        <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/bEACFcYXZUokAZypp67CeFhaVILCqowXPRdsJO2MBwbzeeCoA.jpg" width="300"/>
+      </a>
+      <a href="forest-realm.html" class="card door">
+        <img alt="A detailed image of a dungeon door with forest symbols and nature patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/L0NBJoB8oWbPIJlUxhSWcC5GHJCg5mfGDBKB5MnggrJ1eeCoA.jpg" width="300"/>
+      </a>
+      <a href="desert-realm.html" class="card door">
+        <img alt="A detailed image of a dungeon door with desert symbols and sand patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/WwChGBUuQiIsDhfBoEeKJiQNP5kWBrO2dXBk2LoEt8ro9eCoA.jpg" width="300"/>
+      </a>
+    </section>
   </main>
- <!-- Modal -->
-    <div class="modal" id="infoModal">
-        <div class="modal-content">
-            <span class="close" id="closeModalButton">×</span>
-            <h2>More Options</h2>
-            <ul class="space-y-4">
-                <li><a href="wiki.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-book mr-2"></i>Wiki</a></li>
-                <li><a href="whitepaper.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-file-alt mr-2"></i>Whitepaper</a></li>
-                <li><a href="airdrop.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-gift mr-2"></i>Airdrop</a></li>
-                <li><a href="listing.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-list mr-2"></i>Listing</a></li>
-                <li><a href="rto-token.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-coins mr-2"></i>RTO Token</a></li>
-                <li><a href="news.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-newspaper mr-2"></i>News</a></li>
-<li><a href="nft-collection.html" class="text-gray-700 hover:text-blue-500 flex items-center"><i class="fas fa-images mr-2"></i>NFT Collection</a></li>
-            </ul>
-        </div>
-    </div>
-     
-      </section>
-    <!-- Video Section -->
-    <section class="text-center mt-16" id="videos">
-      <h2 class="text-3xl font-bold mb-8 fade-in">Explore Our Videos</h2>
-      <!-- Vimeo Video Embed -->
-      <div class="card">
-        <div style="position:relative; padding-top:56.25%;"> <!-- 16:9 Aspect Ratio -->
-          <iframe 
-            src="https://player.vimeo.com/video/1043104144?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
-            frameborder="0" 
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
-            style="position:absolute; top:0; left:0; width:100%; height:100%;" 
-            title="Reimagine Truth A Journey Beyond Perception">
-        </iframe>
-    </div>
-    <script src="https://player.vimeo.com/api/player.js"></script>
-</div>
-  <!-- Main Content -->
-  <main class="py-16 px-4">
-    <!-- Featured NFTs -->
-    <section class="text-center" id="explore">
-      <h2 class="text-3xl font-bold mb-8">Discover the Hidden Realms</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Cards -->
-        <div class="card">
-         <img src="https://i.ibb.co/4s55ptN/Screenshot-2025-01-01-203329.png" alt="Screenshot-2025-01-01-203329" border="0">
-          <h3 class="text-xl font-semibold mb-2">Beginner Realm NFT</h3>
-          <p class="mb-4">A grounded domain representing the simplicity of mortal existence and the boundless potential for growth and discovery.</p>
-          <a class="btn" href="beginner-realm.html">View NFT</a>
-        </div>
-        <div class="card">
-          <img src="https://i.ibb.co/dbfYnyS/Screenshot-2025-01-02-002826.png" alt="Screenshot-2025-01-02-002826" border="0">
-          <h3 class="text-xl font-semibold mb-2">Initiate Realm NFT</h3>
-          <p class="mb-4">A realm where elemental forces awaken, symbolizing humanity’s first steps toward harmony with nature’s raw power.</p>
-          <a class="btn" href="initiate-realm.html">View NFT</a>
-        </div>
-        <div class="card">
-          <img src="https://i.ibb.co/KXmVGt5/Screenshot-2025-01-02-003609.png" alt="Screenshot-2025-01-02-003609" border="0">
-          <h3 class="text-xl font-semibold mb-2">Adept Realm NFT</h3>
-          <p class="mb-4">A spiritual domain where energy flows freely, marking the transition into deeper self-awareness and mastery of inner strength.</p>
-          <a class="btn" href="adept-realm.html">View NFT</a>
-        </div>
-        <div class="card">
-          <img src="https://i.ibb.co/f2Gf21f/Screenshot-2025-01-02-004609.png" alt="Screenshot-2025-01-02-004609" border="0">
-          <h3 class="text-xl font-semibold mb-2">Ascension Realm NFT</h3>
-          <p class="mb-4">A soaring realm of freedom and agility, where the skies reflect boundless ambition and a connection to higher ideals.</p>
-          <a class="btn" href="ascension-realm.html">View NFT</a>
-        </div>
-        <div class="card">
-<img src="https://i.ibb.co/r2tXfFQ/Screenshot-2025-01-02-010314.png" alt="Screenshot-2025-01-02-010314" border="0">
-          <h3 class="text-xl font-semibold mb-2">Ethereal Realm NFT</h3>
-          <p class="mb-4">A luminous realm bridging the material and spiritual, embodying peace, intuition, and the beauty of unseen worlds.</p>
-          <a class="btn" href="ethereal-realm.html">View NFT</a>
-        </div>
-        <div class="card">
-          <img src="https://i.ibb.co/0sg8cg7/Screenshot-2025-01-02-011036.png" alt="Screenshot-2025-01-02-011036" border="0">
-          <h3 class="text-xl font-semibold mb-2">Mythic Realm NFT</h3>
-          <p class="mb-4">A primal domain of legendary power, where the strength of mythical beasts and ancient traditions shapes its inhabitants.</p>
-          <a class="btn" href="mythic-realm.html">View NFT</a>
-        </div>
-        <div class="card">
-          <img src="https://i.ibb.co/YkjddDC/Screenshot-2025-01-02-064003.png" alt="Screenshot-2025-01-02-064003" border="0">
-          <h3 class="text-xl font-semibold mb-2">Celestial Realm NFT</h3>
-          <p class="mb-4">A radiant realm of cosmic wonder, representing the harmony of starlight, celestial patterns, and universal wisdom.</p>
-          <a class="btn" href="celestial-realm.html">View NFT</a>
-        </div>
-        <div class="card">
-          <img src="https://i.ibb.co/kJxq1Bv/Screenshot-2025-01-02-064248.png" alt="Screenshot-2025-01-02-064248" border="0">
-          <h3 class="text-xl font-semibold mb-2">Empyrean Realm NFT</h3>
-          <p class="mb-4">An expansive domain reflecting the infinite interconnectedness of the universe and the search for universal truths.</p>
-          <a class="btn" href="empyrean-realm.html">View NFT</a>
-        </div>
-        <div class="card">
-          <img src="https://i.ibb.co/p1gYmdV/Screenshot-2025-01-02-064715.png" alt="Screenshot-2025-01-02-064715" border="0">
-          <h3 class="text-xl font-semibold mb-2">Immortal Realm NFT</h3>
-          <p class="mb-4">A divine realm of perfection and creation, where eternal beings govern time, life, and cosmic balance.</p>
-          <a class="btn" href="immortal-realm.html">View NFT</a>
-        </div>
-        <div class="card">
-          <img src="https://i.ibb.co/xXp6wj6/Screenshot-2025-01-02-064932.png" alt="Screenshot-2025-01-02-064932" border="0">
-          <h3 class="text-xl font-semibold mb-2">Divine Realm NFT</h3>
-          <p class="mb-4">An awe-inspiring domain of primordial power, embodying the origin of existence and the limitless potential of creation itself.</p>
-          <a class="btn" href="divine-realm.html">View NFT</a>
-        </div>
-      </div>
-</section>
-<!-- Soundtrack Section -->
-    <section class="text-center mt-16" id="soundtrack">
-        <h2 class="text-3xl font-bold mb-8 fade-in">
-            Listen to Our Soundtrack
-        </h2>
-       
-            </p>
-        </div>
-        <div class="card fade-in" style="animation-delay: 0.4s;">
-            <h3 class="text-xl font-semibold mb-2">
-                <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1998094175&color=%239f0d85&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/reimagine-truth" title="Reimagine Truth" target="_blank" style="color: #cccccc; text-decoration: none;">Reimagine Truth</a> · <a href="https://soundcloud.com/reimagine-truth/reimagined-truth-soundtrack" title="Reimagined Truth Soundtrack - Official" target="_blank" style="color: #cccccc; text-decoration: none;">Reimagined Truth Soundtrack - Official</a></div>
-                </div>
-            </p>
-        </div>
-         <div class="card fade-in" style="animation-delay: 0.4s;">
-            <h3 class="text-xl font-semibold mb-2">
-                <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1994150683&color=%2383116e&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/reimagine-truth" title="Reimagine Truth" target="_blank" style="color: #cccccc; text-decoration: none;">Reimagine Truth</a> · <a href="https://soundcloud.com/reimagine-truth/reimagined-truth-soundtrack-official" title="Reimagined Truth Soundtrack - Official" target="_blank" style="color: #cccccc; text-decoration: none;">Reimagined Truth Soundtrack - Official</a></div>
-                </div>
-            </p>
-        </div>
-        <div class="card fade-in" style="animation-delay: 0.4s;">
-            <h3 class="text-xl font-semibold mb-2">
-                <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1998468499&color=%23a9108e&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/reimagine-truth" title="Reimagine Truth" target="_blank" style="color: #cccccc; text-decoration: none;">Reimagine Truth</a> · <a href="https://soundcloud.com/reimagine-truth/reimagined-truth-soundtracks-lyrics-official" title="Reimagined Truth Soundtracks / Lyrics - Official" target="_blank" style="color: #cccccc; text-decoration: none;">Reimagined Truth Soundtracks / Lyrics - Official</a></div>
-                </div>
-            </p>
-        </div>
-</section>
-    <!-- Footer Section -->
-    <footer class="bg-[var(--primary-color)] py-8">
-      <div class="container mx-auto text-center">
-        <div class="mb-4">
-          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.facebook.com/reimaginetruthofficial/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://x.com/reimagine_truth" target="_blank"><i class="fab fa-twitter"></i></a>
-          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://t.me/TruthWebOfficial" target="_blank"><i class="fab fa-telegram"></i></a>
-            <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.youtube.com/@ReimagineTruth" target="_blank"><i class="fab fa-youtube"></i></a>
-        </div>
-        <p class="text-[var(--text-color)] mb-4">© 2025 TruthWeb. All rights reserved.</p>
-        <p class="text-[var(--text-color)]">Designed by Reimagine Truth Organization</p>
-      </div>
-
-    <script>
-        document.getElementById('openModalButton').addEventListener('click', function(event) {
-            event.preventDefault();
-            document.getElementById('infoModal').style.display = 'block';
-        });
-
-        document.getElementById('closeModalButton').addEventListener('click', function() {
-            document.getElementById('infoModal').style.display = 'none';
-        });
-
-        window.addEventListener('click', function(event) {
-            if (event.target == document.getElementById('infoModal')) {
-                document.getElementById('infoModal').style.display = 'none';
-            }
-        });
-
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('.sticky-header');
-            const logoText = document.querySelector('.logo-text');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-                logoText.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-                logoText.classList.remove('scrolled');
-            }
-        });
-    </script>
-   <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-<script>
-  kofiWidgetOverlay.draw('reimaginetruth', {
-    'type': 'floating-chat',
-    'floating-chat.donateButton.text': 'Support Us',
-    'floating-chat.donateButton.background-color': '#794bc4',
-    'floating-chat.donateButton.text-color': '#fff'
-  });
-</script>
-  </script>
-
-  <!-- More content here -->
+  <!-- Footer Section -->
+  <footer>
+    <p>© 2023 TruthWeb. All rights reserved.</p>
+  </footer>
 </body>
-</html>
 </html>
