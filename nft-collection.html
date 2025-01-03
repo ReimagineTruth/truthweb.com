@@ -1,1 +1,722 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   TruthWeb - Reimagine Truth
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   :root {
+        --primary-color: #2f0139; /* Dark Violet */
+        --secondary-color: #2a0132; /* Deep Black */
+        --highlight-color: #ff00ff; /* Enhanced Bright Violet */
+        --text-color: #fff; /* White */
+        --button-color: #692119; /* Button Color */
+        --hover-effect: radial-gradient(circle, #ff00ff, transparent);
+      }
+      body {
+        background: #1a0120;
+        color: var(--text-color);
+        font-family: 'Poppins', sans-serif;
+        overflow-x: hidden;
+      }
+      .hero {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        border: 2px solid var(--highlight-color);
+        padding: 1rem;
+      }
+      .hero::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--hover-effect);
+        opacity: 0.2;
+        animation: float 6s infinite ease-in-out;
+      }
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+      .glow-text {
+        font-size: 2rem;
+        font-weight: bold;
+        text-shadow: 0 0 10px var(--highlight-color), 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color);
+        animation: glow 2s infinite alternate;
+      }
+      @keyframes glow {
+        0% {
+          text-shadow: 0 0 10px var(--highlight-color), 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color);
+        }
+        100% {
+          text-shadow: 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color), 0 0 40px var(--highlight-color);
+        }
+      }
+      .card {
+        background: var(--primary-color);
+        border: 2px solid var(--highlight-color);
+        border-radius: 10px;
+        padding: 1rem;
+        box-shadow: 0 0 15px var(--highlight-color);
+        transition: transform 0.3s, box-shadow 0.3s;
+        animation: fadeInUp 1s ease-in-out;
+      }
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 0 25px var(--highlight-color);
+      }
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .btn {
+        background: var(--button-color);
+        color: var(--text-color);
+        padding: 0.75rem 1.5rem;
+        border: 2px solid var(--highlight-color);
+        border-radius: 20px;
+        cursor: pointer;
+        transition: background 0.3s, color 0.3s;
+        animation: pulse 2s infinite;
+      }
+      .btn:hover {
+        background: var(--highlight-color);
+        color: var(--primary-color);
+      }
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      footer {
+        background: var(--primary-color);
+        color: var(--text-color);
+        text-align: center;
+        padding: 1rem;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      .sticky-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: var(--primary-color);
+        transition: background 0.3s, box-shadow 0.3s;
+      }
+      .sticky-header.scrolled {
+        background: var(--secondary-color);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      }
+      .logo-text {
+        font-size: 1.5rem;
+        font-weight: 700;
+        transition: font-size 0.3s;
+      }
+      .logo-text.scrolled {
+        font-size: 1.25rem;
+      }
+      .nav-item {
+        transition: transform 0.3s;
+      }
+      .nav-item:hover {
+        transform: scale(1.1);
+      }
+      .fade-in {
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+      }
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+      .slide-in {
+        transform: translateX(-100%);
+        animation: slideIn 1s forwards;
+      }
+      @keyframes slideIn {
+        to {
+          transform: translateX(0);
+        }
+      }
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 500px;
+        border-radius: 10px;
+        animation: slideInFromTop 0.5s ease-out, fadeIn 0.5s ease-out;
+      }
+      @keyframes slideInFromTop {
+        0% {
+          transform: translateY(-100%);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        transition: transform 0.3s;
+      }
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+        transform: rotate(90deg);
+      }
+      .floating-effect {
+        display: inline-block;
+        transition: transform 0.3s;
+      }
+      .floating-effect:hover {
+        transform: translateY(-10px);
+      }
+      .nav-item {
+        opacity: 0;
+        animation: fadeInUp 0.5s forwards;
+      }
+      .nav-item:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .nav-item:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .nav-item:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .nav-item:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .nav-item:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+      .nav-item:nth-child(6) {
+        animation-delay: 0.6s;
+      }
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+  </style>
+ </head>
+ <body>
+  <!-- Header Section -->
+  <header class="sticky-header flex justify-between items-center h-16 px-4">
+   <div class="flex items-center">
+    <a class="text-[var(--text-color)] mr-4 flex items-center" href="home.html">
+     <span class="logo-text ml-2">
+      TruthWeb
+     </span>
+    </a>
+   </div>
+   <div class="flex items-center">
+    <a class="text-[var(--text-color)] mr-4 icon floating-effect" href="notifications.html">
+     <i class="fas fa-bell text-xl sm:text-2xl">
+     </i>
+    </a>
+    <a class="text-[var(--text-color)] mr-4 icon floating-effect" href="messages.html">
+     <i class="fas fa-comments text-xl sm:text-2xl">
+     </i>
+    </a>
+    <a class="text-[var(--text-color)] icon floating-effect" href="profile.html">
+     <i class="fas fa-user text-xl sm:text-2xl">
+     </i>
+    </a>
+   </div>
+  </header>
+  <!-- Navigation Section -->
+  <nav class="bg-[var(--primary-color)] py-4">
+   <ul class="flex flex-wrap justify-center space-x-4">
+    <li class="nav-item">
+     <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="index.html">
+      Home
+     </a>
+    </li>
+    <li class="nav-item">
+     <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="discover.html" id="openModalButton">
+      Discover
+     </a>
+    </li>
+    <li class="nav-item">
+     <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="about.html">
+      About
+     </a>
+    </li>
+    <li class="nav-item">
+     <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="contact.html">
+      Contact
+     </a>
+    </li>
+    <li class="nav-item">
+     <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="policy.html">
+      Policy
+     </a>
+    </li>
+   </ul>
+  </nav>
+  <!-- Main Content -->
+  <div class="flex flex-col md:flex-row">
+   <div class="flex-1">
+    <header class="text-white p-4 flex justify-between items-center relative shadow-md" id="header">
+     <div class="flex flex-col items-center w-full">
+      <h1 class="text-2xl font-bold text-center fade-in">
+       Welcome to Reimagine Truth
+      </h1>
+      <p class="text-lg text-center fade-in">
+       Explore the unique stories of our NFT characters.
+      </p>
+     </div>
+    </header>
+    <main class="p-4">
+     <div class="flex justify-center mb-6">
+      <input aria-label="Search your NFT serial number" class="w-full max-w-md p-2 rounded bg-gray-200 text-[#202327] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-black" id="search-bar" placeholder="Search your NFT serial number #" type="text"/>
+      <select class="ml-2 p-2 rounded bg-gray-200 text-[#202327] focus:outline-none focus:ring-2 focus:ring-black" id="rarity-filter">
+       <option value="">
+        All Rarities
+       </option>
+       <option value="Common">
+        Common
+       </option>
+       <option value="Rare">
+        Rare
+       </option>
+       <option value="Ultra Rare">
+        Ultra Rare
+       </option>
+      </select>
+      <button class="ml-2 p-2 bg-[#202327] text-white rounded hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-black" onclick="searchNFT()">
+       Search
+      </button>
+     </div>
+     <div class="flex justify-center mb-6" id="view-all-container" style="display: none;">
+      <button class="p-2 bg-[#202327] text-white rounded hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-black" onclick="showAllNFTs()">
+       View All
+      </button>
+     </div>
+     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6" id="nft-grid" style="display: none;">
+      <!-- Card 1 -->
+      <div class="border border-gray-300 p-4 bg-white nft-card slide-in transform hover:scale-105 transition-transform shadow-lg rounded-lg" data-serial="#1" style="display: block;">
+       <div class="w-full mb-2 rounded-lg shadow-md h-48 bg-gray-200">
+       </div>
+       <h3 class="text-xl font-bold">
+        Truth Seeker #1
+       </h3>
+       <p>
+        Rarity: Common
+       </p>
+       <a class="text-black" href="Card1.html">
+        View Details
+       </a>
+      </div>
+      <!-- Card 2 -->
+      <div class="border border-gray-300 p-4 bg-white nft-card slide-in transform hover:scale-105 transition-transform shadow-lg rounded-lg" data-serial="#2" style="display: block;">
+       <div class="w-full mb-2 rounded-lg shadow-md h-48 bg-gray-200">
+       </div>
+       <h3 class="text-xl font-bold">
+        Truth Seeker #2
+       </h3>
+       <p>
+        Rarity: Rare
+       </p>
+       <a class="text-black" href="Card2.html">
+        View Details
+       </a>
+      </div>
+      <!-- Card 3 -->
+      <div class="border border-gray-300 p-4 bg-white nft-card slide-in transform hover:scale-105 transition-transform shadow-lg rounded-lg" data-serial="#3" style="display: block;">
+       <div class="w-full mb-2 rounded-lg shadow-md h-48 bg-gray-200">
+       </div>
+       <h3 class="text-xl font-bold">
+        Truth Seeker #3
+       </h3>
+       <p>
+        Rarity: Ultra Rare
+       </p>
+       <a class="text-black" href="Card3.html">
+        View Details
+       </a>
+      </div>
+      <!-- Card 4 -->
+      <div class="border border-gray-300 p-4 bg-white nft-card slide-in transform hover:scale-105 transition-transform shadow-lg rounded-lg" data-serial="#4" style="display: block;">
+       <div class="w-full mb-2 rounded-lg shadow-md h-48 bg-gray-200">
+       </div>
+       <h3 class="text-xl font-bold">
+        Truth Seeker #4
+       </h3>
+       <p>
+        Rarity: Rare
+       </p>
+       <a class="text-black" href="Card4.html">
+        View Details
+       </a>
+      </div>
+      <!-- Card 5 -->
+      <div class="border border-gray-300 p-4 bg-white nft-card slide-in transform hover:scale-105 transition-transform shadow-lg rounded-lg" data-serial="#5" style="display: block;">
+       <div class="w-full mb-2 rounded-lg shadow-md h-48 bg-gray-200">
+       </div>
+       <h3 class="text-xl font-bold">
+        Truth Seeker #5
+       </h3>
+       <p>
+        Rarity: Common
+       </p>
+       <a class="text-black" href="Card5.html">
+        View Details
+       </a>
+      </div>
+      <!-- Card 6 -->
+      <div class="border border-gray-300 p-4 bg-white nft-card slide-in transform hover:scale-105 transition-transform shadow-lg rounded-lg" data-serial="#6" style="display: block;">
+       <div class="w-full mb-2 rounded-lg shadow-md h-48 bg-gray-200">
+       </div>
+       <h3 class="text-xl font-bold">
+        Truth Seeker #6
+       </h3>
+       <p>
+        Rarity: Rare
+       </p>
+       <a class="text-black" href="Card6.html">
+        View Details
+       </a>
+      </div>
+      <!-- Card 7 -->
+      <div class="border border-gray-300 p-4 bg-white nft-card slide-in transform hover:scale-105 transition-transform shadow-lg rounded-lg" data-serial="#7" style="display: block;">
+       <div class="w-full mb-2 rounded-lg shadow-md h-48 bg-gray-200">
+       </div>
+       <h3 class="text-xl font-bold">
+        Truth Seeker #7
+       </h3>
+       <p>
+        Rarity: Ultra Rare
+       </p>
+       <a class="text-black" href="Card7.html">
+        View Details
+       </a>
+      </div>
+      <!-- Card 8 -->
+      <div class="border border-gray-300 p-4 bg-white nft-card slide-in transform hover:scale-105 transition-transform shadow-lg rounded-lg" data-serial="#8" style="display: block;">
+       <div class="w-full mb-2 rounded-lg shadow-md h-48 bg-gray-200">
+       </div>
+       <h3 class="text-xl font-bold">
+        Truth Seeker #8
+       </h3>
+       <p>
+        Rarity: Rare
+       </p>
+       <a class="text-black" href="Card8.html">
+        View Details
+       </a>
+      </div>
+      <!-- Card 9 -->
+      <div class="border border-gray-300 p-4 bg-white nft-card slide-in transform hover:scale-105 transition-transform shadow-lg rounded-lg" data-serial="#9" style="display: block;">
+       <div class="w-full mb-2 rounded-lg shadow-md h-48 bg-gray-200">
+       </div>
+       <h3 class="text-xl font-bold">
+        Truth Seeker #9
+       </h3>
+       <p>
+        Rarity: Common
+       </p>
+       <a class="text-black" href="Card9.html">
+        View Details
+       </a>
+      </div>
+      <!-- Card 10 -->
+      <div class="border border-gray-300 p-4 bg-white nft-card slide-in transform hover:scale-105 transition-transform shadow-lg rounded-lg" data-serial="#10" style="display: block;">
+       <div class="w-full mb-2 rounded-lg shadow-md h-48 bg-gray-200">
+       </div>
+       <h3 class="text-xl font-bold">
+        Truth Seeker #10
+       </h3>
+       <p>
+        Rarity: Rare
+       </p>
+       <a class="text-black" href="Card10.html">
+        View Details
+       </a>
+      </div>
+      <!-- Card 11 -->
+      <div class="border border-gray-300 p-4 bg-white nft-card slide-in transform hover:scale-105 transition-transform shadow-lg rounded-lg" data-serial="#11" style="display: block;">
+       <div class="w-full mb-2 rounded-lg shadow-md h-48 bg-gray-200">
+       </div>
+       <h3 class="text-xl font-bold">
+        Truth Seeker #11
+       </h3>
+       <p>
+        Rarity: Ultra Rare
+       </p>
+       <a class="text-black" href="Card11.html">
+        View Details
+       </a>
+      </div>
+      <!-- Card 12 -->
+      <div class="border border-gray-300 p-4 bg-white nft-card slide-in transform hover:scale-105 transition-transform shadow-lg rounded-lg" data-serial="#12" style="display: block;">
+       <div class="w-full mb-2 rounded-lg shadow-md h-48 bg-gray-200">
+       </div>
+       <h3 class="text-xl font-bold">
+        Truth Seeker #12
+       </h3>
+       <p>
+        Rarity: Rare
+       </p>
+       <a class="text-black" href="Card12.html">
+        View Details
+       </a>
+      </div>
+      <!-- Card 13 -->
+      <div class="border border-gray-300 p-4 bg-white nft-card slide-in transform hover:scale-105 transition-transform shadow-lg rounded-lg" data-serial="#13" style="display: block;">
+       <div class="w-full mb-2 rounded-lg shadow-md h-48 bg-gray-200">
+       </div>
+       <h3 class="text-xl font-bold">
+        Truth Seeker #13
+       </h3>
+       <p>
+        Rarity: Common
+       </p>
+       <a class="text-black" href="Card13.html">
+        View Details
+       </a>
+      </div>
+      <!-- Card 14 -->
+      <div class="border border-gray-300 p-4 bg-white nft-card slide-in transform hover:scale-105 transition-transform shadow-lg rounded-lg" data-serial="#14" style="display: block;">
+       <div class="w-full mb-2 rounded-lg shadow-md h-48 bg-gray-200">
+       </div>
+       <h3 class="text-xl font-bold">
+        Truth Seeker #14
+       </h3>
+       <p>
+        Rarity: Rare
+       </p>
+       <a class="text-black" href="Card14.html">
+        View Details
+       </a>
+      </div>
+      <!-- Card 15 -->
+      <div class="border border-gray-300 p-4 bg-white nft-card slide-in transform hover:scale-105 transition-transform shadow-lg rounded-lg" data-serial="#15" style="display: block;">
+       <div class="w-full mb-2 rounded-lg shadow-md h-48 bg-gray-200">
+       </div>
+       <h3 class="text-xl font-bold">
+        Truth Seeker #15
+       </h3>
+       <p>
+        Rarity: Ultra Rare
+       </p>
+       <a class="text-black" href="Card15.html">
+        View Details
+        
+       </a>
+      </div>
+     </div>
+     <div class="text-center mt-4" id="no-results" style="display: none;">
+      <p class="text-red-500">
+       No results found. Please try a different serial number.
+      </p>
+     </div>
+     <!-- News Section -->
+     <section class="p-4 bg-white text-black rounded mb-6 fade-in shadow-lg max-w-4xl mx-auto" id="news-section">
+      <h2 class="text-2xl font-bold mb-4">
+       <i class="fas fa-newspaper mr-2">
+       </i>
+       Latest News
+      </h2>
+      <p class="text-lg">
+       Stay tuned for the latest updates and announcements.
+      </p>
+      <a class="p-2 bg-[#202327] text-white rounded hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-black inline-block mt-4" href="news.html">
+       Read More
+      </a>
+     </section>
+  <audio id="click-sound" preload="auto" src="">
+  </audio>
+  <script>
 
+   function searchNFT() {
+            const searchValue = document.getElementById('search-bar').value.trim();
+            const rarityFilter = document.getElementById('rarity-filter').value;
+            const nftCards = document.querySelectorAll('.nft-card');
+            let found = false;
+
+            nftCards.forEach(card => {
+                const serialMatch = card.getAttribute('data-serial') === searchValue || searchValue === '';
+                const rarityMatch = card.querySelector('p').textContent.includes(rarityFilter) || rarityFilter === '';
+
+                if (serialMatch && rarityMatch) {
+                    card.style.display = 'block';
+                    found = true;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            if (found) {
+                document.getElementById('view-all-container').style.display = 'flex';
+                document.getElementById('no-results').style.display = 'none';
+                document.getElementById('nft-grid').style.display = 'grid';
+            } else {
+                document.getElementById('view-all-container').style.display = 'none';
+                document.getElementById('no-results').style.display = 'block';
+                document.getElementById('nft-grid').style.display = 'none';
+            }
+            playClickSound();
+        }
+
+        function showAllNFTs() {
+            const nftCards = document.querySelectorAll('.nft-card');
+            nftCards.forEach(card => {
+                card.style.display = 'block';
+            });
+            document.getElementById('view-all-container').style.display = 'none';
+            document.getElementById('no-results').style.display = 'none';
+            document.getElementById('nft-grid').style.display = 'grid';
+            playClickSound();
+        }
+
+        function playClickSound() {
+            const clickSound = document.getElementById('click-sound');
+            clickSound.play();
+        }
+
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', () => {
+                button.classList.add('button-click');
+                setTimeout(() => {
+                    button.classList.remove('button-click');
+                }, 200);
+            });
+        });
+
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('bg-white');
+            document.body.classList.toggle('bg-black');
+            document.body.classList.toggle('text-black');
+            document.body.classList.toggle('text-white');
+            document.getElementById('header').classList.toggle('bg-white');
+            document.getElementById('header').classList.toggle('bg-black');
+            document.getElementById('header').classList.toggle('text-black');
+            document.getElementById('header').classList.toggle('text-white');
+            document.getElementById('search-bar').classList.toggle('bg-gray-200');
+            document.getElementById('search-bar').classList.toggle('bg-gray-800');
+            document.getElementById('search-bar').classList.toggle('text-[#202327]');
+            document.getElementById('search-bar').classList.toggle('text-white');
+            document.getElementById('rarity-filter').classList.toggle('bg-gray-200');
+            document.getElementById('rarity-filter').classList.toggle('bg-gray-800');
+            document.getElementById('rarity-filter').classList.toggle('text-[#202327]');
+            document.getElementById('rarity-filter').classList.toggle('text-white');
+            document.querySelectorAll('.nft-card').forEach(card => {
+                card.classList.toggle('bg-white');
+                card.classList.toggle('bg-gray-800');
+                card.querySelector('h3').classList.toggle('text-black');
+                card.querySelector('h3').classList.toggle('text-white');
+                card.querySelector('p').classList.toggle('text-black');
+                card.querySelector('p').classList.toggle('text-white');
+                card.querySelector('a').classList.toggle('text-black');
+                card.querySelector('a').classList.toggle('text-white');
+            });
+            document.querySelector('.fa-moon').classList.toggle('hidden');
+            document.querySelector('.fa-sun').classList.toggle('hidden');
+        });
+  </script>
+ </div>
+</section>
+    
+
+  <!-- Modal -->
+    <div id="modal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
+      <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl font-semibold text-black">More Options</h2>
+          <button id="closeModal" class="text-gray-700 hover:text-red-500 transition-transform duration-300">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <ul class="space-y-4">
+          <li><a href="wiki.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-book mr-2"></i>Wiki</a></li>
+          <li><a href="whitepaper.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-file-alt mr-2"></i>Whitepaper</a></li>
+          <li><a href="airdrop.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-gift mr-2"></i>Airdrop</a></li>
+          <li><a href="listing.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-list mr-2"></i>Listing</a></li>
+          <li><a href="rto-token.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-coins mr-2"></i>RTO Token</a></li>
+          <li><a href="news.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-newspaper mr-2"></i>News</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById('openModalButton').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('modal').classList.remove('hidden');
+      });
+
+      document.getElementById('closeModal').addEventListener('click', function() {
+        document.getElementById('modal').classList.add('hidden');
+      });
+
+      window.addEventListener('click', function(event) {
+        if (event.target == document.getElementById('modal')) {
+          document.getElementById('modal').classList.add('hidden');
+        }
+      });
+    </script>
+  </body>
+</html>
