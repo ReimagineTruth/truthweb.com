@@ -380,68 +380,68 @@
        </p>
       </div>
      </a>
-     <a class="card" href="nnewsitem/news9.html">
-      <img alt="News image 9: A detailed description of the image for AI generation" class="w-full h-48 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/eM6cfSogTzsC1Uc3Jm0nefGLdUG0ZCtaUnpyYcXxJPv2t0efE.jpg" width="600"/>
-      <div class="p-4">
-       <h3 class="text-xl font-semibold mb-2">
-        News Title 9
-       </h3>
-       <p class="text-sm">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
-       </p>
-      </div>
-     </a>
-    </div>
 </section>
+   </section>
+
+  </main>
+ <!-- Modal -->
+    <div class="modal" id="infoModal">
+        <div class="modal-content">
+            <span class="close" id="closeModalButton">×</span>
+            <h2>More Options</h2>
+            <ul class="space-y-4">
+                <li><a href="wiki.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-book mr-2"></i>Wiki</a></li>
+                <li><a href="whitepaper.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-file-alt mr-2"></i>Whitepaper</a></li>
+                <li><a href="airdrop.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-gift mr-2"></i>Airdrop</a></li>
+                <li><a href="listing.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-list mr-2"></i>Listing</a></li>
+                <li><a href="rto-token.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-coins mr-2"></i>RTO Token</a></li>
+                <li><a href="news.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-newspaper mr-2"></i>News</a></li>
+<li><a href="nft-collection.html" class="text-gray-700 hover:text-blue-500 flex items-center"><i class="fas fa-images mr-2"></i>NFT Collection</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    </section>
     <!-- Footer Section -->
     <footer class="bg-[var(--primary-color)] py-8">
       <div class="container mx-auto text-center">
         <div class="mb-4">
-          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.x.com" target="_blank"><i class="fab fa-twitter"></i></a>
-          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.telegram.com" target="_blank"><i class="fab fa-telegram"></i></a>
-          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.facebook.com/reimaginetruthofficial/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://x.com/reimagine_truth" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://t.me/TruthWebOfficial" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.youtube.com/@ReimagineTruth" target="_blank"><i class="fab fa-youtube"></i></a>
         </div>
-        <p class="text-[var(--text-color)] mb-4">© 2024 TruthWeb. All rights reserved.</p>
+        <p class="text-[var(--text-color)] mb-4">© 2025 TruthWeb. All rights reserved.</p>
         <p class="text-[var(--text-color)]">Designed by Reimagine Truth Organization</p>
       </div>
-    </footer>
-
-      <!-- Modal -->
-    <div id="modal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
-      <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
-        <div class="flex justify-between items-center mb-4">
-          <h2 class="text-xl font-semibold text-black">More Options</h2>
-          <button id="closeModal" class="text-gray-700 hover:text-red-500 transition-transform duration-300">
-            <i class="fas fa-times"></i>
-          </button>
-        </div>
-        <ul class="space-y-4">
-          <li><a href="wiki.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-book mr-2"></i>Wiki</a></li>
-          <li><a href="whitepaper.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-file-alt mr-2"></i>Whitepaper</a></li>
-          <li><a href="airdrop.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-gift mr-2"></i>Airdrop</a></li>
-          <li><a href="listing.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-list mr-2"></i>Listing</a></li>
-          <li><a href="rto-token.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-coins mr-2"></i>RTO Token</a></li>
-          <li><a href="news.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-newspaper mr-2"></i>News</a></li>
-        </ul>
-      </div>
-    </div>
 
     <script>
-      document.getElementById('openModalButton').addEventListener('click', function(event) {
-        event.preventDefault();
-        document.getElementById('modal').classList.remove('hidden');
-      });
+        document.getElementById('openModalButton').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('infoModal').style.display = 'block';
+        });
 
-      document.getElementById('closeModal').addEventListener('click', function() {
-        document.getElementById('modal').classList.add('hidden');
-      });
+        document.getElementById('closeModalButton').addEventListener('click', function() {
+            document.getElementById('infoModal').style.display = 'none';
+        });
 
-      window.addEventListener('click', function(event) {
-        if (event.target == document.getElementById('modal')) {
-          document.getElementById('modal').classList.add('hidden');
-        }
-      });
+        window.addEventListener('click', function(event) {
+            if (event.target == document.getElementById('infoModal')) {
+                document.getElementById('infoModal').style.display = 'none';
+            }
+        });
+
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.sticky-header');
+            const logoText = document.querySelector('.logo-text');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+                logoText.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+                logoText.classList.remove('scrolled');
+            }
+        });
     </script>
   </body>
-</html>
+</html> 
