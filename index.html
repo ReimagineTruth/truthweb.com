@@ -1,13 +1,16 @@
 <html lang="en">
-<head>
+ <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>Truth Web Quest</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>
+   Truth Web Quest
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
   <style>
-    :root {
+   :root {
       --primary-color: #000;
       --secondary-color: #1a1a1a;
       --highlight-color: #1f2937;
@@ -150,7 +153,7 @@
       font-size: 1.25rem;
     }
     .nav-item {
-      transition: transform 0.3s;
+      transition: transform 0.3s; 
     }
     .nav-item:hover {
       transform: scale(1.1);
@@ -269,11 +272,10 @@
       cursor: pointer;
     }
     .door img {
-      transition: transform 0.5s ease-in-out, filter 0.5s ease-in-out;
+      transition: transform 0.5s ease-in-out;
     }
     .door:hover img {
       transform: scale(1.1);
-      filter: brightness(1.2);
     }
     .door::before, .door::after {
       content: '';
@@ -300,57 +302,128 @@
       transform: rotateY(90deg);
     }
   </style>
-</head>
-<body>
+ </head>
+ <body>
   <!-- Header Section -->
   <header class="sticky-header flex justify-between items-center h-16 px-4">
-    <div class="flex items-center">
-      <a class="text-[var(--text-color)] mr-4 flex items-center" href="home.html">
-        <span class="logo-text ml-2">TruthWeb</span>
-      </a>
-    </div>
-    <div class="flex items-center">
-      <a class="text-[var(--text-color)] mr-4 icon floating-effect" href="notifications.html">
-        <i class="fas fa-bell text-xl sm:text-2xl"></i>
-      </a>
-      <a class="text-[var(--text-color)] mr-4 icon floating-effect" href="messages.html">
-        <i class="fas fa-comments text-xl sm:text-2xl"></i>
-      </a>
-      <a class="text-[var(--text-color)] icon floating-effect" href="profile.html">
-        <i class="fas fa-user text-xl sm:text-2xl"></i>
-      </a>
-    </div>
+   <div class="flex items-center">
+    <a class="text-[var(--text-color)] mr-4 flex items-center" href="home.html">
+     <span class="logo-text ml-2">
+      TruthWeb
+     </span>
+    </a>
+   </div>
+   <div class="flex items-center">
+    <a class="text-[var(--text-color)] mr-4 icon floating-effect" href="notifications.html">
+     <i class="fas fa-bell text-xl sm:text-2xl">
+     </i>
+    </a>
+    <a class="text-[var(--text-color)] mr-4 icon floating-effect" href="messages.html">
+     <i class="fas fa-comments text-xl sm:text-2xl">
+     </i>
+    </a>
+    <a class="text-[var(--text-color)] icon floating-effect" href="profile.html">
+     <i class="fas fa-user text-xl sm:text-2xl">
+     </i>
+    </a>
+   </div>
   </header>
   <!-- Navigation Section -->
   <nav class="bg-[var(--primary-color)] py-4">
-    <ul class="flex flex-wrap justify-center space-x-4">
-      <li class="nav-item">
-        <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="index.html">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="discover.html" id="openModalButton">Discover</a>
-      </li>
-      <li class="nav-item">
-        <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="about.html">About</a>
-      </li>
-      <li class="nav-item">
-        <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="contact.html">Contact</a>
-      </li>
-      <li class="nav-item">
-        <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="policy.html">Policy</a>
-      </li>
-    </ul>
+   <ul class="flex flex-wrap justify-center space-x-4">
+    <li class="nav-item">
+     <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="index.html">
+      Home
+     </a>
+    </li>
+    <li class="nav-item">
+     <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="discover.html" id="openModalButton">
+      Discover
+     </a>
+    </li>
+    <li class="nav-item">
+     <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="about.html">
+      About
+     </a>
+    </li>
+    <li class="nav-item">
+     <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="contact.html">
+      Contact
+     </a>
+    </li>
+    <li class="nav-item">
+     <a class="text-[var(--text-color)] hover:text-[var(--highlight-color)] floating-effect" href="policy.html">
+      Policy
+     </a>
+    </li>
+   </ul>
   </nav>
   <!-- Hero Section -->
-  <div class="hero flex flex-col items-center justify-center min-h-screen">
-    <h1 class="glow-text fade-in text-5xl md:text-7xl font-bold">
-      TruthWeb Quest
-    </h1>
-    <p class="text-xl mt-4 text-center fade-in" style="animation-delay: 0.5s;">
-      Embark on an epic journey through interconnected realms
-    </p>
+  <div class="hero flex flex-col items-center justify-center min-h-screen text-center">
+   <h1 class="glow-text fade-in text-5xl md:text-7xl font-bold">
+    TruthWeb Quest
+   </h1>
+   <p class="text-xl mt-4 text-center fade-in" style="animation-delay: 0.5s;">
+    Embark on an epic journey through interconnected realms
+   </p>
   </div>
-         </section>
+  <!-- Main Content Section -->
+ </section>
+</div>
+<section class="flex justify-center items-center min-h-screen">
+  <div class="card text-center">
+<img src="https://i.ibb.co/2vX9gK3/Untitled-design-24.jpg" alt="Untitled-design-24" border="0">
+    <h3 class="text-xl font-semibold mb-2">Front Man NPC</h3>
+    <p class="mb-4">A wise and enigmatic guide, the Front Man leads players through the realms, offering quests and unraveling the mysteries of the Truth Web with wisdom, riddles, and subtle challenges.</p>
+    <a class="btn" href="frontman.html">View NPC</a>
+  </div>
+</section>
+ 
+  <main class="px-4 py-8" id="quests">
+   <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <a class="card door" href="aquatic-realm.html">
+     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/riMDhy0taPrnBZ4WHQxZIaMo0uSbHLN4lfe2mGU23F8mZeCoA.jpg" width="300"/>
+    </a>
+    <a class="card door" href="aquatic-realm.html">
+     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/riMDhy0taPrnBZ4WHQxZIaMo0uSbHLN4lfe2mGU23F8mZeCoA.jpg" width="300"/>
+    </a>
+    <a class="card door" href="aquatic-realm.html">
+     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/riMDhy0taPrnBZ4WHQxZIaMo0uSbHLN4lfe2mGU23F8mZeCoA.jpg" width="300"/>
+    </a>
+    <a class="card door" href="aquatic-realm.html">
+     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/riMDhy0taPrnBZ4WHQxZIaMo0uSbHLN4lfe2mGU23F8mZeCoA.jpg" width="300"/>
+    </a>
+    <a class="card door" href="aquatic-realm.html">
+     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/riMDhy0taPrnBZ4WHQxZIaMo0uSbHLN4lfe2mGU23F8mZeCoA.jpg" width="300"/>
+    </a>
+    <a class="card door" href="aquatic-realm.html">
+     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/riMDhy0taPrnBZ4WHQxZIaMo0uSbHLN4lfe2mGU23F8mZeCoA.jpg" width="300"/>
+    </a>
+    <a class="card door" href="aquatic-realm.html">
+     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/riMDhy0taPrnBZ4WHQxZIaMo0uSbHLN4lfe2mGU23F8mZeCoA.jpg" width="300"/>
+    </a>
+    <a class="card door" href="aquatic-realm.html">
+     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/riMDhy0taPrnBZ4WHQxZIaMo0uSbHLN4lfe2mGU23F8mZeCoA.jpg" width="300"/>
+    </a>
+    <a class="card door" href="aquatic-realm.html">
+     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/riMDhy0taPrnBZ4WHQxZIaMo0uSbHLN4lfe2mGU23F8mZeCoA.jpg" width="300"/>
+    </a>
+    <a class="card door" href="aquatic-realm.html">
+     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/riMDhy0taPrnBZ4WHQxZIaMo0uSbHLN4lfe2mGU23F8mZeCoA.jpg" width="300"/>
+    </a>
+    <a class="card door" href="aquatic-realm.html">
+     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/riMDhy0taPrnBZ4WHQxZIaMo0uSbHLN4lfe2mGU23F8mZeCoA.jpg" width="300"/>
+    </a>
+    <a class="card door" href="aquatic-realm.html">
+     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/riMDhy0taPrnBZ4WHQxZIaMo0uSbHLN4lfe2mGU23F8mZeCoA.jpg" width="300"/>
+    </a>
+    <a class="card door" href="aquatic-realm.html">
+     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/riMDhy0taPrnBZ4WHQxZIaMo0uSbHLN4lfe2mGU23F8mZeCoA.jpg" width="300"/>
+    </a>
+    <a class="card door" href="aquatic-realm.html">
+     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/riMDhy0taPrnBZ4WHQxZIaMo0uSbHLN4lfe2mGU23F8mZeCoA.jpg" width="300"/>
+    </a>
+   </section>
   </main>
  <!-- Modal -->
     <div class="modal" id="infoModal">
@@ -368,47 +441,8 @@
             </ul>
         </div>
     </div>
-  
-  <!-- Main Content -->
-  <main class="py-16 px-4">
-    <!-- Featured NFTs -->
-    <section class="text-center" id="quests">
-      <h2 class="text-3xl font-bold mb-8">Discover the Hidden Realms</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Cards -->
-      <a href="beginner-realm.html" class="card door">
-        <img alt="A detailed image of a wooden dungeon door with intricate carvings." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/GeLpYABHBbxuIig376fMfspjCtktFKeN7vNuXKMveeb0avXAF.jpg" width="300"/>
-
-      </a>
-      <a href="initiate-realm.html" class="card door">
-        <img alt="A close-up image of a stone dungeon door with glowing elemental symbols." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/Lm4OZ8HiHQrfTapUs6u2eLCW6oJCwBGX6bhIbsNJIfNi79CoA.jpg" width="300"/>
-      </a>
-      <a href="adept-realm.html" class="card door">
-        <img alt="An image of a mystical dungeon door with glowing runes and spiritual symbols." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/aDfoOdCt2y18QiX6QmeB3630jBuZoQcUWa7sJOotwNfb79CoA.jpg" width="300"/>
-      </a>
-      <a href="ascension-realm.html" class="card door">
-        <img alt="A detailed image of a dungeon door with wings and sky-themed carvings." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/mnF6Wb65tIZKN56X6PlSiWKjFMRN0fHppRAqlBUpr093eeCoA.jpg" width="300"/>
-      </a>
-      <a href="ethereal-realm.html" class="card door">
-        <img alt="An image of a spectral dungeon door with ethereal lights and ghostly figures." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/vmEMjDwm79IxJ1sIPefSIYHPVF3PeuWOP1M6nea0MLcK27FQB.jpg" width="300"/>
-      </a>
-      <a href="mythic-realm.html" class="card door">
-        <img alt="A detailed image of a dungeon door with ancient runes and beastly carvings." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/t8AyKTPwFx7ZLVkeBqMRJo8c40ceZfYwx0100cM8oXJB79CoA.jpg" width="300"/>
-      </a>
-      <a href="celestial-realm.html" class="card door">
-        <img alt="A detailed image of a dungeon door with celestial symbols and starry patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/xehLRereK2B5DJd4Yfh7gICxtmMly0vO9kZeOrjhJNxss3LgC.jpg" width="300"/>
-      </a>
-      <a href="aquatic-realm.html" class="card door">
-        <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/bEACFcYXZUokAZypp67CeFhaVILCqowXPRdsJO2MBwbzeeCoA.jpg" width="300"/>
-      </a>
-      <a href="forest-realm.html" class="card door">
-        <img alt="A detailed image of a dungeon door with forest symbols and nature patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/L0NBJoB8oWbPIJlUxhSWcC5GHJCg5mfGDBKB5MnggrJ1eeCoA.jpg" width="300"/>
-      </a>
-      <a href="desert-realm.html" class="card door">
-        <img alt="A detailed image of a dungeon door with desert symbols and sand patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/WwChGBUuQiIsDhfBoEeKJiQNP5kWBrO2dXBk2LoEt8ro9eCoA.jpg" width="300"/>
-      </a>
-</section>
-   </section>
+    
+    </section>
     <!-- Footer Section -->
     <footer class="bg-[var(--primary-color)] py-8">
       <div class="container mx-auto text-center">
@@ -450,10 +484,5 @@
             }
         });
     </script>
-   
-  </script>
-
-  <!-- More content here -->
-</body>
-</html>
-</html>
+  </body>
+</html>                     
