@@ -333,7 +333,7 @@
     <li><strong>Community-Driven:</strong> Governed by and for its users.</li>
     <li><strong>Secure & Private:</strong> Prioritizing user data protection and control.</li>
   </ul>
-/section>
+</section>
   </main>
  <!-- Modal -->
     <div class="modal" id="infoModal">
@@ -351,8 +351,8 @@
             </ul>
         </div>
     </div>
-     
-      </section>
+    
+    </section>
     <!-- Footer Section -->
     <footer class="bg-[var(--primary-color)] py-8">
       <div class="container mx-auto text-center">
@@ -365,21 +365,34 @@
         <p class="text-[var(--text-color)] mb-4">© 2025 TruthWeb. All rights reserved.</p>
         <p class="text-[var(--text-color)]">Designed by Reimagine Truth Organization</p>
       </div>
+
     <script>
-      document.getElementById('openModalButton').addEventListener('click', function(event) {
-        event.preventDefault();
-        document.getElementById('modal').classList.remove('hidden');
-      });
+        document.getElementById('openModalButton').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('infoModal').style.display = 'block';
+        });
 
-      document.getElementById('closeModal').addEventListener('click', function() {
-        document.getElementById('modal').classList.add('hidden');
-      });
+        document.getElementById('closeModalButton').addEventListener('click', function() {
+            document.getElementById('infoModal').style.display = 'none';
+        });
 
-      window.addEventListener('click', function(event) {
-        if (event.target == document.getElementById('modal')) {
-          document.getElementById('modal').classList.add('hidden');
-        }
-      });
+        window.addEventListener('click', function(event) {
+            if (event.target == document.getElementById('infoModal')) {
+                document.getElementById('infoModal').style.display = 'none';
+            }
+        });
+
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.sticky-header');
+            const logoText = document.querySelector('.logo-text');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+                logoText.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+                logoText.classList.remove('scrolled');
+            }
+        });
     </script>
   </body>
-</html>
+</html>                     
