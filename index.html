@@ -342,15 +342,33 @@
     </ul>
   </nav>
   <!-- Hero Section -->
-  <div class="hero flex flex-col items-center justify-center min-h-screen text-center">
+  <div class="hero flex flex-col items-center justify-center min-h-screen">
     <h1 class="glow-text fade-in text-5xl md:text-7xl font-bold">
-      TruthWeb Quest
+      TruthWeb
     </h1>
     <p class="text-xl mt-4 text-center fade-in" style="animation-delay: 0.5s;">
-      Embark on an epic journey through interconnected realms
+      Step into the realm of Reimagine Truth
     </p>
-    <a href="quests.html" class="btn mt-8">Start Your Quest</a>
   </div>
+         </section>
+  </main>
+ <!-- Modal -->
+    <div class="modal" id="infoModal">
+        <div class="modal-content">
+            <span class="close" id="closeModalButton">×</span>
+            <h2>More Options</h2>
+            <ul class="space-y-4">
+                <li><a href="wiki.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-book mr-2"></i>Wiki</a></li>
+                <li><a href="whitepaper.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-file-alt mr-2"></i>Whitepaper</a></li>
+                <li><a href="airdrop.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-gift mr-2"></i>Airdrop</a></li>
+                <li><a href="listing.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-list mr-2"></i>Listing</a></li>
+                <li><a href="rto-token.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-coins mr-2"></i>RTO Token</a></li>
+                <li><a href="news.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-newspaper mr-2"></i>News</a></li>
+<li><a href="nft-collection.html" class="text-gray-700 hover:text-blue-500 flex items-center"><i class="fas fa-images mr-2"></i>NFT Collection</a></li>
+            </ul>
+        </div>
+    </div>
+  
   <!-- Main Content Section -->
   <main class="px-4 py-8" id="quests">
     <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -384,11 +402,53 @@
       <a href="desert-realm.html" class="card door">
         <img alt="A detailed image of a dungeon door with desert symbols and sand patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/WwChGBUuQiIsDhfBoEeKJiQNP5kWBrO2dXBk2LoEt8ro9eCoA.jpg" width="300"/>
       </a>
-    </section>
-  </main>
-  <!-- Footer Section -->
-  <footer>
-    <p>© 2023 TruthWeb. All rights reserved.</p>
-  </footer>
+</section>
+   </section>
+    <!-- Footer Section -->
+    <footer class="bg-[var(--primary-color)] py-8">
+      <div class="container mx-auto text-center">
+        <div class="mb-4">
+          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.facebook.com/reimaginetruthofficial/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://x.com/reimagine_truth" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://t.me/TruthWebOfficial" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.youtube.com/@ReimagineTruth" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p class="text-[var(--text-color)] mb-4">© 2025 TruthWeb. All rights reserved.</p>
+        <p class="text-[var(--text-color)]">Designed by Reimagine Truth Organization</p>
+      </div>
+
+    <script>
+        document.getElementById('openModalButton').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('infoModal').style.display = 'block';
+        });
+
+        document.getElementById('closeModalButton').addEventListener('click', function() {
+            document.getElementById('infoModal').style.display = 'none';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target == document.getElementById('infoModal')) {
+                document.getElementById('infoModal').style.display = 'none';
+            }
+        });
+
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.sticky-header');
+            const logoText = document.querySelector('.logo-text');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+                logoText.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+                logoText.classList.remove('scrolled');
+            }
+        });
+    </script>
+   
+  </script>
+
+  <!-- More content here -->
 </body>
+</html>
 </html>
