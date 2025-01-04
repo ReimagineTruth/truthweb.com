@@ -19,9 +19,11 @@
       --hover-effect: radial-gradient(circle, #1f2937, transparent);
       --button-bg-color: #000;
       --button-text-color: #fff;
-      --button-hover-bg-color: gold;
+      --button-hover-bg-color: #FFD700; /* Gold color */
       --button-hover-text-color: #000;
-      --nav-hover-color: gold;
+      --button-border-color: #FFD700; /* Gold color */
+      --nav-hover-color: #FFD700; /* Gold color */
+      --heading-color: #FFD700; /* Gold color */
     }
     body {
       background: var(--primary-color);
@@ -102,7 +104,7 @@
       background: var(--button-bg-color);
       color: var(--button-text-color);
       padding: 0.75rem 1.5rem;
-      border: 2px solid var(--highlight-color);
+      border: 2px solid var(--button-border-color); /* Gold border */
       border-radius: 20px;
       cursor: pointer;
       transition: background 0.3s, color 0.3s;
@@ -111,7 +113,7 @@
       text-align: center;
     }
     .btn:hover {
-      background: var(--button-hover-bg-color);
+      background: var(--button-hover-bg-color); /* Gold background */
       color: var(--button-hover-text-color);
     }
     @keyframes pulse {
@@ -158,6 +160,7 @@
     }
     .nav-item:hover {
       transform: scale(1.1);
+      color: var(--nav-hover-color); /* Gold color */
     }
     .fade-in {
       opacity: 0;
@@ -334,27 +337,27 @@
    <ul class="flex flex-wrap justify-center space-x-4">
     <li class="nav-item">
      <a class="text-[var(--text-color)] hover:text-[var(--nav-hover-color)] floating-effect" href="index.html">
-      Home
+      <i class="fas fa-home mr-2"></i> Home
      </a>
     </li>
     <li class="nav-item">
      <a class="text-[var(--text-color)] hover:text-[var(--nav-hover-color)] floating-effect" href="discover.html" id="openModalButton">
-      Discover
+      <i class="fas fa-search mr-2"></i> Discover
      </a>
     </li>
     <li class="nav-item">
      <a class="text-[var(--text-color)] hover:text-[var(--nav-hover-color)] floating-effect" href="about.html">
-      About
+      <i class="fas fa-info-circle mr-2"></i> About
      </a>
     </li>
     <li class="nav-item">
      <a class="text-[var(--text-color)] hover:text-[var(--nav-hover-color)] floating-effect" href="contact.html">
-      Contact
+      <i class="fas fa-envelope mr-2"></i> Contact
      </a>
     </li>
     <li class="nav-item">
      <a class="text-[var(--text-color)] hover:text-[var(--nav-hover-color)] floating-effect" href="policy.html">
-      Policy
+      <i class="fas fa-file-alt mr-2"></i> Policy
      </a>
     </li>
    </ul>
@@ -370,10 +373,10 @@
   </div>
   <!-- Main Content Section -->
   <section class="flex justify-center items-center min-h-screen">
-   <div class="card text-center">
-    <img alt="A wise and enigmatic guide, the Front Man leads players through the realms, offering quests and unraveling the mysteries of the Truth Web with wisdom, riddles, and subtle challenges." height="300" <img src="https://i.ibb.co/2vX9gK3/Untitled-design-24.jpg" alt="Untitled-design-24" border="0">
-    <h3 class="text-xl font-semibold mb-2">
-     Front Man 
+   <div class="card text-center max-w-md mx-auto">
+    <img alt="A wise and enigmatic guide, the Front Man leads players through the realms, offering quests and unraveling the mysteries of the Truth Web with wisdom, riddles, and subtle challenges." class="w-full h-auto" src="https://i.ibb.co/2vX9gK3/Untitled-design-24.jpg"/>
+    <h3 class="text-xl font-semibold mb-2 text-[var(--heading-color)]">
+     Front Man NPC
     </h3>
     <p class="mb-4">
      A wise and enigmatic guide, the Front Man leads players through the realms, offering quests and unraveling the mysteries of the Truth Web with wisdom, riddles, and subtle challenges.
@@ -386,37 +389,37 @@
   <main class="px-4 py-8" id="quests">
    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
     <a class="card door" href="aquatic-realm.html">
-     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/yWOfeg1I83nmxE2euZjOBlFKwbT4ovOCWuK5sCnNuIiJe2GQB.jpg" width="300">
+     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/2qpoee48nCp6i0NYFMedBgrAqXWk1NIFfjhMBRWjaeG2yAOgC.jpg" width="300">
      </img>
     </a>
     <a class="card door" href="aquatic-realm.html">
-     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/yWOfeg1I83nmxE2euZjOBlFKwbT4ovOCWuK5sCnNuIiJe2GQB.jpg" width="300"/>
+     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/2qpoee48nCp6i0NYFMedBgrAqXWk1NIFfjhMBRWjaeG2yAOgC.jpg" width="300"/>
     </a>
     <a class="card door" href="aquatic-realm.html">
-     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/yWOfeg1I83nmxE2euZjOBlFKwbT4ovOCWuK5sCnNuIiJe2GQB.jpg" width="300"/>
+     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/2qpoee48nCp6i0NYFMedBgrAqXWk1NIFfjhMBRWjaeG2yAOgC.jpg" width="300"/>
     </a>
     <a class="card door" href="aquatic-realm.html">
-     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/yWOfeg1I83nmxE2euZjOBlFKwbT4ovOCWuK5sCnNuIiJe2GQB.jpg" width="300"/>
+     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/2qpoee48nCp6i0NYFMedBgrAqXWk1NIFfjhMBRWjaeG2yAOgC.jpg" width="300"/>
     </a>
     <a class="card door" href="aquatic-realm.html">
-     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/yWOfeg1I83nmxE2euZjOBlFKwbT4ovOCWuK5sCnNuIiJe2GQB.jpg" width="300"/>
+     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/2qpoee48nCp6i0NYFMedBgrAqXWk1NIFfjhMBRWjaeG2yAOgC.jpg" width="300"/>
     </a>
     <a class="card door" href="aquatic-realm.html">
-     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/yWOfeg1I83nmxE2euZjOBlFKwbT4ovOCWuK5sCnNuIiJe2GQB.jpg" width="300"/>
+     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/2qpoee48nCp6i0NYFMedBgrAqXWk1NIFfjhMBRWjaeG2yAOgC.jpg" width="300"/>
     </a>
     <a class="card door" href="aquatic-realm.html">
-     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/yWOfeg1I83nmxE2euZjOBlFKwbT4ovOCWuK5sCnNuIiJe2GQB.jpg" width="300"/>
+     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/2qpoee48nCp6i0NYFMedBgrAqXWk1NIFfjhMBRWjaeG2yAOgC.jpg" width="300"/>
     </a>
     <a class="card door" href="aquatic-realm.html">
-     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/yWOfeg1I83nmxE2euZjOBlFKwbT4ovOCWuK5sCnNuIiJe2GQB.jpg" width="300"/>
+     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/2qpoee48nCp6i0NYFMedBgrAqXWk1NIFfjhMBRWjaeG2yAOgC.jpg" width="300"/>
     </a>
     <a class="card door" href="aquatic-realm.html">
-     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/yWOfeg1I83nmxE2euZjOBlFKwbT4ovOCWuK5sCnNuIiJe2GQB.jpg" width="300"/>
-    </a>
+     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/2qpoee48nCp6i0NYFMedBgrAqXWk1NIFfjhMBRWjaeG2yAOgC.jpg" width="300"/>
+     </a>
     <a class="card door" href="aquatic-realm.html">
-     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/yWOfeg1I83nmxE2euZjOBlFKwbT4ovOCWuK5sCnNuIiJe2GQB.jpg" width="300"/>
+     <img alt="A detailed image of a dungeon door with aquatic symbols and water patterns." class="w-full h-96 object-cover rounded-t-lg" height="384" src="https://storage.googleapis.com/a1aa/image/2qpoee48nCp6i0NYFMedBgrAqXWk1NIFfjhMBRWjaeG2yAOgC.jpg" width="300"/>
     </a>
-       </section>
+        </section>
   </main>
  <!-- Modal -->
     <div class="modal" id="infoModal">
@@ -478,4 +481,4 @@
         });
     </script>
   </body>
-</html>                     
+</html>  
