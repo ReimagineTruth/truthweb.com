@@ -313,44 +313,13 @@
                 <span class="logo-text ml-2">TruthWeb</span>
             </a>
         </div>
-        <div class="flex items-center">
-            <a class="text-[var(--text-color)] mr-4 icon floating-effect" href="notifications.html">
-                <i class="fas fa-bell text-xl sm:text-2xl"></i>
-            </a>
-            <a class="text-[var(--text-color)] mr-4 icon floating-effect" href="messages.html">
-                <i class="fas fa-comments text-xl sm:text-2xl"></i>
-            </a>
-            <a class="text-[var(--text-color)] icon floating-effect" href="profile.html">
-                <i class="fas fa-user text-xl sm:text-2xl"></i>
-            </a>
-        </div>
     </header>
     <!-- Navigation Section -->
     <nav class="bg-[var(--primary-color)] py-4">
         <ul class="flex flex-wrap justify-center space-x-4">
             <li class="nav-item">
-                <a class="text-[var(--text-color)] hover:text-[var(--nav-hover-color)] floating-effect" href="index.html">
-                    <i class="fas fa-home mr-2"></i> Home
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="text-[var(--text-color)] hover:text-[var(--nav-hover-color)] floating-effect" href="discover.html" id="openModalButton">
-                    <i class="fas fa-search mr-2"></i> Discover
-                </a>
-            </li>
-            <li class="nav-item">
                 <a class="text-[var(--text-color)] hover:text-[var(--nav-hover-color)] floating-effect" href="about.html" id="aboutModalButton">
                     <i class="fas fa-info-circle mr-2"></i> About
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="text-[var(--text-color)] hover:text-[var(--nav-hover-color)] floating-effect" href="contact.html">
-                    <i class="fas fa-envelope mr-2"></i> Contact
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="text-[var(--text-color)] hover:text-[var(--nav-hover-color)] floating-effect" href="policy.html">
-                    <i class="fas fa-file-alt mr-2"></i> Policy
                 </a>
             </li>
         </ul>
@@ -388,6 +357,10 @@
         </div>
     </div>
 
+    <!-- Sound Effects -->
+    <audio id="unlockSound" src="https://www.soundjay.com/button/sounds/button-3.mp3"></audio>
+    <audio id="errorSound" src="https://www.soundjay.com/button/sounds/button-10.mp3"></audio>
+
     <script>
         // Modal functionality
         const aboutModalButton = document.getElementById('aboutModalButton');
@@ -414,18 +387,32 @@
             const correctCode = "43"; // Correct answer from the video
             const userCode = document.getElementById("codeInput").value;
             const message = document.getElementById("message");
+            const unlockSound = document.getElementById("unlockSound");
+            const errorSound = document.getElementById("errorSound");
 
             if (userCode === correctCode) {
                 message.style.color = "green";
-                message.textContent = "Welcome, Truthseeker! The door is now unlocked.";
-                setTimeout(() => {
-                    window.location.href = "welcome.html"; // Redirect to the next page
-                }, 2000); // Wait 2 seconds before redirecting
+                message.textContent = "Welcome, Truthseeker! The door is now unlocked. Redirecting in 3 seconds...";
+                unlockSound.play();
+                let countdown = 3;
+                const countdownInterval = setInterval(() => {
+                    countdown--;
+                    message.textContent = `Welcome, Truthseeker! The door is now unlocked. Redirecting in ${countdown} seconds...`;
+                    if (countdown === 0) {
+                        clearInterval(countdownInterval);
+                        window.location.href = "welcome.html"; // Redirect to the next page
+                    }
+                }, 1000);
             } else {
                 message.style.color = "red";
-                message.textContent = "Incorrect code. Please try again.";
+                message.innerHTML = `Incorrect code. Please try again. <br> Do you want to exit? <br> <button onclick="exitPage()" class="w-full bg-red-500 text-white py-2 rounded-lg text-lg mt-2">Exit</button>`;
+                errorSound.play();
             }
         }
+
+        function exitPage() {
+            window.location.href = "index.html"; // Redirect to the home page
+        }
     </script>
-</body>
+</body> 
 </html>
