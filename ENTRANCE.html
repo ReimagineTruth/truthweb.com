@@ -1,0 +1,418 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Truth Web Quest</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <style>
+        :root {
+            --primary-color: #000;
+            --secondary-color: #1a1a1a;
+            --highlight-color: #1f2937;
+            --text-color: #fff;
+            --button-color: #000;
+            --hover-effect: radial-gradient(circle, #1f2937, transparent);
+            --button-bg-color: #000;
+            --button-text-color: #fff;
+            --button-hover-bg-color: #FFD700; /* Gold color */
+            --button-hover-text-color: #000;
+            --button-border-color: #FFD700; /* Gold color */
+            --nav-hover-color: #FFD700; /* Gold color */
+            --heading-color: #FFD700; /* Gold color */
+        }
+        body {
+            background: var(--primary-color);
+            color: var(--text-color);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--highlight-color);
+            padding: 1rem;
+            text-align: center;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--hover-effect);
+            opacity: 0.2;
+            animation: float 6s infinite ease-in-out;
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        .glow-text {
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 0 0 10px var(--highlight-color), 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color);
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 10px var(--highlight-color), 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color);
+            }
+            100% {
+                text-shadow: 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color), 0 0 40px var(--highlight-color);
+            }
+        }
+        .card {
+            background: var(--primary-color);
+            border: 2px solid var(--highlight-color);
+            border-radius: 10px;
+            padding: 1rem;
+            box-shadow: 0 0 15px var(--highlight-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s ease-in-out;
+            text-align: center;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 25px var(--highlight-color);
+        }
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .btn {
+            background: var(--button-bg-color);
+            color: var(--button-text-color);
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--button-border-color); /* Gold border */
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s;
+            animation: pulse 2s infinite;
+            display: inline-block;
+            text-align: center;
+        }
+        .btn:hover {
+            background: var(--button-hover-bg-color); /* Gold background */
+            color: var(--button-hover-text-color);
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        footer {
+            background: var(--primary-color);
+            color: var(--text-color);
+            text-align: center;
+            padding: 1rem;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: var(--primary-color);
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+        .sticky-header.scrolled {
+            background: var(--secondary-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            transition: font-size 0.3s;
+        }
+        .logo-text.scrolled {
+            font-size: 1.25rem;
+        }
+        .nav-item {
+            transition: transform 0.3s; 
+        }
+        .nav-item:hover {
+            transform: scale(1.1);
+            color: var(--nav-hover-color); /* Gold color */
+        }
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        .slide-in {
+            transform: translateX(-100%);
+            animation: slideIn 1s forwards;
+        }
+        @keyframes slideIn {
+            to {
+                transform: translateX(0);
+            }
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .modal-content {
+            background-color: #000; /* Black background */
+            color: var(--text-color);
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+            animation: slideInFromTop 0.5s ease-out, fadeIn 0.5s ease-out;
+        }
+        @keyframes slideInFromTop {
+            0% {
+                transform: translateY(-100%);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+            transform: rotate(90deg);
+        }
+        .floating-effect {
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+        .floating-effect:hover {
+            transform: translateY(-10px);
+        }
+        .nav-item {
+            opacity: 0;
+            animation: fadeInUp 0.5s forwards;
+        }
+        .nav-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+        .nav-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .nav-item:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+        .nav-item:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+        .nav-item:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+        .nav-item:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .door {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .door img {
+            transition: transform 0.5s ease-in-out;
+        }
+        .door:hover img {
+            transform: scale(1.1);
+        }
+        .door::before, .door::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            transition: transform 0.5s ease-in-out;
+            z-index: 1;
+        }
+        .door::before {
+            left: 0;
+            transform-origin: left;
+        }
+        .door::after {
+            right: 0;
+            transform-origin: right;
+        }
+        .door:hover::before {
+            transform: rotateY(-90deg);
+        }
+        .door:hover::after {
+            transform: rotateY(90deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="sticky-header flex justify-between items-center h-16 px-4">
+        <div class="flex items-center">
+            <a class="text-[var(--text-color)] mr-4 flex items-center" href="home.html">
+                <span class="logo-text ml-2">TruthWeb</span>
+            </a>
+        </div>
+    </header>
+    <!-- Navigation Section -->
+    <nav class="bg-[var(--primary-color)] py-4">
+        <ul class="flex flex-wrap justify-center space-x-4">
+            <li class="nav-item">
+                <a class="text-[var(--text-color)] hover:text-[var(--nav-hover-color)] floating-effect" href="about.html" id="aboutModalButton">
+                    <i class="fas fa-info-circle mr-2"></i> About
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!-- Main Content -->
+    <main class="flex-grow flex items-center justify-center p-4">
+        <div class="container max-w-md bg-gray-900 p-6 rounded-lg shadow-lg fade-in gold-highlight relative white-border">
+            <h1 class="text-2xl font-bold mb-4 glow-text">Truth Web Quest Door Lock</h1>
+            <p class="mb-4">Watch the video below to find the secret code:</p>
+            
+            <!-- Embedded Vimeo Video -->
+            <iframe 
+                src="https://player.vimeo.com/video/1043104144?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
+                frameborder="0" 
+                allow="autoplay; fullscreen; picture-in-picture" 
+                allowfullscreen
+                class="w-full h-64 rounded-lg mb-4 door">
+            </iframe>
+            
+            <p class="mb-4">Once you have the code, enter it below:</p>
+            <input type="text" id="codeInput" placeholder="Enter code" class="w-full p-2 mb-4 rounded-lg bg-gray-800 border border-gray-700 text-gray-200 input-focus">
+            <button onclick="validateCode()" class="w-full bg-black text-white py-2 rounded-lg text-lg gold-border btn">Unlock</button>
+            <div class="message mt-4 text-lg" id="message"></div>
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div id="aboutModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2 class="text-2xl font-bold mb-4">About Truth Web Quest</h2>
+            <p class="mb-4">Truth Web Quest is an interactive platform designed to challenge your mind and uncover hidden truths. Join us on this journey to explore the unknown and unlock the secrets of the web.</p>
+            <p class="mb-4">Our mission is to provide a unique and engaging experience that combines puzzles, videos, and interactive content to stimulate your curiosity and intellect.</p>
+            <p class="mb-4">Are you ready to embark on this quest? Let's dive in and discover the truth together!</p>
+        </div>
+    </div>
+
+    <!-- Sound Effects -->
+    <audio id="unlockSound" src="https://www.soundjay.com/button/sounds/button-3.mp3"></audio>
+    <audio id="errorSound" src="https://www.soundjay.com/button/sounds/button-10.mp3"></audio>
+
+    <script>
+        // Modal functionality
+        const aboutModalButton = document.getElementById('aboutModalButton');
+        const aboutModal = document.getElementById('aboutModal');
+        const closeModal = document.getElementById('closeModal');
+
+        aboutModalButton.onclick = function(event) {
+            event.preventDefault();
+            aboutModal.style.display = "block";
+        }
+
+        closeModal.onclick = function() {
+            aboutModal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == aboutModal) {
+                aboutModal.style.display = "none";
+            }
+        }
+
+        // Code validation functionality
+        function validateCode() {
+            const correctCode = "43"; // Correct answer from the video
+            const userCode = document.getElementById("codeInput").value;
+            const message = document.getElementById("message");
+            const unlockSound = document.getElementById("unlockSound");
+            const errorSound = document.getElementById("errorSound");
+
+            if (userCode === correctCode) {
+                message.style.color = "green";
+                message.textContent = "Welcome, Truthseeker! The door is now unlocked. Redirecting in 3 seconds...";
+                unlockSound.play();
+                let countdown = 3;
+                const countdownInterval = setInterval(() => {
+                    countdown--;
+                    message.textContent = `Welcome, Truthseeker! The door is now unlocked. Redirecting in ${countdown} seconds...`;
+                    if (countdown === 0) {
+                        clearInterval(countdownInterval);
+                        window.location.href = "welcome.html"; // Redirect to the next page
+                    }
+                }, 1000);
+            } else {
+                message.style.color = "red";
+                message.innerHTML = `Incorrect code. Please try again. <br> Do you want to exit? <br> <button onclick="exitPage()" class="w-full bg-red-500 text-white py-2 rounded-lg text-lg mt-2">Exit</button>`;
+                errorSound.play();
+            }
+        }
+
+        function exitPage() {
+            window.location.href = "index.html"; // Redirect to the home page
+        }
+    </script>
+</body> 
+</html>
