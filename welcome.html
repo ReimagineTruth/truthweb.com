@@ -104,14 +104,36 @@
             border: 2px solid var(--button-border-color); /* Gold border */
             border-radius: 20px;
             cursor: pointer;
-            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s, box-shadow 0.3s;
             animation: pulse 2s infinite;
             display: inline-block;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--button-hover-bg-color); /* Gold background */
+            z-index: 0;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease-in-out;
+        }
+        .btn:hover::before {
+            transform: scaleX(1);
+        }
+        .btn span {
+            position: relative;
+            z-index: 1;
         }
         .btn:hover {
-            background: var(--button-hover-bg-color); /* Gold background */
             color: var(--button-hover-text-color);
+            box-shadow: 0 0 10px var(--button-hover-bg-color);
         }
         @keyframes pulse {
             0% {
@@ -308,26 +330,28 @@
 <body class="bg-black text-gray-200 flex flex-col items-center justify-center min-h-screen p-6 text-center">
     <!-- Navigation Section -->
     <nav class="bg-[var(--primary-color)] py-4 w-full">
-        <ul class="flex flex-wrap justify-center space-x-4">
-            <!-- Navigation items can be added here -->
-        </ul>
     </nav>
     <!-- Main Content -->
-    <h1 class="text-4xl font-bold mb-4 glow-text">Welcome, Truthseeker!</h1>
-    <p class="text-lg mb-6 fade-in">You have successfully unlocked the door and entered the Truth Web Quest.</p>
-    <video id="welcomeVideo" controls class="w-full max-w-lg border-4 border-yellow-500 rounded-lg mb-6 fade-in">
-        <source src="welcome_video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    <button id="enterButton" class="enter-btn hidden bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded fade-in" onclick="enterQuest()">Enter the Truth Web Quest</button>
+    <div class="flex flex-col items-center justify-center w-full max-w-lg mx-auto">
+        <h1 class="text-4xl font-bold mb-4 glow-text">Welcome, Truthseeker!</h1>
+        <p class="text-lg mb-6 fade-in">You have successfully unlocked the door and entered the Truth Web Quest.</p>
+        <div style="padding:56.25% 0 0 0;position:relative;" class="w-full mb-6 fade-in">
+            <iframe src="https://player.vimeo.com/video/1044476586?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="THE FRONT MAN"></iframe>
+        </div>
+        <script src="https://player.vimeo.com/api/player.js"></script>
+        <button id="enterButton" class="enter-btn hidden btn fade-in" onclick="enterQuest()"><span>Enter the Truth Web Quest</span></button>
+    </div>
 
     <script>
-        const video = document.getElementById("welcomeVideo");
+        const video = document.querySelector("iframe");
         const enterButton = document.getElementById("enterButton");
 
-        // Show the button when the video ends
-        video.addEventListener("ended", () => {
-            enterButton.classList.remove('hidden');
+        // Show the button at the 2:38 timestamp
+        const player = new Vimeo.Player(video);
+        player.on('timeupdate', function(data) {
+            if (data.seconds >= 158) { // 2:38 in seconds
+                enterButton.classList.remove('hidden');
+            }
         });
 
         // Redirect to the Truth Web Quest page
