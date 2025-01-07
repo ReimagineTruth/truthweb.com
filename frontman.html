@@ -1,0 +1,450 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Truth Web Quest
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   :root {
+      --primary-color: #000;
+      --secondary-color: #1a1a1a;
+      --highlight-color: #1f2937;
+      --text-color: #fff;
+      --button-color: #000;
+      --hover-effect: radial-gradient(circle, #1f2937, transparent);
+      --button-bg-color: #000;
+      --button-text-color: #fff;
+      --button-hover-bg-color: #FFD700; /* Gold color */
+      --button-hover-text-color: #000;
+      --button-border-color: #FFD700; /* Gold color */
+      --nav-hover-color: #FFD700; /* Gold color */
+      --heading-color: #FFD700; /* Gold color */
+    }
+    body {
+      background: var(--primary-color);
+      color: var(--text-color);
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid var(--highlight-color);
+      padding: 1rem;
+      text-align: center;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--hover-effect);
+      opacity: 0.2;
+      animation: float 6s infinite ease-in-out;
+    }
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+    .glow-text {
+      font-size: 2rem;
+      font-weight: bold;
+      text-shadow: 0 0 10px var(--highlight-color), 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color);
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 10px var(--highlight-color), 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color);
+      }
+      100% {
+        text-shadow: 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color), 0 0 40px var(--highlight-color);
+      }
+    }
+    .card {
+      background: var(--primary-color);
+      border: 2px solid var(--highlight-color);
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 0 15px var(--highlight-color);
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: fadeInUp 1s ease-in-out;
+      text-align: center;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 25px var(--highlight-color);
+    }
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .btn {
+      background: var(--button-bg-color);
+      color: var(--button-text-color);
+      padding: 0.75rem 1.5rem;
+      border: 2px solid var(--button-border-color); /* Gold border */
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+      animation: pulse 2s infinite;
+      display: inline-block;
+      text-align: center;
+    }
+    .btn:hover {
+      background: var(--button-hover-bg-color); /* Gold background */
+      color: var(--button-hover-text-color);
+    }
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    footer {
+      background: var(--primary-color);
+      color: var(--text-color);
+      text-align: center;
+      padding: 1rem;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--primary-color);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .sticky-header.scrolled {
+      background: var(--secondary-color);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      transition: font-size 0.3s;
+    }
+    .logo-text.scrolled {
+      font-size: 1.25rem;
+    }
+    .nav-item {
+      transition: transform 0.3s; 
+    }
+    .nav-item:hover {
+      transform: scale(1.1);
+      color: var(--nav-hover-color); /* Gold color */
+    }
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+    .slide-in {
+      transform: translateX(-100%);
+      animation: slideIn 1s forwards;
+    }
+    @keyframes slideIn {
+      to {
+        transform: translateX(0);
+      }
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 500px;
+      border-radius: 10px;
+      animation: slideInFromTop 0.5s ease-out, fadeIn 0.5s ease-out;
+    }
+    @keyframes slideInFromTop {
+      0% {
+        transform: translateY(-100%);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      transition: transform 0.3s;
+    }
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+      transform: rotate(90deg);
+    }
+    .floating-effect {
+      display: inline-block;
+      transition: transform 0.3s;
+    }
+    .floating-effect:hover {
+      transform: translateY(-10px);
+    }
+    .nav-item {
+      opacity: 0;
+      animation: fadeInUp 0.5s forwards;
+    }
+    .nav-item:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+    .nav-item:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    .nav-item:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+    .nav-item:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+    .nav-item:nth-child(5) {
+      animation-delay: 0.5s;
+    }
+    .nav-item:nth-child(6) {
+      animation-delay: 0.6s;
+    }
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .door {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .door img {
+      transition: transform 0.5s ease-in-out;
+    }
+    .door:hover img {
+      transform: scale(1.1);
+    }
+    .door::before, .door::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      transition: transform 0.5s ease-in-out;
+      z-index: 1;
+    }
+    .door::before {
+      left: 0;
+      transform-origin: left;
+    }
+    .door::after {
+      right: 0;
+      transform-origin: right;
+    }
+    .door:hover::before {
+      transform: rotateY(-90deg);
+    }
+    .door:hover::after {
+      transform: rotateY(90deg);
+    }
+  </style>
+ </head>
+ <body>
+  <!-- Header Section -->
+  <header class="sticky-header flex justify-between items-center h-16 px-4">
+   <div class="flex items-center">
+    <a class="text-[var(--text-color)] mr-4 flex items-center" href="home.html">
+     <span class="logo-text ml-2">
+      TruthWeb
+     </span>
+    </a>
+   </div>
+   <div class="flex items-center">
+    <a class="text-[var(--text-color)] mr-4 icon floating-effect" href="notifications.html">
+     <i class="fas fa-bell text-xl sm:text-2xl">
+     </i>
+    </a>
+    <a class="text-[var(--text-color)] mr-4 icon floating-effect" href="messages.html">
+     <i class="fas fa-comments text-xl sm:text-2xl">
+     </i>
+    </a>
+    <a class="text-[var(--text-color)] icon floating-effect" href="profile.html">
+     <i class="fas fa-user text-xl sm:text-2xl">
+     </i>
+    </a>
+   </div>
+  </header>
+  <!-- Navigation Section -->
+  <nav class="bg-[var(--primary-color)] py-4">
+   <ul class="flex flex-wrap justify-center space-x-4">
+    <li class="nav-item">
+     <a class="text-[var(--text-color)] hover:text-[var(--nav-hover-color)] floating-effect" href="index.html">
+      <i class="fas fa-home mr-2"></i> Home
+     </a>
+    </li>
+    <li class="nav-item">
+     <a class="text-[var(--text-color)] hover:text-[var(--nav-hover-color)] floating-effect" href="discover.html" id="openModalButton">
+      <i class="fas fa-search mr-2"></i> Discover
+     </a>
+    </li>
+    <li class="nav-item">
+     <a class="text-[var(--text-color)] hover:text-[var(--nav-hover-color)] floating-effect" href="about.html">
+      <i class="fas fa-info-circle mr-2"></i> About
+     </a>
+    </li>
+    <li class="nav-item">
+     <a class="text-[var(--text-color)] hover:text-[var(--nav-hover-color)] floating-effect" href="contact.html">
+      <i class="fas fa-envelope mr-2"></i> Contact
+     </a>
+    </li>
+    <li class="nav-item">
+     <a class="text-[var(--text-color)] hover:text-[var(--nav-hover-color)] floating-effect" href="policy.html">
+      <i class="fas fa-file-alt mr-2"></i> Policy
+     </a>
+    </li>
+   </ul>
+  </nav>
+ <!-- News Content Section -->
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <div class="card">
+                <img src="https://i.ibb.co/2vX9gK3/Untitled-design-24.jpg" alt="A detailed design showcasing a mystical landscape with vibrant colors and intricate patterns" class="w-full h-auto mb-4">
+                    <h1 class="text-3xl font-bold mb-4">The Front Man: Master of Quests and Hidden Realms</h1>
+                    <p class="text-lg mb-4">The Front Man is a figure of authority and clarity in the Reimagine Truth universe, embodying the spirit of knowledge and discovery. He appears as a tall, well-dressed individual whose attire reflects the world’s various realms—his cloak shifting in color depending on the player’s current realm. His face, though ever-changing, radiates warmth and a knowing smile. It is said that the Front Man’s appearance is shaped by the questions and curiosity of those who seek his guidance, making him appear differently to each player.</p>
+    <p class="text-lg mb-4">His voice is soothing yet compelling, resonating with authority and understanding. When players first encounter him, he introduces himself as the "Keeper of Truth," a title he wields with both reverence and a hint of playful mystery. He is the one who explains the foundational rules of the world, the Truth Web, and the quests players can undertake. He provides essential information without overwhelming the player, ensuring that each step taken in the realm feels like a natural progression into deeper revelations.</p>
+    <p class="text-lg mb-4">The Front Man is not just a guide; he is a mentor and a catalyst for transformation. He recognizes the hidden potential in every player, encouraging them to explore not only the physical realms but also the realms of thought and understanding. With each quest he introduces, there is an underlying challenge—a call to venture beyond the ordinary and grasp the extraordinary truths that lie hidden in the fabric of existence. He often uses riddles and philosophical musings, prompting the player to reflect on their own perceptions of reality.</p>
+    <p class="text-lg mb-4">Role in the Game:</p>
+    <p class="text-lg mb-4"><strong>Quest Giver:</strong> The Front Man is the primary NPC who offers quests related to the Truth Web. He introduces players to the concept of interconnected truths and how these truths manifest in the world around them. As a quest giver, he is the one who explains the significance of each task and how it relates to the greater journey.</p>
+    <p class="text-lg mb-4"><strong>Truth Web Mentor:</strong> He reveals the deeper layers of the Truth Web to the player, guiding them through the interconnectedness of knowledge. The Front Man encourages players to question their assumptions, challenge their understanding, and explore the web of truth that binds all realms together.</p>
+    <p class="text-lg mb-4"><strong>Narrative Catalyst:</strong> The Front Man is the linchpin in the narrative, introducing new story arcs, challenges, and philosophical dilemmas that players must face. He is a constant presence in the early stages of the game, providing clarity and direction as players begin their journey of self-discovery.</p>
+    <p class="text-lg mb-4"><strong>Quest Completion:</strong> After players complete quests, the Front Man is there to congratulate them, offering wisdom and insight into how their actions have shaped their understanding of the Truth Web. He may also present new challenges or offer guidance on the next steps in their journey.</p>
+    <p class="text-lg mb-4"><strong>Interactive Dialogue:</strong> The Front Man's dialogues are rich in meaning and open to interpretation. He often speaks in metaphors and abstract concepts, pushing players to think critically about the nature of truth and reality. His responses vary depending on the player's progress, providing clues and hints to propel the story forward.</p>
+    <p class="text-lg mb-4">Personality and Appearance:</p>
+    <p class="text-lg mb-4"><strong>Appearance:</strong> The Front Man's appearance is designed to be slightly enigmatic yet approachable. His attire is a blend of styles from the various realms, with elements such as mystical symbols, flowing fabrics, and intricate patterns. His face is ever-changing, reflecting the player’s progress and emotions, sometimes appearing as a serene figure, other times as a mysterious silhouette.</p>
+    <p class="text-lg mb-4"><strong>Personality:</strong> The Front Man exudes a calm confidence. He is wise, but not in an overbearing way; rather, he offers guidance through subtle hints and challenges. He has a playful side, often offering riddles and philosophical questions that leave players pondering their purpose in the game world. Above all, the Front Man encourages exploration, both of the world and of the self.</p>
+    <p class="text-lg mb-4"><strong>Dialogue Style:</strong> The Front Man speaks in a way that invites reflection. His words are thoughtful, often layered with multiple meanings. He may pose questions like, “What is truth, if not the sum of all that we believe?” or “Is the web of truth so fragile that it cannot hold the weight of your doubts?”</p>
+    <div class="flex justify-center">
+                    <a href="truth_web_quest.html" class="btn mt-4">Back to Realms</a>
+          </div>
+        </div>
+       </section>
+  </main>
+ <!-- Modal -->
+    <div class="modal" id="infoModal">
+        <div class="modal-content">
+            <span class="close" id="closeModalButton">×</span>
+            <h2>More Options</h2>
+            <ul class="space-y-4">
+                <li><a href="wiki.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-book mr-2"></i>Wiki</a></li>
+                <li><a href="whitepaper.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-file-alt mr-2"></i>Whitepaper</a></li>
+                <li><a href="airdrop.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-gift mr-2"></i>Airdrop</a></li>
+                <li><a href="listing.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-list mr-2"></i>Listing</a></li>
+                <li><a href="rto-token.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-coins mr-2"></i>RTO Token</a></li>
+                <li><a href="news.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-newspaper mr-2"></i>News</a></li>
+<li><a href="nft-collection.html" class="text-gray-700 hover:text-blue-500 flex items-center"><i class="fas fa-images mr-2"></i>NFT Collection</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    </section>
+    <!-- Footer Section -->
+    <footer class="bg-[var(--primary-color)] py-8">
+      <div class="container mx-auto text-center">
+        <div class="mb-4">
+          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.facebook.com/reimaginetruthofficial/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://x.com/reimagine_truth" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://t.me/TruthWebOfficial" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.youtube.com/@ReimagineTruth" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p class="text-[var(--text-color)] mb-4">© 2025 TruthWeb. All rights reserved.</p>
+        <p class="text-[var(--text-color)]">Designed by Reimagine Truth Organization</p>
+      </div>
+
+    <script>
+        document.getElementById('openModalButton').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('infoModal').style.display = 'block';
+        });
+
+        document.getElementById('closeModalButton').addEventListener('click', function() {
+            document.getElementById('infoModal').style.display = 'none';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target == document.getElementById('infoModal')) {
+                document.getElementById('infoModal').style.display = 'none';
+            }
+        });
+
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.sticky-header');
+            const logoText = document.querySelector('.logo-text');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+                logoText.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+                logoText.classList.remove('scrolled');
+            }
+        });
+    </script>
+  </body>
+</html>  
