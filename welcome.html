@@ -328,9 +328,6 @@
     </style>
 </head>
 <body class="bg-black text-gray-200 flex flex-col items-center justify-center min-h-screen p-6 text-center">
-    <!-- Navigation Section -->
-    <nav class="bg-[var(--primary-color)] py-4 w-full">
-    </nav>
     <!-- Main Content -->
     <div class="flex flex-col items-center justify-center w-full max-w-lg mx-auto">
         <h1 class="text-4xl font-bold mb-4 glow-text">Welcome, Truthseeker!</h1>
@@ -339,12 +336,14 @@
             <iframe src="https://player.vimeo.com/video/1044476586?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="THE FRONT MAN"></iframe>
         </div>
         <script src="https://player.vimeo.com/api/player.js"></script>
-        <button id="enterButton" class="enter-btn hidden btn fade-in" onclick="enterQuest()"><span>Enter the Truth Web Quest</span></button>
+        <button id="enterButton" class="enter-btn hidden btn fade-in" onclick="startCountdown()"><span>Enter the Truth Web Quest</span></button>
+        <div id="countdown" class="text-2xl font-bold mt-4 hidden"></div>
     </div>
 
     <script>
         const video = document.querySelector("iframe");
         const enterButton = document.getElementById("enterButton");
+        const countdownElement = document.getElementById("countdown");
 
         // Show the button at the 2:38 timestamp
         const player = new Vimeo.Player(video);
@@ -353,6 +352,24 @@
                 enterButton.classList.remove('hidden');
             }
         });
+
+        // Start the countdown
+        function startCountdown() {
+            let countdown = 5; // 5 seconds countdown
+            enterButton.classList.add('hidden');
+            countdownElement.classList.remove('hidden');
+            countdownElement.textContent = countdown;
+
+            const interval = setInterval(() => {
+                countdown--;
+                countdownElement.textContent = countdown;
+
+                if (countdown <= 0) {
+                    clearInterval(interval);
+                    enterQuest();
+                }
+            }, 1000);
+        }
 
         // Redirect to the Truth Web Quest page
         function enterQuest() {
