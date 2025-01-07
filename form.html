@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>NPC Avatar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+    @keyframes floating {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+  </style>
+</head>
+<body class="bg-black flex items-center justify-center min-h-screen">
+  <div class="relative bg-black shadow-lg rounded-lg p-6 max-w-md w-full">
+    <div class="flex items-center space-x-4">
+      <div>
+        <h2 class="text-xl font-bold text-yellow-500 relative">Front Man</h2>
+        <p class="text-gray-400">NPC</p>
+      </div>
+    </div>
+    <div class="mt-4" id="startImageSection">
+      <img alt="A detailed full-body image of a fantasy NPC character" class="w-full rounded-lg shadow-lg border-2 border-yellow-500" height="600" src="https://i.ibb.co/2vX9gK3/Untitled-design-24.jpg" width="400" />
+    </div>
+    <div class="mt-4">
+      <p class="text-gray-300" id="questText">
+        Greetings, adventurer! I have a quest for you. Will you accept the challenge to prove your knowledge?
+      </p>
+    </div>
+    <div class="mt-6 flex justify-end space-x-4">
+      <button class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition duration-300 ease-in-out" id="declineBtn" onclick="declineQuest()">Decline</button>
+      <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition duration-300 ease-in-out" id="acceptBtn" onclick="acceptQuest()">Accept</button>
+    </div>
+    <div class="mt-4" id="formSection" style="display: none;">
+      <p class="text-gray-300 mb-4">
+        Please complete the form below to continue. Once submitted, confirm by clicking the checkbox and proceed to the quest.
+      </p>
+      <iframe
+        class="w-full h-96"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        src="https://docs.google.com/forms/d/e/1FAIpQLScTlLADzwf6Q5rNaff1V_MsC5jznbfXuNyRSKsj9yFCxCoEzw/viewform?embedded=true"
+        id="formIframe"
+      >
+        Loading…
+      </iframe>
+      <div class="mt-4">
+        <label class="inline-flex items-center">
+          <input type="checkbox" class="form-checkbox text-green-500" id="confirmationCheckbox" onchange="toggleSubmitButton()" />
+          <span class="ml-2 text-gray-300">I have submitted the form</span>
+        </label>
+      </div>
+      <div class="mt-4" id="submitButtonSection" style="display: none;">
+        <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300 ease-in-out w-full" onclick="redirectToQuest()">Go to Quest</button>
+      </div>
+    </div>
+    <div class="mt-6 flex justify-end space-x-4" id="exitSection" style="display: none;">
+      <button class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition duration-300 ease-in-out w-full floating" onclick="exitPage()">Exit</button>
+    </div>
+  </div>
+  <script>
+    function acceptQuest() {
+      document.getElementById("questText").innerText = "You have accepted the quest! Prepare yourself for the adventure.";
+      document.getElementById("declineBtn").style.display = "none";
+      document.getElementById("acceptBtn").style.display = "none";
+      document.getElementById("startImageSection").style.display = "none"; // Hide the start image
+      document.getElementById("formSection").style.display = "block"; // Show the embedded form
+    }
+
+    function declineQuest() {
+      document.getElementById("questText").innerText = "You have declined the quest. Perhaps another time, adventurer.";
+      document.getElementById("declineBtn").style.display = "none";
+      document.getElementById("acceptBtn").style.display = "none";
+      document.getElementById("startImageSection").style.display = "none"; // Hide the start image
+      document.getElementById("exitSection").style.display = "block"; // Show the exit button
+    }
+
+    function exitPage() {
+      window.location.href = "index.html"; // Redirect to index.html
+    }
+
+    function toggleSubmitButton() {
+      const checkbox = document.getElementById("confirmationCheckbox");
+      const submitButtonSection = document.getElementById("submitButtonSection");
+      if (checkbox.checked) {
+        submitButtonSection.style.display = "block"; // Show the submit button
+      } else {
+        submitButtonSection.style.display = "none"; // Hide the submit button
+      }
+    }
+
+    function redirectToQuest() {
+      window.location.href = "truth_web_quest.html"; // Redirect to the quest page
+    }
+  </script>
+</body> 
+</html>
