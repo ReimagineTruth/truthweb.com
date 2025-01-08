@@ -11,223 +11,217 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
   <style>
    :root {
-      --primary-color: #2f0139; /* Dark Violet */
-      --secondary-color: #2a0132; /* Deep Black */
-      --highlight-color: #ff00ff; /* Enhanced Bright Violet */
-      --text-color: #fff; /* White */
-      --button-color: #692119; /* Button Color */
-      --hover-effect: radial-gradient(circle, #ff00ff, transparent);
-    }
-    body {
-      background: #1a0120;
-      color: var(--text-color);
-      font-family: 'Poppins', sans-serif;
-      overflow-x: hidden;
-    }
-    .glow-text {
-      font-size: 2rem;
-      font-weight: bold;
-      text-shadow: 0 0 10px var(--highlight-color), 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color);
-      animation: glow 2s infinite alternate;
-    }
-    @keyframes glow {
-      0% {
-        text-shadow: 0 0 10px var(--highlight-color), 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color);
-      }
-      100% {
-        text-shadow: 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color), 0 0 40px var (--highlight-color);
-      }
-    }
-    .card {
-      background: var(--primary-color);
-      border: 2px solid var(--highlight-color);
-      border-radius: 10px;
-      padding: 1rem;
-      box-shadow: 0 0 15px var(--highlight-color);
-      transition: transform 0.3s, box-shadow 0.3s;
-      animation: fadeInUp 1s ease-in-out;
-    }
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 0 25px var(--highlight-color);
-    }
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    .btn {
-      background: var(--button-color);
-      color: var(--text-color);
-      padding: 0.75rem 1.5rem;
-      border: 2px solid var(--highlight-color);
-      border-radius: 20px;
-      cursor: pointer;
-      transition: background 0.3s, color 0.3s;
-      animation: pulse 2s infinite;
-    }
-    .btn:hover {
-      background: var(--highlight-color);
-      color: var(--primary-color);
-    }
-    @keyframes pulse {
-      0% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.05);
-      }
-      100% {
-        transform: scale(1);
-      }
-    }
-    footer {
-      background: var(--primary-color);
-      color: var(--text-color);
-      text-align: center;
-      padding: 1rem;
-    }
-    html {
-      scroll-behavior: smooth;
-    }
-    .sticky-header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: var(--primary-color);
-      transition: background 0.3s, box-shadow 0.3s;
-    }
-    .sticky-header.scrolled {
-      background: var(--secondary-color);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    }
-    .logo-text {
-      font-size: 1.5rem;
-      font-weight: 700;
-      transition: font-size 0.3s;
-    }
-    .logo-text.scrolled {
-      font-size: 1.25rem;
-    }
-    .nav-item {
-      transition: transform 0.3s;
-    }
-    .nav-item:hover {
-      transform: scale(1.1);
-    }
-    .fade-in {
-      opacity: 0;
-      animation: fadeIn 1s forwards;
-    }
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
-    }
-    .slide-in {
-      transform: translateX(-100%);
-      animation: slideIn 1s forwards;
-    }
-    @keyframes slideIn {
-      to {
-        transform: translateX(0);
-      }
-    }
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0, 0, 0, 0.5);
-    }
-    .modal-content {
-      background-color: #fefefe;
-      margin: 15% auto;
-      padding: 20px;
-      border: 1px solid #888;
-      width: 80%;
-      max-width: 500px;
-      border-radius: 10px;
-      animation: slideInFromTop 0.5s ease-out, fadeIn 0.5s ease-out;
-    }
-    @keyframes slideInFromTop {
-      0% {
-        transform: translateY(-100%);
-      }
-      100% {
-        transform: translateY(0);
-      }
-    }
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-      transition: transform 0.3s;
-    }
-    .close:hover,
-    .close:focus {
-      color: black;
-      text-decoration: none;
-      cursor: pointer;
-      transform: rotate(90deg);
-    }
-    .floating-effect {
-      display: inline-block;
-      transition: transform 0.3s;
-    }
-    .floating-effect:hover {
-      transform: translateY(-10px);
-    }
-    .nav-item {
-      opacity: 0;
-      animation: fadeInUp 0.5s forwards;
-    }
-    .nav-item:nth-child(1) {
-      animation-delay: 0.1s;
-    }
-    .nav-item:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-    .nav-item:nth-child(3) {
-      animation-delay: 0.3s;
-    }
-    .nav-item:nth-child(4) {
-      animation-delay: 0.4s;
-    }
-    .nav-item:nth-child(5) {
-      animation-delay: 0.5s;
-    }
-    .nav-item:nth-child(6) {
-      animation-delay: 0.6s;
-    }
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+            --primary-color: #2f0139; /* Dark Violet */
+            --secondary-color: #2a0132; /* Deep Black */
+            --highlight-color: #ff00ff; /* Enhanced Bright Violet */
+            --text-color: #fff; /* White */
+            --button-color: #692119; /* Button Color */
+            --hover-effect: radial-gradient(circle, #ff00ff, transparent);
+        }
+        body {
+            background: #1a0120;
+            color: var(--text-color);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+        .glow-text {
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 0 0 10px var(--highlight-color), 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color);
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 10px var(--highlight-color), 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color);
+            }
+            100% {
+                text-shadow: 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color), 0 0 40px var(--highlight-color);
+            }
+        }
+        .card {
+            background: var(--primary-color);
+            border: 2px solid var(--highlight-color);
+            border-radius: 10px;
+            padding: 1rem;
+            box-shadow: 0 0 15px var(--highlight-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 25px var(--highlight-color);
+        }
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .btn {
+            background: var(--button-color);
+            color: var(--text-color);
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--highlight-color);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s;
+            animation: pulse 2s infinite;
+        }
+        .btn:hover {
+            background: var(--highlight-color);
+            color: var(--primary-color);
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: var(--primary-color);
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+        .sticky-header.scrolled {
+            background: var(--secondary-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            transition: font-size 0.3s;
+        }
+        .logo-text.scrolled {
+            font-size: 1.25rem;
+        }
+        .nav-item {
+            transition: transform 0.3s;
+        }
+        .nav-item:hover {
+            transform: scale(1.1);
+        }
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        .slide-in {
+            transform: translateX(-100%);
+            animation: slideIn 1s forwards;
+        }
+        @keyframes slideIn {
+            to {
+                transform: translateX(0);
+            }
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+            animation: slideInFromTop 0.5s ease-out, fadeIn 0.5s ease-out;
+        }
+        @keyframes slideInFromTop {
+            0% {
+                transform: translateY(-100%);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+            transform: rotate(90deg);
+        }
+        .floating-effect {
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+        .floating-effect:hover {
+            transform: translateY(-10px);
+        }
+        .nav-item {
+            opacity: 0;
+            animation: fadeInUp 0.5s forwards;
+        }
+        .nav-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+        .nav-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .nav-item:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+        .nav-item:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+        .nav-item:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+        .nav-item:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
   </style>
  </head>
  <body>
@@ -291,131 +285,74 @@
     <h2 class="text-3xl font-bold text-center mb-8">
      Latest News
     </h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-     <a class="card" href="news1.js">
-      <img alt="News image 1: A detailed description of the image for AI generation" class="w-full h-48 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/8e3pGXfrKjq6wEaHPnz8cF80WgmOWiG2Kf4g3Y7luZett0efE.jpg" width="600"/>
-      <div class="p-4">
-       <h3 class="text-xl font-semibold mb-2">
-        News Title 1
-       </h3>
-       <p class="text-sm">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
-       </p>
-      </div>
-     </a>
-     <a class="card" href="news2.js">
-      <img alt="News image 2: A detailed description of the image for AI generation" class="w-full h-48 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/IpgoKYch6WpgEVaqKfFzaQQYENAAwnlZInFOkGZQ1o2wl2fTA.jpg" width="600"/>
-      <div class="p-4">
-       <h3 class="text-xl font-semibold mb-2">
-        News Title 2
-       </h3>
-       <p class="text-sm">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
-       </p>
-      </div>
-     </a>
-     <a class="card" href="newsitem/news3.html">
-      <img alt="News image 3: A detailed description of the image for AI generation" class="w-full h-48 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/e8dYDF2gLyUiHKO1ESYOL3rVgJoiopUABDWMIdlI9VXtl2fTA.jpg" width="600"/>
-      <div class="p-4">
-       <h3 class="text-xl font-semibold mb-2">
-        News Title 3
-       </h3>
-       <p class="text-sm">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
-       </p>
-      </div>
-     </a>
-     <a class="card" href="newsitem/news4.html">
-      <img alt="News image 4: A detailed description of the image for AI generation" class="w-full h-48 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/qQ3pEKwDSXZZPhQf6vKDOW4lPv8cme4RpHqBFq2WCeZIXafPB.jpg" width="600"/>
-      <div class="p-4">
-       <h3 class="text-xl font-semibold mb-2">
-        News Title 4
-       </h3>
-       <p class="text-sm">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
-       </p>
-      </div>
-     </a>
-     <a class="card" href="newsitem/news5.html">
-      <img alt="News image 5: A detailed description of the image for AI generation" class="w-full h-48 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/UCJmoh9K3KZfKSmOftYfYWuJUt4HWmBhPehBdpfDWh1ycp9fE.jpg" width="600"/>
-      <div class="p-4">
-       <h3 class="text-xl font-semibold mb-2">
-        News Title 5
-       </h3>
-       <p class="text-sm">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
-       </p>
-      </div>
-     </a>
-     <a class="card" href="newsitem/news6.html">
-      <img alt="News image 6: A detailed description of the image for AI generation" class="w-full h-48 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/6nbpS3Ni8qICPV7DgAXUefebBu842y55fn2qTm4YjXf4bp9fE.jpg" width="600"/>
-      <div class="p-4">
-       <h3 class="text-xl font-semibold mb-2">
-        News Title 6
-       </h3>
-       <p class="text-sm">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
-       </p>
-      </div>
-     </a>
-     <a class="card" href="newsitem/news7.html">
-      <img alt="News image 7: A detailed description of the image for AI generation" class="w-full h-48 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/XRciMNQ8TgaFA5PT8nkqsDafMs5jvAaqNmiapq5S4CE0l2fTA.jpg" width="600"/>
-      <div class="p-4">
-       <h3 class="text-xl font-semibold mb-2">
-        News Title 7
-       </h3>
-       <p class="text-sm">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
-       </p>
-      </div>
-     </a>
-     <a class="card" href="newsitem/news8.html">
-      <img alt="News image 8: A detailed description of the image for AI generation" class="w-full h-48 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/BPvIbqe1Ka2QQ6j36n3PBIrYY5f1i3h5jVAmymWZRp7jLtfnA.jpg" width="600"/>
-      <div class="p-4">
-       <h3 class="text-xl font-semibold mb-2">
-        News Title 8
-       </h3>
-       <p class="text-sm">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
-       </p>
-      </div>
-     </a>
-</section>
-   </section>
-
-  </main>
- <!-- Modal -->
-    <div class="modal" id="infoModal">
-        <div class="modal-content">
-            <span class="close" id="closeModalButton">×</span>
-            <h2>More Options</h2>
-            <ul class="space-y-4">
-                <li><a href="wiki.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-book mr-2"></i>Wiki</a></li>
-                <li><a href="whitepaper.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-file-alt mr-2"></i>Whitepaper</a></li>
-                <li><a href="airdrop.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-gift mr-2"></i>Airdrop</a></li>
-                <li><a href="listing.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-list mr-2"></i>Listing</a></li>
-                <li><a href="rto-token.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-coins mr-2"></i>RTO Token</a></li>
-                <li><a href="news.html" class="text-gray-700 hover:text-blue-500"><i class="fas fa-newspaper mr-2"></i>News</a></li>
-<li><a href="nft-collection.html" class="text-gray-700 hover:text-blue-500 flex items-center"><i class="fas fa-images mr-2"></i>NFT Collection</a></li>
-            </ul>
-        </div>
+    <div class="text-center text-xl">
+     No news available for now.
     </div>
-    
-    </section>
-    <!-- Footer Section -->
-    <footer class="bg-[var(--primary-color)] py-8">
-      <div class="container mx-auto text-center">
-        <div class="mb-4">
-          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.facebook.com/reimaginetruthofficial/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://x.com/reimagine_truth" target="_blank"><i class="fab fa-twitter"></i></a>
-          <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://t.me/TruthWebOfficial" target="_blank"><i class="fab fa-telegram"></i></a>
-            <a class="text-[var(--text-color)] mx-2 floating-effect" href="https://www.youtube.com/@ReimagineTruth" target="_blank"><i class="fab fa-youtube"></i></a>
-        </div>
-        <p class="text-[var(--text-color)] mb-4">© 2025 TruthWeb. All rights reserved.</p>
-        <p class="text-[var(--text-color)]">Designed by Reimagine Truth Organization</p>
-      </div>
-
-    <script>
+   </div>
+  </section>
+  <!-- Modal -->
+  <div class="modal" id="infoModal">
+   <div class="modal-content">
+    <span class="close" id="closeModalButton">
+     ×
+    </span>
+    <h2>
+     More Options
+    </h2>
+    <ul class="space-y-4">
+     <li>
+      <a class="text-gray-700 hover:text-blue-500" href="wiki.html">
+       <i class="fas fa-book mr-2">
+       </i>
+       Wiki
+      </a>
+     </li>
+     <li>
+      <a class="text-gray-700 hover:text-blue-500" href="whitepaper.html">
+       <i class="fas fa-file-alt mr-2">
+       </i>
+       Whitepaper
+      </a>
+     </li>
+     <li>
+      <a class="text-gray-700 hover:text-blue-500" href="airdrop.html">
+       <i class="fas fa-gift mr-2">
+       </i>
+       Airdrop
+      </a>
+     </li>
+     <li>
+      <a class="text-gray-700 hover:text-blue-500" href="listing.html">
+       <i class="fas fa-list mr-2">
+       </i>
+       Listing
+      </a>
+     </li>
+     <li>
+      <a class="text-gray-700 hover:text-blue-500" href="rto-token.html">
+       <i class="fas fa-coins mr-2">
+       </i>
+       RTO Token
+      </a>
+     </li>
+     <li>
+      <a class="text-gray-700 hover:text-blue-500" href="news.html">
+       <i class="fas fa-newspaper mr-2">
+       </i>
+       News
+      </a>
+     </li>
+     <li>
+      <a class="text-gray-700 hover:text-blue-500 flex items-center" href="nft-collection.html">
+       <i class="fas fa-images mr-2">
+       </i>
+       NFT Collection
+      </a>
+     </li>
+    </ul>
+   </div>
+  </div>
+  <script>
         document.getElementById('openModalButton').addEventListener('click', function(event) {
             event.preventDefault();
             document.getElementById('infoModal').style.display = 'block';
@@ -443,5 +380,5 @@
             }
         });
     </script>
-  </body>
-</html> 
+ </body>
+</html>
